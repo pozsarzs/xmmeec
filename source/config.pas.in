@@ -1,7 +1,7 @@
 { +--------------------------------------------------------------------------+ }
 { | XMMEEC v0.1 * Environment characteristics editor                         | }
 { | Copyright (C) 2019 Pozsár Zsolt <pozsar.zsolt@.szerafingomba.hu>         | }
-{ | config.inc(.in)                                                          | }
+{ | config.pas(.in)                                                          | }
 { | Setting for source code                                                  | }
 { +--------------------------------------------------------------------------+ }
 
@@ -21,24 +21,10 @@ const
   {$IFDEF UseFHS}
     MYI18PATH='@prefix@/share/locale/';
   {$ELSE}
-    {$IFDEF UNIX}
       MYI18PATH='/languages/';
-    {$ENDIF}
-    {$IFDEF WIN32}
-      MYI18PATH='\languages\';
-    {$ENDIF}
   {$ENDIF}
   // user's folders
-  {$IFDEF UNIX}
-    DIR_CACHE='/.cache/xmmeec/';
-    DIR_CONFIG='/.config/xmmeec/';
-    DIR_DATA='/.local/share/xmmeec/';
-    DIR_PICS='/.local/share/xmmeec/base/';
-  {$ENDIF}
-  {$IFDEF WIN32}
-    DIR_CACHE='\AppData\Local\xmmeec\cache\';
-    DIR_CONFIG='\AppData\Local\xmmeec\config\';
-    DIR_DATA='\AppData\Local\xmmeec\data\';
-    DIR_PICS='\AppData\Local\xmmeec\data\base\';
-  {$ENDIF}
-
+  DIR_CACHE='/.cache/mmeec/';
+  DIR_CONFIG='/.config/mmeec/';
+  DIR_DATA='/.local/share/mmeec/';
+  TMPFILE='/tmp/mmeec.tmp';
