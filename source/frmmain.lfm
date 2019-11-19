@@ -1,0 +1,738 @@
+object Form1: TForm1
+  Left = 292
+  Height = 563
+  Top = 76
+  Width = 492
+  Caption = 'Form1'
+  ClientHeight = 542
+  ClientWidth = 492
+  Menu = MainMenu1
+  LCLVersion = '1.6.2.0'
+  object StatusBar1: TStatusBar
+    Left = 0
+    Height = 17
+    Top = 525
+    Width = 492
+    Panels = <>
+  end
+  object ToolBar1: TToolBar
+    Left = 0
+    Height = 26
+    Top = 0
+    Width = 492
+    Caption = 'ToolBar1'
+    TabOrder = 1
+  end
+  object PageControl1: TPageControl
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = ToolBar1
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = StatusBar1
+    Left = 0
+    Height = 499
+    Top = 26
+    Width = 492
+    ActivePage = TabSheet1
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    TabIndex = 0
+    TabOrder = 2
+    object TabSheet1: TTabSheet
+      Caption = 'Growing hyphae'
+      ClientHeight = 468
+      ClientWidth = 486
+      object CheckGroup1: TCheckGroup
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideTop.Control = Label5
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = SpinEdit2
+        AnchorSideRight.Side = asrBottom
+        AnchorSideBottom.Control = TabSheet1
+        AnchorSideBottom.Side = asrBottom
+        Left = 8
+        Height = 319
+        Top = 141
+        Width = 181
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        AutoFill = True
+        BorderSpacing.Left = 8
+        BorderSpacing.Top = 8
+        BorderSpacing.Bottom = 8
+        Caption = 'Disable humidifier'
+        ChildSizing.LeftRightSpacing = 6
+        ChildSizing.TopBottomSpacing = 6
+        ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+        ChildSizing.EnlargeVertical = crsHomogenousChildResize
+        ChildSizing.ShrinkHorizontal = crsScaleChilds
+        ChildSizing.ShrinkVertical = crsScaleChilds
+        ChildSizing.Layout = cclLeftToRightThenTopToBottom
+        ChildSizing.ControlsPerLine = 1
+        ClientHeight = 304
+        ClientWidth = 177
+        TabOrder = 0
+        object CheckBox1: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 6
+          Width = 165
+          Caption = '00.00-00.59'
+          TabOrder = 0
+        end
+        object CheckBox2: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 18
+          Width = 165
+          Caption = '01.00-01.59'
+          OnChange = CheckBox2Change
+          TabOrder = 1
+        end
+        object CheckBox3: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 30
+          Width = 165
+          Caption = '02.00-02.59'
+          TabOrder = 2
+        end
+        object CheckBox4: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 42
+          Width = 165
+          Caption = '03.00-03.59'
+          OnChange = CheckBox2Change
+          TabOrder = 3
+        end
+        object CheckBox5: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 54
+          Width = 165
+          Caption = '04.00-04.59'
+          TabOrder = 4
+        end
+        object CheckBox6: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 66
+          Width = 165
+          Caption = '05.00-05.59'
+          OnChange = CheckBox2Change
+          TabOrder = 5
+        end
+        object CheckBox7: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 78
+          Width = 165
+          Caption = '06.00-06.59'
+          TabOrder = 6
+        end
+        object CheckBox8: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 90
+          Width = 165
+          Caption = '07.00-07.59'
+          OnChange = CheckBox2Change
+          TabOrder = 7
+        end
+        object CheckBox9: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 102
+          Width = 165
+          Caption = '08.00-08.59'
+          OnChange = CheckBox2Change
+          TabOrder = 8
+        end
+        object CheckBox10: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 114
+          Width = 165
+          Caption = '09.00-09.59'
+          OnChange = CheckBox2Change
+          TabOrder = 9
+        end
+        object CheckBox11: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 126
+          Width = 165
+          Caption = '10.00-10.59'
+          OnChange = CheckBox2Change
+          TabOrder = 10
+        end
+        object CheckBox12: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 138
+          Width = 165
+          Caption = '11.00-11.59'
+          OnChange = CheckBox2Change
+          TabOrder = 11
+        end
+        object CheckBox13: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 150
+          Width = 165
+          Caption = '12.00-12.59'
+          OnChange = CheckBox2Change
+          TabOrder = 12
+        end
+        object CheckBox14: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 162
+          Width = 165
+          Caption = '13.00-13.59'
+          OnChange = CheckBox2Change
+          TabOrder = 13
+        end
+        object CheckBox15: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 174
+          Width = 165
+          Caption = '14.00-14.59'
+          TabOrder = 14
+        end
+        object CheckBox16: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 186
+          Width = 165
+          Caption = '15.00-15.59'
+          OnChange = CheckBox2Change
+          TabOrder = 15
+        end
+        object CheckBox17: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 198
+          Width = 165
+          Caption = '16.00-16.59'
+          TabOrder = 16
+        end
+        object CheckBox18: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 210
+          Width = 165
+          Caption = '17.00-17.59'
+          OnChange = CheckBox2Change
+          TabOrder = 17
+        end
+        object CheckBox19: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 222
+          Width = 165
+          Caption = '18.00-18.59'
+          TabOrder = 18
+        end
+        object CheckBox20: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 234
+          Width = 165
+          Caption = '19.00-19.59'
+          OnChange = CheckBox2Change
+          TabOrder = 19
+        end
+        object CheckBox21: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 246
+          Width = 165
+          Caption = '20.00-20.59'
+          OnChange = CheckBox2Change
+          TabOrder = 20
+        end
+        object CheckBox22: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 258
+          Width = 165
+          Caption = '21.00-21.59'
+          OnChange = CheckBox2Change
+          TabOrder = 21
+        end
+        object CheckBox23: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 270
+          Width = 165
+          Caption = '22.00-22.59'
+          OnChange = CheckBox2Change
+          TabOrder = 22
+        end
+        object CheckBox24: TCheckBox
+          Left = 6
+          Height = 16
+          Top = 282
+          Width = 165
+          Caption = '23.00-23.59'
+          OnChange = CheckBox2Change
+          TabOrder = 23
+        end
+      end
+      object SpinEdit1: TSpinEdit
+        AnchorSideLeft.Control = SpinEdit2
+        Left = 112
+        Height = 23
+        Top = 40
+        Width = 77
+        TabOrder = 1
+      end
+      object Label1: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideTop.Control = TabSheet1
+        Left = 8
+        Height = 18
+        Top = 8
+        Width = 97
+        BorderSpacing.Around = 8
+        Caption = 'Humidifying'
+        Font.Height = 15
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object Label2: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        Left = 8
+        Height = 13
+        Top = 48
+        Width = 84
+        BorderSpacing.Left = 8
+        Caption = 'Minimal RH [%]'
+        ParentColor = False
+      end
+      object Label3: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        Left = 8
+        Height = 13
+        Hint = 'Humidifier switch on RH [%]'
+        Top = 72
+        Width = 96
+        BorderSpacing.Left = 8
+        Caption = 'Switch on RH [%]'
+        ParentColor = False
+      end
+      object Label4: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        Left = 8
+        Height = 13
+        Top = 96
+        Width = 97
+        BorderSpacing.Left = 8
+        Caption = 'Switch off RH [%]'
+        ParentColor = False
+      end
+      object Label5: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        Left = 8
+        Height = 13
+        Top = 120
+        Width = 87
+        BorderSpacing.Left = 8
+        Caption = 'Maximal RH [%]'
+        ParentColor = False
+      end
+      object SpinEdit2: TSpinEdit
+        AnchorSideLeft.Control = Label3
+        AnchorSideLeft.Side = asrBottom
+        Left = 112
+        Height = 23
+        Top = 64
+        Width = 77
+        BorderSpacing.Around = 8
+        TabOrder = 2
+      end
+      object SpinEdit3: TSpinEdit
+        AnchorSideLeft.Control = SpinEdit2
+        Left = 112
+        Height = 23
+        Top = 88
+        Width = 77
+        TabOrder = 3
+      end
+      object SpinEdit4: TSpinEdit
+        AnchorSideLeft.Control = SpinEdit2
+        Left = 112
+        Height = 23
+        Top = 112
+        Width = 77
+        TabOrder = 4
+      end
+      object Bevel1: TBevel
+        AnchorSideLeft.Control = SpinEdit2
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = TabSheet1
+        AnchorSideBottom.Control = CheckGroup1
+        AnchorSideBottom.Side = asrBottom
+        Left = 197
+        Height = 452
+        Top = 8
+        Width = 14
+        Anchors = [akTop, akLeft, akBottom]
+        BorderSpacing.Top = 8
+        Shape = bsLeftLine
+      end
+      object Label6: TLabel
+        AnchorSideLeft.Control = Bevel1
+        AnchorSideTop.Control = TabSheet1
+        Left = 205
+        Height = 18
+        Top = 8
+        Width = 63
+        BorderSpacing.Around = 8
+        Caption = 'Heating'
+        Font.Height = 15
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object Label7: TLabel
+        AnchorSideLeft.Control = Bevel1
+        Left = 205
+        Height = 13
+        Top = 48
+        Width = 74
+        BorderSpacing.Left = 8
+        Caption = 'Minimal T [C]'
+        ParentColor = False
+      end
+      object Label8: TLabel
+        AnchorSideLeft.Control = Bevel1
+        Left = 205
+        Height = 13
+        Hint = 'Humidifier switch on RH [%]'
+        Top = 72
+        Width = 86
+        BorderSpacing.Left = 8
+        Caption = 'Switch on T [C]'
+        ParentColor = False
+      end
+      object Label9: TLabel
+        AnchorSideLeft.Control = Bevel1
+        Left = 205
+        Height = 13
+        Top = 96
+        Width = 87
+        BorderSpacing.Left = 8
+        Caption = 'Switch off T [C]'
+        ParentColor = False
+      end
+      object Label10: TLabel
+        AnchorSideLeft.Control = Bevel1
+        Left = 205
+        Height = 13
+        Top = 120
+        Width = 77
+        BorderSpacing.Left = 8
+        Caption = 'Maximal T [C]'
+        ParentColor = False
+      end
+      object SpinEdit6: TSpinEdit
+        AnchorSideLeft.Control = SpinEdit7
+        Left = 299
+        Height = 23
+        Top = 88
+        Width = 77
+        TabOrder = 5
+      end
+      object SpinEdit7: TSpinEdit
+        AnchorSideLeft.Control = Label8
+        AnchorSideLeft.Side = asrBottom
+        Left = 299
+        Height = 23
+        Top = 64
+        Width = 77
+        BorderSpacing.Around = 8
+        TabOrder = 6
+      end
+      object SpinEdit8: TSpinEdit
+        AnchorSideLeft.Control = SpinEdit7
+        Left = 299
+        Height = 23
+        Top = 40
+        Width = 77
+        TabOrder = 7
+      end
+      object CheckGroup2: TCheckGroup
+        AnchorSideLeft.Control = Bevel1
+        AnchorSideTop.Control = Label10
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = SpinEdit7
+        AnchorSideRight.Side = asrBottom
+        AnchorSideBottom.Control = TabSheet1
+        AnchorSideBottom.Side = asrBottom
+        Left = 205
+        Height = 319
+        Top = 141
+        Width = 171
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        AutoFill = True
+        BorderSpacing.Left = 8
+        BorderSpacing.Top = 8
+        BorderSpacing.Bottom = 8
+        Caption = 'Disable heater'
+        ChildSizing.LeftRightSpacing = 6
+        ChildSizing.TopBottomSpacing = 6
+        ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+        ChildSizing.EnlargeVertical = crsHomogenousChildResize
+        ChildSizing.ShrinkHorizontal = crsScaleChilds
+        ChildSizing.ShrinkVertical = crsScaleChilds
+        ChildSizing.Layout = cclLeftToRightThenTopToBottom
+        ChildSizing.ControlsPerLine = 1
+        ClientHeight = 304
+        ClientWidth = 167
+        TabOrder = 8
+        object CheckBox25: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 6
+          Width = 155
+          Caption = '00.00-00.59'
+          TabOrder = 0
+        end
+        object CheckBox26: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 18
+          Width = 155
+          Caption = '01.00-01.59'
+          OnChange = CheckBox2Change
+          TabOrder = 1
+        end
+        object CheckBox27: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 30
+          Width = 155
+          Caption = '02.00-02.59'
+          TabOrder = 2
+        end
+        object CheckBox28: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 42
+          Width = 155
+          Caption = '03.00-03.59'
+          OnChange = CheckBox2Change
+          TabOrder = 3
+        end
+        object CheckBox29: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 54
+          Width = 155
+          Caption = '04.00-04.59'
+          TabOrder = 4
+        end
+        object CheckBox30: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 66
+          Width = 155
+          Caption = '05.00-05.59'
+          OnChange = CheckBox2Change
+          TabOrder = 5
+        end
+        object CheckBox31: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 78
+          Width = 155
+          Caption = '06.00-06.59'
+          TabOrder = 6
+        end
+        object CheckBox32: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 90
+          Width = 155
+          Caption = '07.00-07.59'
+          OnChange = CheckBox2Change
+          TabOrder = 7
+        end
+        object CheckBox33: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 102
+          Width = 155
+          Caption = '08.00-08.59'
+          OnChange = CheckBox2Change
+          TabOrder = 8
+        end
+        object CheckBox34: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 114
+          Width = 155
+          Caption = '09.00-09.59'
+          OnChange = CheckBox2Change
+          TabOrder = 9
+        end
+        object CheckBox35: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 126
+          Width = 155
+          Caption = '10.00-10.59'
+          OnChange = CheckBox2Change
+          TabOrder = 10
+        end
+        object CheckBox36: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 138
+          Width = 155
+          Caption = '11.00-11.59'
+          OnChange = CheckBox2Change
+          TabOrder = 11
+        end
+        object CheckBox37: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 150
+          Width = 155
+          Caption = '12.00-12.59'
+          OnChange = CheckBox2Change
+          TabOrder = 12
+        end
+        object CheckBox38: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 162
+          Width = 155
+          Caption = '13.00-13.59'
+          OnChange = CheckBox2Change
+          TabOrder = 13
+        end
+        object CheckBox39: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 174
+          Width = 155
+          Caption = '14.00-14.59'
+          TabOrder = 14
+        end
+        object CheckBox40: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 186
+          Width = 155
+          Caption = '15.00-15.59'
+          OnChange = CheckBox2Change
+          TabOrder = 15
+        end
+        object CheckBox41: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 198
+          Width = 155
+          Caption = '16.00-16.59'
+          TabOrder = 16
+        end
+        object CheckBox42: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 210
+          Width = 155
+          Caption = '17.00-17.59'
+          OnChange = CheckBox2Change
+          TabOrder = 17
+        end
+        object CheckBox43: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 222
+          Width = 155
+          Caption = '18.00-18.59'
+          TabOrder = 18
+        end
+        object CheckBox44: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 234
+          Width = 155
+          Caption = '19.00-19.59'
+          OnChange = CheckBox2Change
+          TabOrder = 19
+        end
+        object CheckBox45: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 246
+          Width = 155
+          Caption = '20.00-20.59'
+          OnChange = CheckBox2Change
+          TabOrder = 20
+        end
+        object CheckBox46: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 258
+          Width = 155
+          Caption = '21.00-21.59'
+          OnChange = CheckBox2Change
+          TabOrder = 21
+        end
+        object CheckBox47: TCheckBox
+          Left = 6
+          Height = 12
+          Top = 270
+          Width = 155
+          Caption = '22.00-22.59'
+          OnChange = CheckBox2Change
+          TabOrder = 22
+        end
+        object CheckBox48: TCheckBox
+          Left = 6
+          Height = 16
+          Top = 282
+          Width = 155
+          Caption = '23.00-23.59'
+          OnChange = CheckBox2Change
+          TabOrder = 23
+        end
+      end
+      object Bevel2: TBevel
+        AnchorSideLeft.Control = SpinEdit7
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = TabSheet1
+        AnchorSideBottom.Control = CheckGroup2
+        AnchorSideBottom.Side = asrBottom
+        Left = 384
+        Height = 452
+        Top = 8
+        Width = 14
+        Anchors = [akTop, akLeft, akBottom]
+        BorderSpacing.Top = 8
+        Shape = bsLeftLine
+      end
+      object SpinEdit5: TSpinEdit
+        AnchorSideLeft.Control = SpinEdit7
+        Left = 299
+        Height = 23
+        Top = 112
+        Width = 77
+        TabOrder = 9
+      end
+    end
+  end
+  object MainMenu1: TMainMenu
+    left = 976
+    top = 640
+    object MenuItem1: TMenuItem
+      Caption = '&File'
+    end
+  end
+end
