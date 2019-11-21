@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=XMMEEC
+Exec=xmmeec
+Icon=xmmeec
+Comment=Environment characteristics editor
+Type=Application
+Categories=Application;Network;
+Terminal=false
+StartupNotify=true
+
