@@ -21,30 +21,7 @@ uses
 type
   { TForm1 }
   TForm1 = class(TForm)
-    CheckBox1: TCheckBox;
-    CheckBox10: TCheckBox;
-    CheckBox11: TCheckBox;
-    CheckBox12: TCheckBox;
-    CheckBox13: TCheckBox;
-    CheckBox14: TCheckBox;
-    CheckBox15: TCheckBox;
-    CheckBox16: TCheckBox;
-    CheckBox17: TCheckBox;
-    CheckBox18: TCheckBox;
-    CheckBox19: TCheckBox;
-    CheckBox2: TCheckBox;
-    CheckBox20: TCheckBox;
-    CheckBox21: TCheckBox;
-    CheckBox22: TCheckBox;
-    CheckBox23: TCheckBox;
-    CheckBox24: TCheckBox;
-    CheckBox3: TCheckBox;
-    CheckBox4: TCheckBox;
-    CheckBox5: TCheckBox;
-    CheckBox6: TCheckBox;
-    CheckBox7: TCheckBox;
-    CheckBox8: TCheckBox;
-    CheckBox9: TCheckBox;
+    Button1: TButton;
     CheckGroup1: TCheckGroup;
     ImageList1: TImageList;
     Label1: TLabel;
@@ -64,7 +41,6 @@ type
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
     MenuItem5: TMenuItem;
-    MenuItem6: TMenuItem;
     MenuItem7: TMenuItem;
     MenuItem8: TMenuItem;
     MenuItem9: TMenuItem;
@@ -72,7 +48,6 @@ type
     SpinEdit2: TSpinEdit;
     SpinEdit3: TSpinEdit;
     SpinEdit4: TSpinEdit;
-    StatusBar1: TStatusBar;
     ToolBar1: TToolBar;
     ToolButton1: TToolButton;
     ToolButton2: TToolButton;
@@ -80,8 +55,17 @@ type
     ToolButton4: TToolButton;
     ToolButton5: TToolButton;
     TreeView1: TTreeView;
+    procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure MenuItem11Click(Sender: TObject);
+    procedure MenuItem12Click(Sender: TObject);
+    procedure MenuItem14Click(Sender: TObject);
+    procedure MenuItem16Click(Sender: TObject);
     procedure MenuItem2Click(Sender: TObject);
+    procedure MenuItem4Click(Sender: TObject);
+    procedure MenuItem5Click(Sender: TObject);
+    procedure MenuItem8Click(Sender: TObject);
+    procedure MenuItem9Click(Sender: TObject);
     procedure TreeView1Change(Sender: TObject; Node: TTreeNode);
   private
     { private declarations }
@@ -90,79 +74,241 @@ type
   end;
 var
   Form1: TForm1;
+  labelcaptions: array[0..11,1..4] of string;
+  checkgroupcaption: array[0..11] of string;
+  spineditvalues: array[0..11,1..4] of byte;
+  checkgroupvalue: array[0..11,0..23] of boolean;
 const
-  spinedits: array[0..11,1..4] of boolean=((false,false,false,false),(true,true,true,true),
-                                          (true,true,true,true),(true,true,true,true),
-                                          (true,true,true,true),(true,false,false,false),
-                                          (false,false,false,false),(true,true,true,true),
-                                          (true,true,true,true),(true,true,true,true),
-                                          (true,true,true,true),(true,false,false,false));
-
-  checkgroup: array[0..11] of boolean=(false,true,true,false,true,true,
-                                       false,true,true,false,true,true);
+  visiblespinedits: array[0..11,1..4] of boolean=
+  (
+    (false,false,false,false),(true,true,true,true),(true,true,true,true),
+    (true,true,true,true),(true,true,true,true),(true,false,false,false),
+    (false,false,false,false),(true,true,true,true),(true,true,true,true),
+    (true,true,true,true),(true,true,true,true),(true,false,false,false)
+  );
+  visiblecheckgroup: array[0..11] of boolean=
+    (false,true,true,false,true,true,false,true,true,false,true,true);
 
 Resourcestring
-  MESSAGE01='';
-  MESSAGE02='';
-  MESSAGE03='';
-  MESSAGE04='';
-  MESSAGE05='';
-  MESSAGE06='';
-  MESSAGE07='';
+  MESSAGE01='Growing hyphae';
+  MESSAGE02='Growing mushroom';
+  MESSAGE03='Humidifying';
+  MESSAGE04='Heating';
+  MESSAGE05='Lighting';
+  MESSAGE06='Ventilating';
+  MESSAGE07='Low external temp.';
   MESSAGE08='';
   MESSAGE09='';
   MESSAGE10='';
-  MESSAGE11='';
-  MESSAGE12='';
-  MESSAGE13='';
-  MESSAGE14='';
-  MESSAGE15='';
-  MESSAGE16='';
-  MESSAGE17='';
-  MESSAGE18='';
-  MESSAGE19='';
-  MESSAGE20='';
-  MESSAGE21='';
-  MESSAGE22='';
-  MESSAGE23='';
-  MESSAGE24='';
-  MESSAGE25='';
-  MESSAGE26='';
-  MESSAGE27='';
-  MESSAGE28='';
-  MESSAGE29='';
+  MESSAGE17a='Maximal relative humidity [%]';
+  MESSAGE17b='Humidifier switch-off humidity [%]';
+  MESSAGE17c='Humidifier switch-on humidity [%]';
+  MESSAGE17d='Minimal relative humidity [%]';
+  MESSAGE28a='Maximal temperature [°C]';
+  MESSAGE28b='Heater switch-off temperature [°C]';
+  MESSAGE28c='Heater switch-on temperature [°C]';
+  MESSAGE28d='Minimal temperature [°C]';
+  MESSAGE39a='Lights switch-on hour #1';
+  MESSAGE39b='Lights switch-off hour #1';
+  MESSAGE39c='Lights switch-on hour #2';
+  MESSAGE39d='Lights switch-off hour #2';
+  MESSAGE410a='Ventilators switch-on minute';
+  MESSAGE410b='Ventilators switch-off minute';
+  MESSAGE511a='Low external temperature [°C]';
+  MESSAGE17g='Disable humidifier';
+  MESSAGE28g='Disable heater';
+  MESSAGE451011g='Disable ventilators';
 
 implementation
 
 {$R *.lfm}
 { TForm1 }
 
+// clear all values;
 procedure TForm1.MenuItem2Click(Sender: TObject);
+var
+   b, bb, bbb: byte;
+begin
+  for b:=0 to 11 do
+  begin
+    for bb:=1 to 4 do spineditvalues[b,bb]:=0;
+    for bbb:=0 to 23 do checkgroupvalue[b,bbb]:=false;
+  end;
+  SpinEdit1.Value:=0;
+  SpinEdit2.Value:=0;
+  SpinEdit3.Value:=0;
+  SpinEdit4.Value:=0;
+  for b:=0 to 23 do CheckGroup1.Checked[0]:=false;
+end;
+
+// open ini file
+procedure TForm1.MenuItem4Click(Sender: TObject);
+begin
+end;
+
+// save ini file
+procedure TForm1.MenuItem5Click(Sender: TObject);
 begin
 
+end;
+
+// export to text file
+procedure TForm1.MenuItem8Click(Sender: TObject);
+begin
+
+end;
+
+// exit from application
+procedure TForm1.MenuItem9Click(Sender: TObject);
+begin
+
+end;
+
+// download from remote device
+procedure TForm1.MenuItem11Click(Sender: TObject);
+begin
+
+end;
+
+// upload to remote device
+procedure TForm1.MenuItem12Click(Sender: TObject);
+begin
+
+end;
+
+// settings
+procedure TForm1.MenuItem14Click(Sender: TObject);
+begin
+
+end;
+
+// show about dialog
+procedure TForm1.MenuItem16Click(Sender: TObject);
+begin
+
+end;
+
+// apply values
+procedure TForm1.Button1Click(Sender: TObject);
+var
+  b: byte;
+begin
+  spineditvalues[TreeView1.Selected.AbsoluteIndex,1]:=SpinEdit1.Value;
+  spineditvalues[TreeView1.Selected.AbsoluteIndex,2]:=SpinEdit2.Value;
+  spineditvalues[TreeView1.Selected.AbsoluteIndex,3]:=SpinEdit3.Value;
+  spineditvalues[TreeView1.Selected.AbsoluteIndex,4]:=SpinEdit4.Value;
+  for b:=0 to 23 do
+    checkgroupvalue[TreeView1.Selected.AbsoluteIndex,b]:=CheckGroup1.Checked[b];
 end;
 
 // select page
 procedure TForm1.TreeView1Change(Sender: TObject; Node: TTreeNode);
+var
+  b: byte;
 begin
-  Label1.Visible:=spinedits[TreeView1.Selected.AbsoluteIndex,1];
-  Label2.Visible:=spinedits[TreeView1.Selected.AbsoluteIndex,2];
-  Label3.Visible:=spinedits[TreeView1.Selected.AbsoluteIndex,3];
-  Label4.Visible:=spinedits[TreeView1.Selected.AbsoluteIndex,4];
-  SpinEdit1.Visible:=spinedits[TreeView1.Selected.AbsoluteIndex,1];
-  SpinEdit2.Visible:=spinedits[TreeView1.Selected.AbsoluteIndex,2];
-  SpinEdit3.Visible:=spinedits[TreeView1.Selected.AbsoluteIndex,3];
-  SpinEdit4.Visible:=spinedits[TreeView1.Selected.AbsoluteIndex,4];
-  CheckGroup1.Visible:=checkgroup[TreeView1.Selected.AbsoluteIndex];
+  // set widgets
+  Label1.Visible:=visiblespinedits[TreeView1.Selected.AbsoluteIndex,1];
+  Label2.Visible:=visiblespinedits[TreeView1.Selected.AbsoluteIndex,2];
+  Label3.Visible:=visiblespinedits[TreeView1.Selected.AbsoluteIndex,3];
+  Label4.Visible:=visiblespinedits[TreeView1.Selected.AbsoluteIndex,4];
+  SpinEdit1.Visible:=visiblespinedits[TreeView1.Selected.AbsoluteIndex,1];
+  SpinEdit2.Visible:=visiblespinedits[TreeView1.Selected.AbsoluteIndex,2];
+  SpinEdit3.Visible:=visiblespinedits[TreeView1.Selected.AbsoluteIndex,3];
+  SpinEdit4.Visible:=visiblespinedits[TreeView1.Selected.AbsoluteIndex,4];
+  CheckGroup1.Visible:=visiblecheckgroup[TreeView1.Selected.AbsoluteIndex];
+  Label1.Caption:=labelcaptions[TreeView1.Selected.AbsoluteIndex,1];
+  Label2.Caption:=labelcaptions[TreeView1.Selected.AbsoluteIndex,2];
+  Label3.Caption:=labelcaptions[TreeView1.Selected.AbsoluteIndex,3];
+  Label4.Caption:=labelcaptions[TreeView1.Selected.AbsoluteIndex,4];
+  CheckGroup1.Caption:=checkgroupcaption[TreeView1.Selected.AbsoluteIndex];
+  // clear values
+  SpinEdit1.Value:=0;
+  SpinEdit2.Value:=0;
+  SpinEdit3.Value:=0;
+  SpinEdit4.Value:=0;
+  for b:=0 to 23 do CheckGroup1.Checked[0]:=false;
+  // load values
+  SpinEdit1.Value:=spineditvalues[TreeView1.Selected.AbsoluteIndex,1];
+  SpinEdit2.Value:=spineditvalues[TreeView1.Selected.AbsoluteIndex,2];
+  SpinEdit3.Value:=spineditvalues[TreeView1.Selected.AbsoluteIndex,3];
+  SpinEdit4.Value:=spineditvalues[TreeView1.Selected.AbsoluteIndex,4];
+  for b:=0 to 23 do
+    CheckGroup1.Checked[b]:=checkgroupvalue[TreeView1.Selected.AbsoluteIndex,b];
 end;
 
-//create form
+// create form
 procedure TForm1.FormCreate(Sender: TObject);
+type
+  TreeNode=TTreeNode;
+var
+  tn: TreeNode;
+  b, bb: byte;
 begin
   makeuserdir;
   getlang;
   getexepath;
   Form1.Caption:='XMMEEC';
+  // make tree
+  TreeView1.Items.Clear;
+  tn:=TreeView1.Items.Add(nil,MESSAGE01);
+  TreeView1.Items.AddChild(tn,MESSAGE03);
+  TreeView1.Items.AddChild(tn,MESSAGE04);
+  TreeView1.Items.AddChild(tn,MESSAGE05);
+  tn:=TreeView1.Items.AddChild(tn,MESSAGE06);
+  TreeView1.Items.AddChild(tn,MESSAGE07);
+  tn:=TreeView1.Items.Add(nil,MESSAGE02);
+  TreeView1.Items.AddChild(tn,MESSAGE03);
+  TreeView1.Items.AddChild(tn,MESSAGE04);
+  TreeView1.Items.AddChild(tn,MESSAGE05);
+  tn:=TreeView1.Items.AddChild(tn,MESSAGE06);
+  TreeView1.Items.AddChild(tn,MESSAGE07);
+  // set names
+  for b:=0 to 11 do
+    for bb:=1 to 4 do
+      labelcaptions[b,bb]:='';
+  labelcaptions[1,1]:=MESSAGE17a;
+  labelcaptions[1,2]:=MESSAGE17b;
+  labelcaptions[1,3]:=MESSAGE17c;
+  labelcaptions[1,4]:=MESSAGE17d;
+  labelcaptions[2,1]:=MESSAGE28a;
+  labelcaptions[2,2]:=MESSAGE28b;
+  labelcaptions[2,3]:=MESSAGE28c;
+  labelcaptions[2,4]:=MESSAGE28d;
+  labelcaptions[3,1]:=MESSAGE39a;
+  labelcaptions[3,2]:=MESSAGE39b;
+  labelcaptions[3,3]:=MESSAGE39c;
+  labelcaptions[3,4]:=MESSAGE39d;
+  labelcaptions[4,1]:=MESSAGE410a;
+  labelcaptions[4,2]:=MESSAGE410b;
+  labelcaptions[5,1]:=MESSAGE511a;
+  labelcaptions[7,1]:=MESSAGE17a;
+  labelcaptions[7,2]:=MESSAGE17b;
+  labelcaptions[7,3]:=MESSAGE17c;
+  labelcaptions[7,4]:=MESSAGE17d;
+  labelcaptions[8,1]:=MESSAGE28a;
+  labelcaptions[8,2]:=MESSAGE28b;
+  labelcaptions[8,3]:=MESSAGE28c;
+  labelcaptions[8,4]:=MESSAGE28d;
+  labelcaptions[9,1]:=MESSAGE39a;
+  labelcaptions[9,2]:=MESSAGE39b;
+  labelcaptions[9,3]:=MESSAGE39c;
+  labelcaptions[9,4]:=MESSAGE39d;
+  labelcaptions[10,1]:=MESSAGE410a;
+  labelcaptions[10,2]:=MESSAGE410b;
+  labelcaptions[11,1]:=MESSAGE511a;
+  for b:=0 to 11 do
+    checkgroupcaption[b]:='';
+  checkgroupcaption[1]:=MESSAGE17g;
+  checkgroupcaption[2]:=MESSAGE28g;
+  checkgroupcaption[4]:=MESSAGE451011g;
+  checkgroupcaption[5]:=MESSAGE451011g;
+  checkgroupcaption[7]:=MESSAGE17g;
+  checkgroupcaption[8]:=MESSAGE28g;
+  checkgroupcaption[10]:=MESSAGE451011g;
+  checkgroupcaption[11]:=MESSAGE451011g;
+  // create checkboxes
+  for b:=0 to 23 do
+    CheckGroup1.Items.Add(inttostr(b)+'.00-'+inttostr(b)+'.59');
 end;
 
 end.
