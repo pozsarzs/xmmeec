@@ -13,7 +13,6 @@
 // FOR A PARTICULAR PURPOSE.
 
 const
-  // general
   APPNAME='XMMEEC';
   VERSION='0.1';
   // install path
@@ -21,10 +20,20 @@ const
   {$IFDEF UseFHS}
     MYI18PATH='@prefix@/share/locale/';
   {$ELSE}
+    {$IFDEF UNIX}
       MYI18PATH='/languages/';
+    {$ENDIF}
+    {$IFDEF WIN32}
+      MYI18PATH='\languages\';
+    {$ENDIF}
   {$ENDIF}
   // user's folders
-  DIR_CACHE='/.cache/mmeec/';
-  DIR_CONFIG='/.config/mmeec/';
-  DIR_DATA='/.local/share/mmeec/';
-  TMPFILE='/tmp/mmeec.tmp';
+  {$IFDEF UNIX}
+    DIR_CACHE='/.cache/xmmeec/';
+    DIR_CONFIG='/.config/xmmeec/';
+  {$ENDIF}
+  {$IFDEF WIN32}
+    DIR_CACHE='\AppData\Local\xmmeec\cache\';
+    DIR_CONFIG='\AppData\Local\xmmeec\config\';
+  {$ENDIF}
+  TMPFILE=DIR_CACHE+'xmmeec.tmp';
