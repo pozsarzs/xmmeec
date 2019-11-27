@@ -34,6 +34,7 @@ const
 procedure help(mode: boolean);
 var
   b: byte;
+  s: string;
 begin
   if mode then
     showmessage('There are one or more bad parameters in command line.') else
@@ -64,6 +65,8 @@ begin
 end;
 
 procedure verinfo;
+var
+  s: string;
 begin
  {$IFDEF UNIX}
   writeln(APPNAME+' v'+VERSION);
@@ -74,7 +77,7 @@ begin
   writeln('Target CPU:  ',{$I %FPCTARGETCPU%});
  {$ENDIF}
  {$IFDEF WIN32}
-  s:=untcommonproc.APPNAME+' v'+untcommonproc.VERSION+#13+#10+#13+#10;
+  s:=APPNAME+' v'+VERSION+#13+#10+#13+#10;
   s:=s+'This was compiled at '+{$I %TIME%}+' on '+{$I %DATE%}+' by '+{$I %USERNAME%}+'.'+#13+#10+#13+#10;
   s:=s+'FPC version: '+{$I %FPCVERSION%}+#13+#10;
   s:=s+'Target OS:   '+{$I %FPCTARGETOS%}+#13+#10;
