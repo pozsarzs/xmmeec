@@ -17,7 +17,7 @@ unit frmmain;
 interface
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, Menus,
-  ComCtrls, ExtCtrls, StdCtrls, Spin, LResources, untcommonproc, dos;
+  ComCtrls, ExtCtrls, StdCtrls, Spin, LResources, INIFiles, untcommonproc, dos;
 type
   { TForm1 }
   TForm1 = class(TForm)
@@ -44,6 +44,7 @@ type
     MenuItem7: TMenuItem;
     MenuItem8: TMenuItem;
     MenuItem9: TMenuItem;
+    OpenDialog1: TOpenDialog;
     SaveDialog1: TSaveDialog;
     SpinEdit1: TSpinEdit;
     SpinEdit2: TSpinEdit;
@@ -132,6 +133,114 @@ implementation
 {$R *.lfm}
 { TForm1 }
 
+// load values from ini file
+function loadinifile(filename: string): boolean;
+var
+  ini: TINIFile;
+  b: byte;
+
+  function c2b(c: string): boolean;
+  begin
+    if c='0' then c2b:=false else c2b:=true
+  end;
+
+begin
+  loadinifile:=true;
+  ini:=TIniFile.Create(filename);
+  try
+    ini.Free;
+    spineditvalues[1,1]:=strtoint(ini.ReadString('hyphae','humidity_min','0'));
+    spineditvalues[1,2]:=strtoint(ini.ReadString('hyphae','humidity_on','0'));
+    spineditvalues[1,3]:=strtoint(ini.ReadString('hyphae','humidity_off','0'));
+    spineditvalues[1,4]:=strtoint(ini.ReadString('hyphae','humidity_max','0'));
+    for b:=0 to 23 do
+    begin
+      s:='humidifier_disable_';
+      if b<10 then s:=s+'0';
+      s:=s+inttostr(b);
+      checkgroupvalue[1,b]:=c2b(ini.ReadString('hyphae',s,'0'));
+    end;
+    spineditvalues[2,1]:=strtoint(ini.ReadString('hyphae','temperature_min','0'));
+    spineditvalues[2,2]:=strtoint(ini.ReadString('hyphae','temperature_on','0'));
+    spineditvalues[2,3]:=strtoint(ini.ReadString('hyphae','temperature_off','0'));
+    spineditvalues[2,4]:=strtoint(ini.ReadString('hyphae','temperature_max','0'));
+    for b:=0 to 23 do
+    begin
+      s:='heater_disable_';
+      if b<10 then s:=s+'0';
+      s:=s+inttostr(b);
+      checkgroupvalue[2,b]:=c2b(ini.ReadString('hyphae',s,'0'));
+    end;
+    spineditvalues[3,1]:=strtoint(ini.ReadString('hyphae','light_on1','0'));
+    spineditvalues[3,2]:=strtoint(ini.ReadString('hyphae','light_off1','0'));
+    spineditvalues[3,3]:=strtoint(ini.ReadString('hyphae','light_on2','0'));
+    spineditvalues[3,4]:=strtoint(ini.ReadString('hyphae','light_off2','0'));
+    spineditvalues[4,1]:=strtoint(ini.ReadString('hyphae','vent_on','0'));
+    spineditvalues[4,2]:=strtoint(ini.ReadString('hyphae','vent_off','0'));
+    for b:=0 to 23 do
+    begin
+      s:='vent_disable_';
+      if b<10 then s:=s+'0';
+      s:=s+inttostr(b);
+      checkgroupvalue[4,b]:=c2b(ini.ReadString('hyphae',s,'0'));
+    end;
+    spineditvalues[5,1]:=strtoint(ini.ReadString('hyphae','vent_lowtemp','0'));
+    for b:=0 to 23 do
+    begin
+      s:='vent_disablelowtemp_';
+      if b<10 then s:=s+'0';
+      s:=s+inttostr(b);
+      checkgroupvalue[5,b]:=c2b(ini.ReadString('hyphae',s,'0'));
+    end;
+    spineditvalues[7,1]:=strtoint(ini.ReadString('mushroom','humidity_min','0'));
+    spineditvalues[7,2]:=strtoint(ini.ReadString('mushroom','humidity_on','0'));
+    spineditvalues[7,3]:=strtoint(ini.ReadString('mushroom','humidity_off','0'));
+    spineditvalues[7,4]:=strtoint(ini.ReadString('mushroom','humidity_max','0'));
+    for b:=0 to 23 do
+    begin
+      s:='humidifier_disable_';
+      if b<10 then s:=s+'0';
+      s:=s+inttostr(b);
+      checkgroupvalue[7,b]:=c2b(ini.ReadString('mushroom',s,'0'));
+    end;
+    spineditvalues[8,1]:=strtoint(ini.ReadString('mushroom','temperature_min','0'));
+    spineditvalues[8,2]:=strtoint(ini.ReadString('mushroom','temperature_on','0'));
+    spineditvalues[8,3]:=strtoint(ini.ReadString('mushroom','temperature_off','0'));
+    spineditvalues[8,4]:=strtoint(ini.ReadString('mushroom','temperature_max','0'));
+    for b:=0 to 23 do
+    begin
+      s:='heater_disable_';
+      if b<10 then s:=s+'0';
+      s:=s+inttostr(b);
+      checkgroupvalue[8,b]:=c2b(ini.ReadString('mushroom',s,'0'));
+    end;
+    spineditvalues[9,1]:=strtoint(ini.ReadString('mushroom','light_on1','0'));
+    spineditvalues[9,2]:=strtoint(ini.ReadString('mushroom','light_off1','0'));
+    spineditvalues[9,3]:=strtoint(ini.ReadString('mushroom','light_on2','0'));
+    spineditvalues[9,4]:=strtoint(ini.ReadString('mushroom','light_off2','0'));
+    spineditvalues[10,1]:=strtoint(ini.ReadString('mushroom','vent_on','0'));
+    spineditvalues[10,2]:=strtoint(ini.ReadString('mushroom','vent_off','0'));
+    for b:=0 to 23 do
+    begin
+      s:='vent_disable_';
+      if b<10 then s:=s+'0';
+      s:=s+inttostr(b);
+      checkgroupvalue[10,b]:=c2b(ini.ReadString('mushroom',s,'0'));
+    end;
+    spineditvalues[11,1]:=strtoint(ini.ReadString('mushroom','vent_lowtemp','0'));
+    for b:=0 to 23 do
+    begin
+      s:='vent_disablelowtemp_';
+      if b<10 then s:=s+'0';
+      s:=s+inttostr(b);
+      checkgroupvalue[11,b]:=c2b(ini.ReadString('mushroom',s,'0'));
+    end;
+  except
+    loadinifile:=false;
+  end;
+end;
+
+// save values to ini file
 function saveinifile(filename: string): boolean;
 var
   iif: text;
@@ -271,6 +380,68 @@ begin
   end;
 end;
 
+// export values to text file
+function savetxtfile(filename: string): boolean;
+var
+  txf: text;
+  b: byte;
+  s: string;
+
+  function b2c(b: boolean): char;
+  begin
+    if b then b2c:='1' else b2c:='0';
+  end;
+
+begin
+  savetxtfile:=true;
+  try
+    assign(txf,filename);
+    rewrite(txf);
+    writeln(txf,MESSAGE01);
+    for b:=1 to 4 do writeln(txf,labelcaptions[1,b]+': ',inttostr(spineditvalues[1,b]));
+    write(txf,MESSAGE17g+': ');
+    for b:=0 to 23 do
+      if checkgroupvalue[1,b] then write(txf,b,', ');
+    writeln(txf,'');
+
+    for b:=1 to 4 do writeln(txf,labelcaptions[2,b]+': ',inttostr(spineditvalues[2,b]));
+    writeln(txf,MESSAGE28g+':');
+    for b:=0 to 23 do
+      if checkgroupvalue[2,b] then writeln(b,', ');
+    for b:=1 to 4 do writeln(txf,labelcaptions[3,b]+': ',inttostr(spineditvalues[3,b]));
+    for b:=1 to 2 do writeln(txf,labelcaptions[4,b]+': ',inttostr(spineditvalues[4,b]));
+    writeln(txf,MESSAGE451011g+':');
+    for b:=0 to 23 do
+      if checkgroupvalue[4,b] then writeln(b,', ');
+    writeln(txf,labelcaptions[5,b]+': ',inttostr(spineditvalues[5,b]));
+    writeln(txf,MESSAGE451011g+':');
+    for b:=0 to 23 do
+      if checkgroupvalue[5,b] then writeln(b,', ');
+    writeln(txf,'');
+    writeln(txf,MESSAGE02);
+    for b:=1 to 4 do writeln(txf,labelcaptions[7,b]+': ',inttostr(spineditvalues[7,b]));
+    writeln(txf,MESSAGE17g+':');
+    for b:=0 to 23 do
+      if checkgroupvalue[7,b] then writeln(b,', ');
+    for b:=1 to 4 do writeln(txf,labelcaptions[8,b]+': ',inttostr(spineditvalues[8,b]));
+    writeln(txf,MESSAGE28g+':');
+    for b:=0 to 23 do
+      if checkgroupvalue[2,b] then writeln(b,', ');
+    for b:=1 to 4 do writeln(txf,labelcaptions[9,b]+': ',inttostr(spineditvalues[9,b]));
+    for b:=1 to 2 do writeln(txf,labelcaptions[10,b]+': ',inttostr(spineditvalues[10,b]));
+    writeln(txf,MESSAGE451011g+':');
+    for b:=0 to 23 do
+      if checkgroupvalue[10,b] then writeln(b,', ');
+    writeln(txf,labelcaptions[11,b]+': ',inttostr(spineditvalues[11,b]));
+    writeln(txf,MESSAGE451011g+':');
+    for b:=0 to 23 do
+      if checkgroupvalue[11,b] then writeln(b,', ');
+    close(txf);
+  except
+    savetxtfile:=false;
+  end;
+end;
+
 // clear all values;
 procedure TForm1.MenuItem2Click(Sender: TObject);
 var
@@ -291,6 +462,14 @@ end;
 // open ini file
 procedure TForm1.MenuItem4Click(Sender: TObject);
 begin
+  with OpenDialog1 do
+  begin
+    InitialDir := untcommonproc.userdir;
+    Title := MESSAGE10;
+    Filter := MESSAGE08;
+    if Execute=false then exit;
+    if not loadinifile(FileName) then ShowMessage(MESSAGE14);
+  end;
 end;
 
 // save ini file
@@ -302,6 +481,7 @@ var
 begin
   with SaveDialog1 do
   begin
+    Filename:='';
     Filter:=MESSAGE08;
     InitialDir:=untcommonproc.userdir;
     Title:=MESSAGE11;
@@ -313,17 +493,31 @@ begin
   fsplit(f,tfdir,tfname,tfext);
   if FSearch(tfname+tfext,tfdir)<>'' then
     if MessageDlg(MESSAGE13,mtConfirmation,[mbYes,mbNo],0)=mrNo then exit;
-  try
-    saveinifile(f);
-  except
-    ShowMessage(MESSAGE15);
-  end;
+  if not saveinifile(f) then ShowMessage(MESSAGE15);
 end;
 
 // export to text file
 procedure TForm1.MenuItem8Click(Sender: TObject);
-begin
+var
+   f: string;
+   tfdir, tfname, tfext: shortstring;
 
+begin
+  with SaveDialog1 do
+  begin
+    Filename:='';
+    Filter:=MESSAGE09;
+    InitialDir:=untcommonproc.userdir;
+    Title:=MESSAGE12;
+    FilterIndex := 1;
+    if not Execute then exit;
+    f:=FileName;
+  end;
+  if length(f)=0 then exit;
+  fsplit(f,tfdir,tfname,tfext);
+  if FSearch(tfname+tfext,tfdir)<>'' then
+    if MessageDlg(MESSAGE13,mtConfirmation,[mbYes,mbNo],0)=mrNo then exit;
+  if not savetxtfile(f) then ShowMessage(MESSAGE15);
 end;
 
 // exit from application

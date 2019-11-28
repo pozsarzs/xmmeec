@@ -793,4 +793,8 @@ object Form1: TForm1
     left = 320
     top = 39
   end
+  object OpenDialog1: TOpenDialog
+    left = 384
+    top = 40
+  end
 end
