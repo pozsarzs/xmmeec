@@ -16,7 +16,7 @@ program xmmeec;
 {$MODE OBJFPC}{$H+}
 uses
   Interfaces, Forms, {$IFDEF UseFHS} unttranslator, {$ELSE}
-  DefaultTranslator,{$ENDIF} Dialogs, SysUtils, frmmain, crt;
+  DefaultTranslator,{$ENDIF} Dialogs, SysUtils, frmmain, crt, frmabout;
 var
   b: byte;
   fn: string;
@@ -106,5 +106,6 @@ begin
   RequireDerivedFormResource:=True;
   Application.Initialize;
   Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TForm2, Form2);
   Application.Run;
 end.
