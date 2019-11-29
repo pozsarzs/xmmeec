@@ -22,8 +22,9 @@ var
   exepath, p: shortstring;
   lang: string[2];
   s: string;
-  tmpdir: string;
   userdir: string;
+  ssh, scp: string;
+  pathremotefiles: array[0..15] of string;
  {$IFDEF WIN32}
 const
   CSIDL_PROFILE=40;
@@ -34,9 +35,8 @@ const
 
 function getexepath: string;
 function getlang: string;
-procedure loadcfg(filename: string);
+function loadconfig(filename: string): boolean;
 procedure makeuserdir;
-procedure savecfg(filename: string);
 
 {$IFDEF WIN32}
 function SHGetFolderPath(hwndOwner: HWND; nFolder: Integer; hToken: THandle;
@@ -54,6 +54,7 @@ implementation
 function getexepath: string;
 begin
   fsplit(paramstr(0),exepath,p,p);
+  getexepath:=exepath;
 end;
 
 // get language
@@ -79,19 +80,26 @@ begin
  {$ENDIF}
   if length(s)=0 then s:='en';
   lang:=LowerCase(s[1..2]);
+  getlang:=lang;
 end;
 
-// load configuration
-procedure loadcfg(filename: string);
+// load condfiguration file
+function loadconfig(filename: string): boolean;
 var
-  ini: TINIFile;
+  iif: TINIFile;
+  b: byte;
 begin
-  ini:=TIniFile.Create(filename);
+  iif:=TIniFile.Create(filename);
+  loadconfig:=true;
   try
-    ini.Free;
+    ssh:=iif.ReadString('programs','ssh','/usr/bin/ssh');
+    scp:=iif.ReadString('programs','scp','/usr/bin/scp');
+    for b:=0 to 15 do
+      pathremotefiles[b]:=iif.ReadString('remotefiles','file'+inttostr(b),'');
   except
-    ShowMessage(MESSAGE01+' '+filename);
+    loadconfig:=false;
   end;
+  iif.Free;
 end;
 
 // make users directory
@@ -118,28 +126,13 @@ var
 
 begin
  {$IFDEF UNIX}
-  tmpdir:='/tmp/';
   userdir:=getenvironmentvariable('HOME');
  {$ENDIF}
  {$IFDEF WIN32}
-  tmpdir:=getwindowstemp;
   userdir:=getuserprofile;
  {$ENDIF}
- forcedirectories(userdir+DIR_CACHE);
- forcedirectories(userdir+DIR_CONFIG);
-end;
-
-// save configuration
-procedure savecfg(filename: string);
-var
-  ini: TINIFile;
-begin
-  ini:=TIniFile.Create(filename);
-  try
-    ini.Free;
-  except
-    ShowMessage(MESSAGE02+' '+filename);
-  end;
+  forcedirectories(userdir+DIR_CACHE);
+  forcedirectories(userdir+DIR_CONFIG);
 end;
 
 end.

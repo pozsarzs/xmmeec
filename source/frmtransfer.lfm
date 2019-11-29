@@ -143,6 +143,7 @@ object Form3: TForm3
     0000000000000000000000000000000000000000000000000000000000000000
     0000
   }
+  OnShow = FormShow
   Position = poMainFormCenter
   LCLVersion = '1.6.2.0'
   object CheckListBox1: TCheckListBox
@@ -162,6 +163,7 @@ object Form3: TForm3
     BorderSpacing.Right = 8
     BorderSpacing.Bottom = 8
     ItemHeight = 0
+    OnClickCheck = CheckListBox1ClickCheck
     TabOrder = 0
     TopIndex = -1
   end
@@ -178,22 +180,23 @@ object Form3: TForm3
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 232
+    Left = 207
     Height = 25
     Top = 273
-    Width = 75
+    Width = 100
     Anchors = [akRight, akBottom]
     BorderSpacing.Right = 8
     BorderSpacing.Bottom = 8
     Caption = 'Button1'
     Enabled = False
+    OnClick = Button1Click
     TabOrder = 1
   end
   object Button2: TButton
     AnchorSideRight.Control = Button1
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 149
+    Left = 124
     Height = 25
     Top = 273
     Width = 75

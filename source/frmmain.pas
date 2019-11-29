@@ -17,8 +17,8 @@ unit frmmain;
 interface
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, Menus,
-  ComCtrls, ExtCtrls, StdCtrls, Spin, LResources, INIFiles, Process,
-  frmabout, frmtransfer, untcommonproc, dos;
+  ComCtrls, ExtCtrls, StdCtrls, Spin, LResources, INIFiles, frmabout,
+  frmtransfer, untcommonproc, dos;
 type
   { TForm1 }
   TForm1 = class(TForm)
@@ -79,15 +79,13 @@ var
   checkgroupcaption: array[0..11] of string;
   spineditvalues: array[0..11,1..4] of byte;
   checkgroupvalue: array[0..11,0..23] of boolean;
-  scp: string;
-  remotefiles: array[0..15] of string;
 const
   visiblespinedits: array[0..11,1..4] of boolean=
   (
     (false,false,false,false),(true,true,true,true),(true,true,true,true),
-    (true,true,true,true),(true,true,true,true),(true,false,false,false),
+    (true,true,true,true),(true,true,false,false),(true,false,false,false),
     (false,false,false,false),(true,true,true,true),(true,true,true,true),
-    (true,true,true,true),(true,true,true,true),(true,false,false,false)
+    (true,true,true,true),(true,true,false,false),(true,false,false,false)
   );
   visiblecheckgroup: array[0..11] of boolean=
     (false,true,true,false,true,true,false,true,true,false,true,true);
@@ -109,6 +107,9 @@ Resourcestring
   MESSAGE14='ERROR: Cannot read file!';
   MESSAGE15='ERROR: Cannot write file!';
   MESSAGE16='Do you want exit?';
+  MESSAGE17='ERROR: Cannot read configuration file!';
+  MESSAGE18='Download file';
+  MESSAGE19='Upload file';
   MESSAGE17a='Minimal relative humidity [%]';
   MESSAGE17b='Humidifier switch-on humidity [%]';
   MESSAGE17c='Humidifier switch-off humidity [%]';
@@ -136,7 +137,6 @@ implementation
 {$I incloadinifile.pas}
 {$I incsaveinifile.pas}
 {$I incsavetxtfile.pas}
-{$I incfiletransfer.pas}
 
 // clear
 procedure TForm1.MenuItem2Click(Sender: TObject);
@@ -239,14 +239,31 @@ end;
 
 // download
 procedure TForm1.MenuItem11Click(Sender: TObject);
+var
+  b: byte;
 begin
+  Form3.Caption:=MESSAGE18;
+  Form3.Button1.Caption:=MenuItem11.Caption;
+  frmtransfer.mode:=true;
   Form3.ShowModal;
-  Form3.Caption:='';
+  if not frmtransfer.error then
+  begin
+    if not loadinifile(userdir+DIR_CACHE+TMPFILE) then ShowMessage(MESSAGE14);
+//    SpinEdit1.Value:=spineditvalues[TreeView1.Selected.AbsoluteIndex,1];
+//    SpinEdit2.Value:=spineditvalues[TreeView1.Selected.AbsoluteIndex,2];
+//    SpinEdit3.Value:=spineditvalues[TreeView1.Selected.AbsoluteIndex,3];
+//    SpinEdit4.Value:=spineditvalues[TreeView1.Selected.AbsoluteIndex,4];
+//    for b:=0 to 23 do
+//      CheckGroup1.Checked[b]:=checkgroupvalue[TreeView1.Selected.AbsoluteIndex,b];
+  end;
 end;
 
 // upload
 procedure TForm1.MenuItem12Click(Sender: TObject);
 begin
+  Form3.Caption:=MESSAGE19;
+  Form3.Button1.Caption:=MenuItem12.Caption;
+  frmtransfer.mode:=false;
   Form3.ShowModal;
 end;
 
@@ -320,10 +337,20 @@ type
 var
   tn: TreeNode;
   b, bb: byte;
+  cfgfile: string;
 begin
   makeuserdir;
   getlang;
   getexepath;
+  deletefile(TMPFILE);
+  {$IFDEF UseFHS}
+    cfgfile:=instpath+'etc/xmmeec.ini';
+    if instpath='/usr/' then cfgfile:='/etc/xmmeec.ini';
+  {$ELSE}
+    cfgfile:=exepath+'settings/xmmeec.ini';
+  {$ENDIF}
+  if fsearch('mmeec.ini',userdir+DIR_CONFIG)<>''
+    then cfgfile:=userdir+DIR_CONFIG+'mmeec.ini';
   Form1.Caption:='XMMEEC';
   // make tree
   TreeView1.Items.Clear;
@@ -386,6 +413,9 @@ begin
   // create checkboxes
   for b:=0 to 23 do
     CheckGroup1.Items.Add(inttostr(b)+'.00-'+inttostr(b)+'.59');
+  if not loadconfig(cfgfile) then
+    if MessageDlgPos(MESSAGE13,mtError,[mbOK],0,
+      (Form1.Left+Form1.Left+Form1.Width) div 2,(Form1.Top+Form1.Top+Form1.Height) div 2)=mrNo then Application.Terminate;
 end;
 
 end.
