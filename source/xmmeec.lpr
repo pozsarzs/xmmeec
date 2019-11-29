@@ -16,7 +16,8 @@ program xmmeec;
 {$MODE OBJFPC}{$H+}
 uses
   Interfaces, Forms, {$IFDEF UseFHS} unttranslator, {$ELSE}
-  DefaultTranslator,{$ENDIF} Dialogs, SysUtils, frmmain, crt, frmabout;
+  DefaultTranslator,{$ENDIF} Dialogs, SysUtils, frmmain, frmabout,
+  frmtransfer, crt;
 var
   b: byte;
   fn: string;
@@ -34,7 +35,7 @@ const
 procedure help(mode: boolean);
 var
   b: byte;
-  s: string;
+  {$IFDEF WIN32} s: string; {$ENDIF}
 begin
   if mode then
     showmessage('There are one or more bad parameters in command line.') else
@@ -65,8 +66,10 @@ begin
 end;
 
 procedure verinfo;
+{$IFDEF WIN32}
 var
   s: string;
+{$ENDIF}
 begin
  {$IFDEF UNIX}
   writeln(APPNAME+' v'+VERSION);
@@ -107,5 +110,6 @@ begin
   Application.Initialize;
   Application.CreateForm(TForm1, Form1);
   Application.CreateForm(TForm2, Form2);
+  Application.CreateForm(TForm3, Form3);
   Application.Run;
 end.

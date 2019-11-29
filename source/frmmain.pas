@@ -17,8 +17,8 @@ unit frmmain;
 interface
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, Menus,
-  ComCtrls, ExtCtrls, StdCtrls, Spin, LResources, INIFiles, frmabout,
-  untcommonproc, dos;
+  ComCtrls, ExtCtrls, StdCtrls, Spin, LResources, INIFiles, Process,
+  frmabout, frmtransfer, untcommonproc, dos;
 type
   { TForm1 }
   TForm1 = class(TForm)
@@ -34,8 +34,6 @@ type
     MenuItem10: TMenuItem;
     MenuItem11: TMenuItem;
     MenuItem12: TMenuItem;
-    MenuItem13: TMenuItem;
-    MenuItem14: TMenuItem;
     MenuItem15: TMenuItem;
     MenuItem16: TMenuItem;
     MenuItem2: TMenuItem;
@@ -63,7 +61,6 @@ type
     procedure FormCreate(Sender: TObject);
     procedure MenuItem11Click(Sender: TObject);
     procedure MenuItem12Click(Sender: TObject);
-    procedure MenuItem14Click(Sender: TObject);
     procedure MenuItem16Click(Sender: TObject);
     procedure MenuItem2Click(Sender: TObject);
     procedure MenuItem4Click(Sender: TObject);
@@ -82,6 +79,8 @@ var
   checkgroupcaption: array[0..11] of string;
   spineditvalues: array[0..11,1..4] of byte;
   checkgroupvalue: array[0..11,0..23] of boolean;
+  scp: string;
+  remotefiles: array[0..15] of string;
 const
   visiblespinedits: array[0..11,1..4] of boolean=
   (
@@ -137,6 +136,7 @@ implementation
 {$I incloadinifile.pas}
 {$I incsaveinifile.pas}
 {$I incsavetxtfile.pas}
+{$I incfiletransfer.pas}
 
 // clear
 procedure TForm1.MenuItem2Click(Sender: TObject);
@@ -201,7 +201,8 @@ begin
   if length(f)=0 then exit;
   fsplit(f,tfdir,tfname,tfext);
   if FSearch(tfname+tfext,tfdir)<>'' then
-    if MessageDlg(MESSAGE13,mtConfirmation,[mbYes,mbNo],0)=mrNo then exit;
+    if MessageDlgPos(MESSAGE13,mtConfirmation,[mbYes,mbNo],0,
+      (Form1.Left+Form1.Left+Form1.Width) div 2,(Form1.Top+Form1.Top+Form1.Height) div 2)=mrNo then exit;
   if not saveinifile(f) then ShowMessage(MESSAGE15);
 end;
 
@@ -225,7 +226,8 @@ begin
   if length(f)=0 then exit;
   fsplit(f,tfdir,tfname,tfext);
   if FSearch(tfname+tfext,tfdir)<>'' then
-    if MessageDlg(MESSAGE13,mtConfirmation,[mbYes,mbNo],0)=mrNo then exit;
+    if MessageDlgPos(MESSAGE13,mtConfirmation,[mbYes,mbNo],0,
+      (Form1.Left+Form1.Left+Form1.Width) div 2,(Form1.Top+Form1.Top+Form1.Height) div 2)=mrNo then exit;
   if not savetxtfile(f) then ShowMessage(MESSAGE15);
 end;
 
@@ -238,19 +240,14 @@ end;
 // download
 procedure TForm1.MenuItem11Click(Sender: TObject);
 begin
-
+  Form3.ShowModal;
+  Form3.Caption:='';
 end;
 
 // upload
 procedure TForm1.MenuItem12Click(Sender: TObject);
 begin
-
-end;
-
-// settings
-procedure TForm1.MenuItem14Click(Sender: TObject);
-begin
-
+  Form3.ShowModal;
 end;
 
 // show about dialog
@@ -311,7 +308,8 @@ end;
 // OnCloseQuery event
 procedure TForm1.FormCloseQuery(Sender: TObject; var CanClose: boolean);
 begin
-  if MessageDlg(MESSAGE16,mtConfirmation,[mbYes,mbNo],0)=mrYes then
+  if MessageDlgPos(MESSAGE16,mtConfirmation,[mbYes,mbNo],0,
+      (Form1.Left+Form1.Left+Form1.Width) div 2,(Form1.Top+Form1.Top+Form1.Height) div 2)=mrYes then
     CanClose:=true else CanClose:=false;
 end;
 

@@ -1703,6 +1703,7 @@ object Form2: TForm2
     Width = 82
     Anchors = [akLeft, akRight, akBottom]
     BorderSpacing.Bottom = 8
+    Cancel = True
     Caption = '&Close'
     ModalResult = 11
     TabOrder = 0
