@@ -11,12 +11,12 @@
 //   This program is distributed in the hope that it will be useful, but WITHOUT
 // ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 // FOR A PARTICULAR PURPOSE.
-// save values to ini file
 
+// save values to ini file
 function saveinifile(filename: string): boolean;
 var
-  iif: text;
   b: byte;
+  iif: text;
   s: string;
 const
   HEADER1='; +----------------------------------------------------------------------------+';

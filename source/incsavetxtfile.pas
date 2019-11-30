@@ -11,13 +11,13 @@
 //   This program is distributed in the hope that it will be useful, but WITHOUT
 // ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 // FOR A PARTICULAR PURPOSE.
-// export values to text file
 
+// export values to text file
 function savetxtfile(filename: string): boolean;
 var
-  txf: text;
   b: byte;
   s: string;
+  txf: text;
 
   function b2c(b: boolean): char;
   begin

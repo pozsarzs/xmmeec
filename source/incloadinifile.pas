@@ -11,12 +11,12 @@
 //   This program is distributed in the hope that it will be useful, but WITHOUT
 // ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 // FOR A PARTICULAR PURPOSE.
-// load values from ini file
 
+// load values from ini file
 function loadinifile(filename: string): boolean;
 var
-  ini: TINIFile;
   b: byte;
+  ini: TINIFile;
 const
   SECTION1: string='hyphae';
   SECTION2: string='mushroom';

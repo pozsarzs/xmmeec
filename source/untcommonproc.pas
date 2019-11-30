@@ -16,20 +16,25 @@ unit untcommonproc;
 {$MODE OBJFPC}{$H-}
 interface
 uses
-  {$IFDEF WIN32}Windows,{$ENDIF} Classes, SysUtils, LResources, Dialogs,
-  INIFiles, dos;
+  Classes,
+  Dialogs,
+  INIFiles,
+  LResources,
+  SysUtils,
+ {$IFDEF WIN32}Windows,{$ENDIF}
+  dos;
 var
   exepath, p: shortstring;
   lang: string[2];
+  pathremotefiles: array[0..15] of string;
+  scp: string;
   s: string;
   userdir: string;
-  ssh, scp: string;
-  pathremotefiles: array[0..15] of string;
- {$IFDEF WIN32}
+{$IFDEF WIN32}
 const
   CSIDL_PROFILE=40;
   SHGFP_TYPE_CURRENT=0;
- {$ENDIF}
+{$ENDIF}
 
 {$I config.pas}
 
@@ -61,38 +66,37 @@ end;
 function getlang: string;
 {$IFDEF WIN32}
 var
-  Buffer : PChar;
-  Size : integer;
+  buffer : pchar;
+  size : integer;
 {$ENDIF}
 begin
  {$IFDEF UNIX}
   s:=getenv('LANG');
  {$ENDIF}
  {$IFDEF WIN32}
-  Size:=GetLocaleInfo (LOCALE_USER_DEFAULT, LOCALE_SABBREVLANGNAME, nil, 0);
-  GetMem(Buffer, Size);
+  size:=getlocaleinfo (LOCALE_USER_DEFAULT, LOCALE_SABBREVLANGNAME, nil, 0);
+  getmem(buffer, size);
   try
-    GetLocaleInfo (LOCALE_USER_DEFAULT, LOCALE_SABBREVLANGNAME, Buffer, Size);
-    s:=string(Buffer);
+    getlocaleinfo (LOCALE_USER_DEFAULT, LOCALE_SABBREVLANGNAME, buffer, size);
+    s:=string(buffer);
   finally
-    FreeMem(Buffer);
+    freemem(buffer);
   end;
  {$ENDIF}
   if length(s)=0 then s:='en';
-  lang:=LowerCase(s[1..2]);
+  lang:=lowercase(s[1..2]);
   getlang:=lang;
 end;
 
 // load condfiguration file
 function loadconfig(filename: string): boolean;
 var
-  iif: TINIFile;
   b: byte;
+  iif: TINIFile;
 begin
   iif:=TIniFile.Create(filename);
   loadconfig:=true;
   try
-    ssh:=iif.ReadString('programs','ssh','/usr/bin/ssh');
     scp:=iif.ReadString('programs','scp','/usr/bin/scp');
     for b:=0 to 15 do
       pathremotefiles[b]:=iif.ReadString('remotefiles','file'+inttostr(b),'');
@@ -108,7 +112,7 @@ procedure makeuserdir;
 var
   buffer: array[0..MAX_PATH] of char;
 
-  function GetUserProfile: string;
+  function getuserprofile: string;
   begin
     fillchar(buffer, sizeof(buffer), 0);
     ShGetFolderPath(0, CSIDL_PROFILE, 0, SHGFP_TYPE_CURRENT, buffer);

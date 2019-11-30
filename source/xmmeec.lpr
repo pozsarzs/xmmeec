@@ -15,9 +15,14 @@
 program xmmeec;
 {$MODE OBJFPC}{$H+}
 uses
-  Interfaces, Forms, {$IFDEF UseFHS} unttranslator, {$ELSE}
-  DefaultTranslator,{$ENDIF} Dialogs, SysUtils, frmmain, frmabout,
-  crt;
+  Dialogs,
+  Forms,
+  Interfaces,
+  SysUtils,
+ {$IFDEF UseFHS} unttranslator, {$ELSE} DefaultTranslator,{$ENDIF}
+  crt,
+  frmabout,
+  frmmain;
 var
   b: byte;
   fn: string;
@@ -35,7 +40,7 @@ const
 procedure help(mode: boolean);
 var
   b: byte;
-  {$IFDEF WIN32} s: string; {$ENDIF}
+ {$IFDEF WIN32} s: string; {$ENDIF}
 begin
   if mode then
     showmessage('There are one or more bad parameters in command line.') else
@@ -45,7 +50,7 @@ begin
       writeln(' ',fn,{$IFDEF WIN32}'.',fe,{$ENDIF}' [parameter]');
       writeln;
       writeln('parameters:');
-      for b:=1 to 3 do
+      for b:=1 to 2 do
       begin
         write('  ',params[b,1]);
         gotoxy(8,wherey); write(params[b,2]);
@@ -57,7 +62,7 @@ begin
       s:='Usage:'+#13+#10;
       s:=s+' '+fn+' [parameter]'+#13+#10+#13+#10;
       s:=s+'parameters:';
-      for b:=1 to 3 do
+      for b:=1 to 2 do
         s:=s+#13+#10+'  '+params[b,1]+', '+params[b,2]+': '+params[b,3];
       showmessage(s);
      {$ENDIF}

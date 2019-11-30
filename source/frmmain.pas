@@ -16,9 +16,25 @@ unit frmmain;
 {$MODE OBJFPC}{$H+}
 interface
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, Menus,
-  ComCtrls, ExtCtrls, StdCtrls, Spin, LResources, INIFiles, Process,
-  frmabout, frmtransfer, untcommonproc, dos;
+  Buttons,
+  Classes,
+  ComCtrls,
+  Controls,
+  Dialogs,
+  ExtCtrls,
+  FileUtil,
+  Forms,
+  Graphics,
+  INIFiles,
+  LResources,
+  Menus,
+  Process,
+  Spin,
+  StdCtrls,
+  SysUtils,
+  frmabout,
+  dos,
+  untcommonproc;
 type
   { TForm1 }
   TForm1 = class(TForm)
@@ -46,17 +62,16 @@ type
     MenuItem9: TMenuItem;
     OpenDialog1: TOpenDialog;
     SaveDialog1: TSaveDialog;
+    SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
+    SpeedButton3: TSpeedButton;
+    SpeedButton4: TSpeedButton;
     SpinEdit1: TSpinEdit;
     SpinEdit2: TSpinEdit;
     SpinEdit3: TSpinEdit;
     SpinEdit4: TSpinEdit;
     ToolBar1: TToolBar;
-    ToolButton1: TToolButton;
-    ToolButton2: TToolButton;
-    ToolButton3: TToolButton;
-    ToolButton4: TToolButton;
     ToolButton5: TToolButton;
-    ToolButton6: TToolButton;
     TreeView1: TTreeView;
     procedure Button1Click(Sender: TObject);
     procedure ComboBox1Change(Sender: TObject);
@@ -70,6 +85,7 @@ type
     procedure MenuItem5Click(Sender: TObject);
     procedure MenuItem8Click(Sender: TObject);
     procedure MenuItem9Click(Sender: TObject);
+    procedure ToolBar1Resize(Sender: TObject);
     procedure TreeView1Change(Sender: TObject; Node: TTreeNode);
   private
     { private declarations }
@@ -78,11 +94,13 @@ type
   end;
 var
   Form1: TForm1;
-  labelcaptions: array[0..11,1..4] of string;
   checkgroupcaption: array[0..11] of string;
-  spineditvalues: array[0..11,1..4] of byte;
   checkgroupvalue: array[0..11,0..23] of boolean;
+  labelcaptions: array[0..11,1..4] of string;
+  spineditvalues: array[0..11,1..4] of byte;
 const
+  visiblecheckgroup: array[0..11] of boolean=
+    (false,true,true,false,true,true,false,true,true,false,true,true);
   visiblespinedits: array[0..11,1..4] of boolean=
   (
     (false,false,false,false),(true,true,true,true),(true,true,true,true),
@@ -90,8 +108,6 @@ const
     (false,false,false,false),(true,true,true,true),(true,true,true,true),
     (true,true,true,true),(true,true,false,false),(true,false,false,false)
   );
-  visiblecheckgroup: array[0..11] of boolean=
-    (false,true,true,false,true,true,false,true,true,false,true,true);
 
 Resourcestring
   MESSAGE01='Growing hyphae';
@@ -107,12 +123,13 @@ Resourcestring
   MESSAGE11='Save to file';
   MESSAGE12='Export to text file';
   MESSAGE13='File exist, overwrite?';
-  MESSAGE14='ERROR: Cannot read file!';
-  MESSAGE15='ERROR: Cannot write file!';
+  MESSAGE14='Cannot read file!';
+  MESSAGE15='Cannot write file!';
   MESSAGE16='Do you want exit?';
-  MESSAGE17='ERROR: Cannot read configuration file!';
+  MESSAGE17='Cannot read configuration file!';
   MESSAGE18='Download file';
   MESSAGE19='Upload file';
+  MESSAGE20='File transfer error!';
   MESSAGE17a='Minimal relative humidity [%]';
   MESSAGE17b='Humidifier switch-on humidity [%]';
   MESSAGE17c='Humidifier switch-off humidity [%]';
@@ -246,13 +263,9 @@ procedure TForm1.MenuItem11Click(Sender: TObject);
 var
   b: byte;
 begin
-(*  Form3.Caption:=MESSAGE18;
-  Form3.Button1.Caption:=MenuItem11.Caption;
-  frmtransfer.mode:=true;
-  Form3.ShowModal;
-  if not frmtransfer.error then
+  if download(ComboBox1.Text,userdir+TMPFILE) then
   begin
-    if not loadinifile(userdir+DIR_CACHE+TMPFILE) then ShowMessage(MESSAGE14);
+    loadinifile(userdir+TMPFILE);
     TreeView1.Items.Item[1].Selected:=true;
     SpinEdit1.Value:=spineditvalues[TreeView1.Selected.AbsoluteIndex,1];
     SpinEdit2.Value:=spineditvalues[TreeView1.Selected.AbsoluteIndex,2];
@@ -260,16 +273,21 @@ begin
     SpinEdit4.Value:=spineditvalues[TreeView1.Selected.AbsoluteIndex,4];
     for b:=0 to 23 do
       CheckGroup1.Checked[b]:=checkgroupvalue[TreeView1.Selected.AbsoluteIndex,b];
-  end;*)
+  end else
+    MessageDlgPos(MESSAGE20,mtWarning,[mbOK],0,
+      (Form1.Left+Form1.Left+Form1.Width) div 2,
+      (Form1.Top+Form1.Top+Form1.Height) div 2);
 end;
 
 // upload
 procedure TForm1.MenuItem12Click(Sender: TObject);
+var
+  b: byte;
 begin
-(*  Form3.Caption:=MESSAGE19;
-  Form3.Button1.Caption:=MenuItem12.Caption;
-  frmtransfer.mode:=false;
-  Form3.ShowModal;*)
+  if not upload(userdir+TMPFILE,ComboBox1.Text) then
+    MessageDlgPos(MESSAGE20,mtWarning,[mbOK],0,
+      (Form1.Left+Form1.Left+Form1.Width) div 2,
+      (Form1.Top+Form1.Top+Form1.Height) div 2);
 end;
 
 // show about dialog
@@ -289,18 +307,6 @@ begin
   spineditvalues[TreeView1.Selected.AbsoluteIndex,4]:=SpinEdit4.Value;
   for b:=0 to 23 do
     checkgroupvalue[TreeView1.Selected.AbsoluteIndex,b]:=CheckGroup1.Checked[b];
-end;
-
-
-// ComboBox OnChange event
-procedure TForm1.ComboBox1Change(Sender: TObject);
-begin
-  if length(ComboBox1.Text)>0 then
-    MenuItem11.Enabled:=true else
-      MenuItem11.Enabled:=false;
-  MenuItem12.Enabled:=MenuItem11.Enabled;
-  ToolButton3.Enabled:=MenuItem11.Enabled;
-  ToolButton4.Enabled:=MenuItem11.Enabled;
 end;
 
 // select page
@@ -344,6 +350,23 @@ begin
     CheckGroup1.Checked[b]:=checkgroupvalue[TreeView1.Selected.AbsoluteIndex,b];
 end;
 
+// resize ComboBox
+procedure TForm1.ToolBar1Resize(Sender: TObject);
+begin
+  ComboBox1.Width:=ToolBar1.Width-110;
+end;
+
+// ComboBox OnChange event
+procedure TForm1.ComboBox1Change(Sender: TObject);
+begin
+  if length(ComboBox1.Text)>0 then
+    MenuItem11.Enabled:=true else
+      MenuItem11.Enabled:=false;
+  MenuItem12.Enabled:=MenuItem11.Enabled;
+  SpeedButton3.Enabled:=MenuItem11.Enabled;
+  SpeedButton4.Enabled:=MenuItem11.Enabled;
+end;
+
 // OnCloseQuery event
 procedure TForm1.FormCloseQuery(Sender: TObject; var CanClose: boolean);
 begin
@@ -358,14 +381,14 @@ procedure TForm1.FormCreate(Sender: TObject);
 type
   TreeNode=TTreeNode;
 var
-  tn: TreeNode;
   b, bb: byte;
   cfgfile: string;
+  tn: TreeNode;
 begin
   makeuserdir;
   getlang;
   getexepath;
-  deletefile(userdir+DIR_CACHE+TMPFILE);
+  deletefile(userdir+TMPFILE);
   Form1.Caption:=APPNAME+' v.'+VERSION;
   // load configuration
   {$IFDEF UseFHS}

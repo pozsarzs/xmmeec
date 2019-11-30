@@ -11,12 +11,20 @@
 //   This program is distributed in the hope that it will be useful, but WITHOUT
 // ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 // FOR A PARTICULAR PURPOSE.
+
 unit frmabout;
 {$MODE OBJFPC}{$H+}
 interface
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ExtCtrls;
+  Classes,
+  Controls,
+  Dialogs,
+  ExtCtrls,
+  FileUtil,
+  Forms,
+  Graphics,
+  StdCtrls,
+  SysUtils;
 type
   { TForm2 }
   TForm2 = class(TForm)
