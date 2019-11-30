@@ -6,8 +6,6 @@ before install MMEEC and create keypairs to easy login to remote units:
 
    $ ssh-keygen
    $ ssh-copy-id -i ~/.ssh/id_rsa.pub remoteunit1.lan
-   $ ssh-copy-id -i ~/.ssh/id_rsa.pub remoteunit1.lan
-   $ ssh-copy-id -i ~/.ssh/id_rsa.pub remoteunit1.lan
 
    After installation procedures, set path of 'ssh' and 'scp' commands,
 and remote path of environment characteristics files in mmeec.ini.
