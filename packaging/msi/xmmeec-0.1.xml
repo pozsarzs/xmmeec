@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<Repackager>
+	<ProjectFile Version="1.1">
+	</ProjectFile>
+	<Repackager Version="1.2">
+	</Repackager>
+	<ProductInformation>
+		<ProductInformation ApplicationName="XMMEEC" Version="0.1" CompanyName="Pozsar Zsolt">
+		</ProductInformation>
+	</ProductInformation>
+	<FileSystem>
+		<AddedItems>
+			<DirectoryList>
+				<Directory Name="%PROGRAMFILES%\XMMEEC\languages\hu">
+					<File Name="xmmeec.po">
+					</File>
+					<File Name="xmmeec.mo">
+					</File>
+				</Directory>
+				<Directory Name="%PROGRAMFILES%\XMMEEC\languages">
+					<File Name="xmmeec.pot">
+					</File>
+				</Directory>
+				<Directory Name="%PROGRAMFILES%\XMMEEC\documents\hu">
+					<File Name="install.txt">
+					</File>
+					<File Name="readme.txt">
+					</File>
+				</Directory>
+				<Directory Name="%PROGRAMFILES%\XMMEEC\documents">
+					<File Name="authors.txt">
+					</File>
+					<File Name="install.txt">
+					</File>
+					<File Name="readme.txt">
+					</File>
+					<File Name="version.txt">
+					</File>
+				</Directory>
+				<Directory Name="%PROGRAMFILES%\XMMEEC">
+					<File Name="xmmeec.exe">
+					</File>
+					<File Name="licence.txt">
+					</File>
+					<File Name="readme.txt">
+					</File>
+				</Directory>
+			</DirectoryList>
+		</AddedItems>
+		<DeletedItems>
+			<DirectoryList>
+			</DirectoryList>
+		</DeletedItems>
+		<ModifiedItems>
+			<DirectoryList>
+			</DirectoryList>
+		</ModifiedItems>
+	</FileSystem>
+	<RegistrySystem>
+		<AddedItems>
+			<SubKeyList>
+				<SubKey Name="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\xmmeec.exe">
+					<Value Name="@" Type="REG_SZ">
+					</Value>
+				</SubKey>
+			</SubKeyList>
+		</AddedItems>
+		<DeletedItems>
+			<SubKeyList>
+			</SubKeyList>
+		</DeletedItems>
+		<ModifiedItems>
+			<SubKeyList>
+			</SubKeyList>
+		</ModifiedItems>
+	</RegistrySystem>
+	<INIFileSystem>
+		<AddedItems>
+			<FileList>
+				<File Name="%PROGRAMFILES%\AppDeploy\Repackager\AppDeployRepackager.ini">
+					<Section Name="SnapshotDetails" Key="IsSnapshotTaken" Value="1">
+					</Section>
+				</File>
+			</FileList>
+		</AddedItems>
+		<DeletedItems>
+			<FileList>
+			</FileList>
+		</DeletedItems>
+		<ModifiedItems>
+			<FileList>
+			</FileList>
+		</ModifiedItems>
+	</INIFileSystem>
+	<ShortcutList>
+		<Shortcut Name="XMMEEC" ExeName="xmmeec.exe" Directory="ProgramMenuFolder" Icon="%PROGRAMFILES%\XMMEEC\xmmeec.exe" IconIndex="0">
+		</Shortcut>
+		<Shortcut Name="XMMEEC" ExeName="xmmeec.exe" Directory="DesktopFolder" Icon="%PROGRAMFILES%\XMMEEC\xmmeec.exe" IconIndex="0">
+		</Shortcut>
+	</ShortcutList>
+	<ShortcutICONs>
+	</ShortcutICONs>
+</Repackager>
