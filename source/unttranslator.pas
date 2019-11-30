@@ -36,8 +36,8 @@ localization found.
 interface
 
 uses
-  Classes, SysUtils, LResources, GetText, Controls, typinfo, FileUtil, LCLProc
-  {$IFDEF WINDOWS},Windows{$ENDIF};
+  Classes, SysUtils, LResources, GetText, Controls, typinfo, LCLProc
+  {$IFDEF WINDOWS},Windows{$ENDIF}, LazUTF8, LazFileUtils;
 
 type
  TDefaultTranslator=class(TAbstractTranslator)
@@ -49,7 +49,7 @@ type
   procedure TranslateStringProperty(Sender:TObject; const Instance: TPersistent; PropInfo: PPropInfo; var Content:string);override;
  end;
 
-{$I config.inc}
+{$I config.pas}
 
 implementation
 uses Menus;
@@ -168,7 +168,7 @@ begin
      (ParamStrUTF8(i)='--lang') then Lang:=ParamStrUTF8(i+1);
  end;
  if Lang='' then
-   LCLGetLanguageIDs(Lang, T);
+   LazGetLanguageIDs(Lang, T);
 
  Result := GetLocaleFileName(Lang);
  if Result <> '' then Exit;

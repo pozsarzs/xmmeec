@@ -26,5 +26,4 @@ uninstall:
 	@for x in $(cfgfiles); do \
 	  if [ -e $$x ]; then $(rm) $(sysconfdir)/$$x; fi; \
 	done
-	@rmdir $(sysconfdir)/$(name)
 	@echo "done."
