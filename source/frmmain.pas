@@ -17,13 +17,14 @@ unit frmmain;
 interface
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, Menus,
-  ComCtrls, ExtCtrls, StdCtrls, Spin, LResources, INIFiles, frmabout,
-  frmtransfer, untcommonproc, dos;
+  ComCtrls, ExtCtrls, StdCtrls, Spin, LResources, INIFiles, Process,
+  frmabout, frmtransfer, untcommonproc, dos;
 type
   { TForm1 }
   TForm1 = class(TForm)
     Button1: TButton;
     CheckGroup1: TCheckGroup;
+    ComboBox1: TComboBox;
     ImageList1: TImageList;
     Label1: TLabel;
     Label2: TLabel;
@@ -55,8 +56,10 @@ type
     ToolButton3: TToolButton;
     ToolButton4: TToolButton;
     ToolButton5: TToolButton;
+    ToolButton6: TToolButton;
     TreeView1: TTreeView;
     procedure Button1Click(Sender: TObject);
+    procedure ComboBox1Change(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure FormCreate(Sender: TObject);
     procedure MenuItem11Click(Sender: TObject);
@@ -137,6 +140,7 @@ implementation
 {$I incloadinifile.pas}
 {$I incsaveinifile.pas}
 {$I incsavetxtfile.pas}
+{$I inctransfer.pas}
 
 // clear
 procedure TForm1.MenuItem2Click(Sender: TObject);
@@ -242,29 +246,30 @@ procedure TForm1.MenuItem11Click(Sender: TObject);
 var
   b: byte;
 begin
-  Form3.Caption:=MESSAGE18;
+(*  Form3.Caption:=MESSAGE18;
   Form3.Button1.Caption:=MenuItem11.Caption;
   frmtransfer.mode:=true;
   Form3.ShowModal;
   if not frmtransfer.error then
   begin
     if not loadinifile(userdir+DIR_CACHE+TMPFILE) then ShowMessage(MESSAGE14);
-//    SpinEdit1.Value:=spineditvalues[TreeView1.Selected.AbsoluteIndex,1];
-//    SpinEdit2.Value:=spineditvalues[TreeView1.Selected.AbsoluteIndex,2];
-//    SpinEdit3.Value:=spineditvalues[TreeView1.Selected.AbsoluteIndex,3];
-//    SpinEdit4.Value:=spineditvalues[TreeView1.Selected.AbsoluteIndex,4];
-//    for b:=0 to 23 do
-//      CheckGroup1.Checked[b]:=checkgroupvalue[TreeView1.Selected.AbsoluteIndex,b];
-  end;
+    TreeView1.Items.Item[1].Selected:=true;
+    SpinEdit1.Value:=spineditvalues[TreeView1.Selected.AbsoluteIndex,1];
+    SpinEdit2.Value:=spineditvalues[TreeView1.Selected.AbsoluteIndex,2];
+    SpinEdit3.Value:=spineditvalues[TreeView1.Selected.AbsoluteIndex,3];
+    SpinEdit4.Value:=spineditvalues[TreeView1.Selected.AbsoluteIndex,4];
+    for b:=0 to 23 do
+      CheckGroup1.Checked[b]:=checkgroupvalue[TreeView1.Selected.AbsoluteIndex,b];
+  end;*)
 end;
 
 // upload
 procedure TForm1.MenuItem12Click(Sender: TObject);
 begin
-  Form3.Caption:=MESSAGE19;
+(*  Form3.Caption:=MESSAGE19;
   Form3.Button1.Caption:=MenuItem12.Caption;
   frmtransfer.mode:=false;
-  Form3.ShowModal;
+  Form3.ShowModal;*)
 end;
 
 // show about dialog
@@ -286,11 +291,28 @@ begin
     checkgroupvalue[TreeView1.Selected.AbsoluteIndex,b]:=CheckGroup1.Checked[b];
 end;
 
+
+// ComboBox OnChange event
+procedure TForm1.ComboBox1Change(Sender: TObject);
+begin
+  if length(ComboBox1.Text)>0 then
+    MenuItem11.Enabled:=true else
+      MenuItem11.Enabled:=false;
+  MenuItem12.Enabled:=MenuItem11.Enabled;
+  ToolButton3.Enabled:=MenuItem11.Enabled;
+  ToolButton4.Enabled:=MenuItem11.Enabled;
+end;
+
 // select page
 procedure TForm1.TreeView1Change(Sender: TObject; Node: TTreeNode);
 var
   b: byte;
 begin
+  // skip empty pages
+  case TreeView1.Selected.AbsoluteIndex of
+    0: TreeView1.Items.Item[1].Selected:=true;
+    6: TreeView1.Items.Item[7].Selected:=true;
+  end;
   // set widgets
   Button1.Enabled:=visiblespinedits[TreeView1.Selected.AbsoluteIndex,1];
   Label1.Visible:=visiblespinedits[TreeView1.Selected.AbsoluteIndex,1];
@@ -326,7 +348,8 @@ end;
 procedure TForm1.FormCloseQuery(Sender: TObject; var CanClose: boolean);
 begin
   if MessageDlgPos(MESSAGE16,mtConfirmation,[mbYes,mbNo],0,
-      (Form1.Left+Form1.Left+Form1.Width) div 2,(Form1.Top+Form1.Top+Form1.Height) div 2)=mrYes then
+      (Form1.Left+Form1.Left+Form1.Width) div 2,
+      (Form1.Top+Form1.Top+Form1.Height) div 2)=mrYes then
     CanClose:=true else CanClose:=false;
 end;
 
@@ -342,16 +365,18 @@ begin
   makeuserdir;
   getlang;
   getexepath;
-  deletefile(TMPFILE);
+  deletefile(userdir+DIR_CACHE+TMPFILE);
+  Form1.Caption:=APPNAME+' v.'+VERSION;
+  // load configuration
   {$IFDEF UseFHS}
     cfgfile:=instpath+'etc/xmmeec.ini';
     if instpath='/usr/' then cfgfile:='/etc/xmmeec.ini';
   {$ELSE}
     cfgfile:=exepath+'settings/xmmeec.ini';
   {$ENDIF}
-  if fsearch('mmeec.ini',userdir+DIR_CONFIG)<>''
-    then cfgfile:=userdir+DIR_CONFIG+'mmeec.ini';
-  Form1.Caption:='XMMEEC';
+  if fsearch('xmmeec.ini',userdir+DIR_CONFIG)<>''
+    then cfgfile:=userdir+DIR_CONFIG+'xmmeec.ini';
+  loadconfig(cfgfile);
   // make tree
   TreeView1.Items.Clear;
   tn:=TreeView1.Items.Add(nil,MESSAGE01);
@@ -414,8 +439,15 @@ begin
   for b:=0 to 23 do
     CheckGroup1.Items.Add(inttostr(b)+'.00-'+inttostr(b)+'.59');
   if not loadconfig(cfgfile) then
-    if MessageDlgPos(MESSAGE13,mtError,[mbOK],0,
-      (Form1.Left+Form1.Left+Form1.Width) div 2,(Form1.Top+Form1.Top+Form1.Height) div 2)=mrNo then Application.Terminate;
+    MessageDlgPos(MESSAGE13,mtError,[mbOK],0,
+      (Form1.Left+Form1.Left+Form1.Width) div 2,
+      (Form1.Top+Form1.Top+Form1.Height) div 2);
+  TreeView1.Items.Item[1].Selected:=true;
+  // fill combobox
+  ComboBox1.Clear;
+  for b:=0 to 15 do
+   if length(pathremotefiles[b])>0 then
+     ComboBox1.Items.Add(pathremotefiles[b]);
 end;
 
 end.

@@ -572,10 +572,10 @@ object Form1: TForm1
     Caption = 'ToolBar1'
     Images = ImageList1
     ParentShowHint = False
-    ShowHint = True
     TabOrder = 0
     object ToolButton1: TToolButton
       Left = 1
+      Hint = 'Open ini file'
       Top = 2
       Caption = '&Open...'
       ImageIndex = 0
@@ -585,6 +585,7 @@ object Form1: TForm1
     end
     object ToolButton2: TToolButton
       Left = 24
+      Hint = 'Save ini file'
       Top = 2
       Caption = '&Save'
       ImageIndex = 1
@@ -593,18 +594,23 @@ object Form1: TForm1
       ShowHint = True
     end
     object ToolButton3: TToolButton
-      Left = 55
+      Left = 355
+      Hint = 'Download ini file'
       Top = 2
       Caption = '&Download...'
+      Enabled = False
       ImageIndex = 6
       MenuItem = MenuItem11
       ParentShowHint = False
       ShowHint = True
     end
     object ToolButton4: TToolButton
-      Left = 78
+      AnchorSideRight.Side = asrBottom
+      Left = 378
+      Hint = 'Upload ini file'
       Top = 2
       Caption = '&Upload...'
+      Enabled = False
       ImageIndex = 7
       MenuItem = MenuItem12
       ParentShowHint = False
@@ -616,6 +622,34 @@ object Form1: TForm1
       Top = 2
       Width = 8
       Caption = 'ToolButton5'
+      ParentShowHint = False
+      Style = tbsSeparator
+    end
+    object ComboBox1: TComboBox
+      AnchorSideRight.Control = ToolButton4
+      AnchorSideRight.Side = asrBottom
+      AnchorSideBottom.Control = ToolBar1
+      AnchorSideBottom.Side = asrBottom
+      Left = 55
+      Height = 22
+      Hint = 'Path o f remote ini file'
+      Top = 2
+      Width = 300
+      AutoComplete = True
+      AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
+      AutoSize = False
+      ItemHeight = 0
+      OnChange = ComboBox1Change
+      Sorted = True
+      TabOrder = 0
+    end
+    object ToolButton6: TToolButton
+      Left = 401
+      Height = 22
+      Top = 2
+      Width = 8
+      Caption = 'ToolButton6'
+      ParentShowHint = False
       Style = tbsSeparator
     end
   end
@@ -1006,6 +1040,7 @@ object Form1: TForm1
       Caption = '&Transfer'
       object MenuItem11: TMenuItem
         Caption = '&Download...'
+        Enabled = False
         Bitmap.Data = {
           36040000424D3604000000000000360000002800000010000000100000000100
           2000000000000004000064000000640000000000000000000000000000000000
@@ -1048,6 +1083,7 @@ object Form1: TForm1
       end
       object MenuItem12: TMenuItem
         Caption = '&Upload...'
+        Enabled = False
         Bitmap.Data = {
           36040000424D3604000000000000360000002800000010000000100000000100
           2000000000000004000064000000640000000000000000000000000000000000
