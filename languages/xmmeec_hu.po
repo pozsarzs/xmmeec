@@ -1,0 +1,248 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+#: frmmain.message01
+msgid "Growing hyphae"
+msgstr "Átszövetés"
+
+#: frmmain.message02
+msgid "Growing mushroom"
+msgstr "Gombatermesztés"
+
+#: frmmain.message03
+msgid "Humidifying"
+msgstr "Párásítás"
+
+#: frmmain.message04
+msgid "Heating"
+msgstr "Fűtés"
+
+#: frmmain.message05
+msgid "Lighting"
+msgstr "Világítás"
+
+#: frmmain.message06
+msgid "Ventilating"
+msgstr "Szellőztetés"
+
+#: frmmain.message07
+msgid "Low external temp."
+msgstr "Alacsony külső hőmérséklet"
+
+#: frmmain.message08
+msgid "INI files (*.ini)|*.ini|"
+msgstr "INI fájlok (*.ini)|*.ini|"
+
+#: frmmain.message09
+msgid "Text files (*.txt)|*.txt|"
+msgstr "Szövegfájlok (*.txt)|*.txt|"
+
+#: frmmain.message10
+msgid "Load from file"
+msgstr "Betöltés fájlból"
+
+#: frmmain.message11
+msgid "Save to file"
+msgstr "Mentés fájlba"
+
+#: frmmain.message12
+msgid "Export to text file"
+msgstr "Exportálás szövegfájlba"
+
+#: frmmain.message13
+msgid "File exist, overwrite?"
+msgstr "A fájl létezik, felülírjam?"
+
+#: frmmain.message14
+msgid "Cannot read file!"
+msgstr "A fájl nem olvasható!"
+
+#: frmmain.message15
+msgid "Cannot write file!"
+msgstr "A fájl nem írható!"
+
+#: frmmain.message16
+msgid "Do you want exit?"
+msgstr "Bezárja a programot?"
+
+#: frmmain.message17
+msgid "Cannot read configuration file!"
+msgstr "A beállításfájl nem olvasható!"
+
+#: frmmain.message17a
+msgid "Minimal relative humidity [%]"
+msgstr "Minimális páratartalom [%]"
+
+#: frmmain.message17b
+msgid "Humidifier switch-on humidity [%]"
+msgstr "Párásító bekapcsolási érték [%]"
+
+#: frmmain.message17c
+msgid "Humidifier switch-off humidity [%]"
+msgstr "Párásító kikapcsolási érték [%]"
+
+#: frmmain.message17d
+msgid "Maximal relative humidity [%]"
+msgstr "Maximális páratartalom [%]"
+
+#: frmmain.message17g
+msgid "Disable humidifier"
+msgstr "Párásító tiltás"
+
+#: frmmain.message18
+msgid "Download file"
+msgstr "Fájl letöltés"
+
+#: frmmain.message19
+msgid "Upload file"
+msgstr "Fájl feltöltés"
+
+#: frmmain.message20
+msgid "File transfer error!"
+msgstr "Fájlátviteli hiba!"
+
+#: frmmain.message28a
+msgid "Minimal temperature [°C]"
+msgstr "Minimális hőmérséklet [°C]"
+
+#: frmmain.message28b
+msgid "Heater switch-on temperature [°C]"
+msgstr "Fűtés bekapcsolási érték [°C]"
+
+#: frmmain.message28c
+msgid "Heater switch-off temperature [°C]"
+msgstr "Fűtés kikapcsolási érték [°C]"
+
+#: frmmain.message28d
+msgid "Maximal temperature [°C]"
+msgstr "Maximális hőmérséklet [°C]"
+
+#: frmmain.message28g
+msgid "Disable heater"
+msgstr "Fűtés tiltás"
+
+#: frmmain.message39a
+msgid "Lights switch-on hour #1"
+msgstr "1. Világítás bekapcsolási óra"
+
+#: frmmain.message39b
+msgid "Lights switch-off hour #1"
+msgstr "1. Világítás kikapcsolási óra"
+
+#: frmmain.message39c
+msgid "Lights switch-on hour #2"
+msgstr "2. Világítás bekapcsolási óra"
+
+#: frmmain.message39d
+msgid "Lights switch-off hour #2"
+msgstr "2. Világítás kikapcsolási óra"
+
+#: frmmain.message410a
+msgid "Ventilators switch-on minute"
+msgstr "Szellőztetés bekapcsolási perc"
+
+#: frmmain.message410b
+msgid "Ventilators switch-off minute"
+msgstr "Szellőztetés kikapcsolási perc"
+
+#: frmmain.message451011g
+msgid "Disable ventilators"
+msgstr "Szellőztetés tiltás"
+
+#: frmmain.message511a
+msgid "Low external temperature [°C]"
+msgstr "Alacsony külső hőmérséklet [°C]"
+
+#: tform1.button1.caption
+msgid "&Apply"
+msgstr "&Alkalmaz"
+
+#: tform1.combobox1.hint
+msgid "Path of remote ini file (user@host:filenamewithpath)"
+msgstr "Távoli fájl elérési útja (felhasználó@kiszolgáló:fájlnév_az_elérési_úttal)"
+
+#: tform1.menuitem1.caption
+msgid "&File"
+msgstr "&Fájl"
+
+#: tform1.menuitem10.caption
+msgid "&Transfer"
+msgstr "Át&vitel"
+
+#: tform1.menuitem11.caption
+msgctxt "TFORM1.MENUITEM11.CAPTION"
+msgid "&Download"
+msgstr "&Letöltés"
+
+#: tform1.menuitem12.caption
+msgctxt "TFORM1.MENUITEM12.CAPTION"
+msgid "&Upload"
+msgstr "&Feltöltés"
+
+#: tform1.menuitem15.caption
+msgid "&Help"
+msgstr "&Segítség"
+
+#: tform1.menuitem16.caption
+msgid "&About..."
+msgstr "&Névjegy..."
+
+#: tform1.menuitem2.caption
+msgid "&Clear"
+msgstr "&Alapértékek"
+
+#: tform1.menuitem4.caption
+msgctxt "TFORM1.MENUITEM4.CAPTION"
+msgid "&Open..."
+msgstr "Me&gnyitás..."
+
+#: tform1.menuitem5.caption
+msgctxt "TFORM1.MENUITEM5.CAPTION"
+msgid "&Save..."
+msgstr "&Mentés..."
+
+#: tform1.menuitem8.caption
+msgid "E&xport..."
+msgstr "E&xportálás..."
+
+#: tform1.menuitem9.caption
+msgid "&Quit"
+msgstr "&Kilép"
+
+#: tform1.speedbutton1.hint
+msgid "Open ini file"
+msgstr "Ini fájl beolvasás"
+
+#: tform1.speedbutton2.hint
+msgid "Save ini file"
+msgstr "Ini fájl mentés"
+
+#: tform1.speedbutton3.hint
+msgid "Download ini file"
+msgstr "Ini fájl letöltés"
+
+#: tform1.speedbutton4.hint
+msgid "Upload ini file"
+msgstr "Ini fájl feltöltés"
+
+#: tform2.button1.caption
+msgid "&Close"
+msgstr "&Bezár"
+
+#: tform2.caption
+msgid "About"
+msgstr "Névjegy"
+
+#: tform2.label2.caption
+msgctxt "TFORM2.LABEL2.CAPTION"
+msgid "Remote environment characteristic editor"
+msgstr "Környezeti paraméter szerkesztő"
+
+#: tform2.label3.caption
+msgctxt "TFORM2.LABEL3.CAPTION"
+msgid "(C)2019 Pozsár Zsolt"
+msgstr "(C)2019 Pozsar Zsolt"
+
+#: tform2.label4.caption
+msgid "Web: http://www.szerafingomba.hu/softwares/"
+msgstr "Web: http://www.szerafingomba.hu/softwares/"

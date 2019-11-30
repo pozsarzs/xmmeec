@@ -1,0 +1,248 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+#: frmmain.message01
+msgid "Growing hyphae"
+msgstr ""
+
+#: frmmain.message02
+msgid "Growing mushroom"
+msgstr ""
+
+#: frmmain.message03
+msgid "Humidifying"
+msgstr ""
+
+#: frmmain.message04
+msgid "Heating"
+msgstr ""
+
+#: frmmain.message05
+msgid "Lighting"
+msgstr ""
+
+#: frmmain.message06
+msgid "Ventilating"
+msgstr ""
+
+#: frmmain.message07
+msgid "Low external temp."
+msgstr ""
+
+#: frmmain.message08
+msgid "INI files (*.ini)|*.ini|"
+msgstr ""
+
+#: frmmain.message09
+msgid "Text files (*.txt)|*.txt|"
+msgstr ""
+
+#: frmmain.message10
+msgid "Load from file"
+msgstr ""
+
+#: frmmain.message11
+msgid "Save to file"
+msgstr ""
+
+#: frmmain.message12
+msgid "Export to text file"
+msgstr ""
+
+#: frmmain.message13
+msgid "File exist, overwrite?"
+msgstr ""
+
+#: frmmain.message14
+msgid "Cannot read file!"
+msgstr ""
+
+#: frmmain.message15
+msgid "Cannot write file!"
+msgstr ""
+
+#: frmmain.message16
+msgid "Do you want exit?"
+msgstr ""
+
+#: frmmain.message17
+msgid "Cannot read configuration file!"
+msgstr ""
+
+#: frmmain.message17a
+msgid "Minimal relative humidity [%]"
+msgstr ""
+
+#: frmmain.message17b
+msgid "Humidifier switch-on humidity [%]"
+msgstr ""
+
+#: frmmain.message17c
+msgid "Humidifier switch-off humidity [%]"
+msgstr ""
+
+#: frmmain.message17d
+msgid "Maximal relative humidity [%]"
+msgstr ""
+
+#: frmmain.message17g
+msgid "Disable humidifier"
+msgstr ""
+
+#: frmmain.message18
+msgid "Download file"
+msgstr ""
+
+#: frmmain.message19
+msgid "Upload file"
+msgstr ""
+
+#: frmmain.message20
+msgid "File transfer error!"
+msgstr ""
+
+#: frmmain.message28a
+msgid "Minimal temperature [°C]"
+msgstr ""
+
+#: frmmain.message28b
+msgid "Heater switch-on temperature [°C]"
+msgstr ""
+
+#: frmmain.message28c
+msgid "Heater switch-off temperature [°C]"
+msgstr ""
+
+#: frmmain.message28d
+msgid "Maximal temperature [°C]"
+msgstr ""
+
+#: frmmain.message28g
+msgid "Disable heater"
+msgstr ""
+
+#: frmmain.message39a
+msgid "Lights switch-on hour #1"
+msgstr ""
+
+#: frmmain.message39b
+msgid "Lights switch-off hour #1"
+msgstr ""
+
+#: frmmain.message39c
+msgid "Lights switch-on hour #2"
+msgstr ""
+
+#: frmmain.message39d
+msgid "Lights switch-off hour #2"
+msgstr ""
+
+#: frmmain.message410a
+msgid "Ventilators switch-on minute"
+msgstr ""
+
+#: frmmain.message410b
+msgid "Ventilators switch-off minute"
+msgstr ""
+
+#: frmmain.message451011g
+msgid "Disable ventilators"
+msgstr ""
+
+#: frmmain.message511a
+msgid "Low external temperature [°C]"
+msgstr ""
+
+#: tform1.button1.caption
+msgid "&Apply"
+msgstr ""
+
+#: tform1.combobox1.hint
+msgid "Path of remote ini file (user@host:filenamewithpath)"
+msgstr ""
+
+#: tform1.menuitem1.caption
+msgid "&File"
+msgstr ""
+
+#: tform1.menuitem10.caption
+msgid "&Transfer"
+msgstr ""
+
+#: tform1.menuitem11.caption
+msgid "&Download"
+msgstr ""
+
+#: tform1.menuitem12.caption
+msgid "&Upload"
+msgstr ""
+
+#: tform1.menuitem15.caption
+msgid "&Help"
+msgstr ""
+
+#: tform1.menuitem16.caption
+msgid "&About..."
+msgstr ""
+
+#: tform1.menuitem2.caption
+msgid "&Clear"
+msgstr ""
+
+#: tform1.menuitem4.caption
+msgid "&Open..."
+msgstr ""
+
+#: tform1.menuitem5.caption
+msgid "&Save..."
+msgstr ""
+
+#: tform1.menuitem8.caption
+msgid "E&xport..."
+msgstr ""
+
+#: tform1.menuitem9.caption
+msgid "&Quit"
+msgstr ""
+
+#: tform1.speedbutton1.hint
+msgid "Open ini file"
+msgstr ""
+
+#: tform1.speedbutton2.hint
+msgid "Save ini file"
+msgstr ""
+
+#: tform1.speedbutton3.hint
+msgid "Download ini file"
+msgstr ""
+
+#: tform1.speedbutton4.hint
+msgid "Upload ini file"
+msgstr ""
+
+#: tform2.button1.caption
+msgid "&Close"
+msgstr ""
+
+#: tform2.caption
+msgid "About"
+msgstr ""
+
+#: tform2.label1.caption
+msgctxt "tform2.label1.caption"
+msgid "Label1"
+msgstr ""
+
+#: tform2.label2.caption
+msgid "Remote environment characteristic editor"
+msgstr ""
+
+#: tform2.label3.caption
+msgid "(C)2019 Pozsár Zsolt"
+msgstr ""
+
+#: tform2.label4.caption
+msgid "Web: http://www.szerafingomba.hu/softwares/"
+msgstr ""
+

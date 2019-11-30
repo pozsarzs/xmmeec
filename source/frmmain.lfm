@@ -593,7 +593,7 @@ object Form1: TForm1
       AnchorSideBottom.Side = asrBottom
       Left = 55
       Height = 22
-      Hint = 'Path of remote ini file'#10'(user@host:filenamewithpath)'
+      Hint = 'Path of remote ini file (user@host:filenamewithpath)'
       Top = 2
       Width = 300
       AutoComplete = True
@@ -1053,7 +1053,7 @@ object Form1: TForm1
         OnClick = MenuItem4Click
       end
       object MenuItem5: TMenuItem
-        Caption = '&Save'
+        Caption = '&Save...'
         Bitmap.Data = {
           36040000424D3604000000000000360000002800000010000000100000000100
           2000000000000004000064000000640000000000000000000000BA6A368FB969
@@ -1183,7 +1183,7 @@ object Form1: TForm1
     object MenuItem10: TMenuItem
       Caption = '&Transfer'
       object MenuItem11: TMenuItem
-        Caption = '&Download...'
+        Caption = '&Download'
         Enabled = False
         Bitmap.Data = {
           36040000424D3604000000000000360000002800000010000000100000000100
@@ -1226,7 +1226,7 @@ object Form1: TForm1
         OnClick = MenuItem11Click
       end
       object MenuItem12: TMenuItem
-        Caption = '&Upload...'
+        Caption = '&Upload'
         Enabled = False
         Bitmap.Data = {
           36040000424D3604000000000000360000002800000010000000100000000100
