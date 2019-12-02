@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-16"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Repackager>
 	<ProjectFile Version="1.1">
 	</ProjectFile>
@@ -21,10 +21,8 @@
 					<File Name="xmmeec.pot">
 					</File>
 				</Directory>
-				<Directory Name="%PROGRAMFILES%\XMMEEC\documents\hu">
-					<File Name="install.txt">
-					</File>
-					<File Name="readme.txt">
+				<Directory Name="%PROGRAMFILES%\XMMEEC\settings">
+					<File Name="xmmeec.ini">
 					</File>
 				</Directory>
 				<Directory Name="%PROGRAMFILES%\XMMEEC\documents">

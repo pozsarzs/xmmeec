@@ -66,6 +66,9 @@ Section "Main files" SEC01
   File "xmmeec\documents\install.txt"
   File "xmmeec\documents\readme.txt"
   File "xmmeec\documents\version.txt"
+  SetOutPath "$INSTDIR\settings"
+  SetOverwrite try
+  File "xmmeec\settings\xmmeec.ini.txt"
   SetOutPath "$INSTDIR"
   File "xmmeec\xmmeec.exe"
   File "xmmeec\licence.txt"
@@ -120,6 +123,7 @@ Section Uninstall
   Delete "$INSTDIR\readme.txt"
   Delete "$INSTDIR\licence.txt"
   Delete "$INSTDIR\xmmeec.exe"
+  Delete "$INSTDIR\settings\xmmeec.ini"
   Delete "$INSTDIR\languages\xmmeec.pot"
   Delete "$INSTDIR\languages\hu\xmmeec.po"
   Delete "$INSTDIR\languages\hu\xmmeec.mo"
