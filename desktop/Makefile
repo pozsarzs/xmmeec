@@ -2,7 +2,7 @@
 # | XMMEEC v0.1 * Environment characteristics editor                           |
 # | Copyright (C) 2019 Pozsár Zsolt <pozsar.zsolt@.szerafingomba.hu>           |
 # | Makefile                                                                   |
-# | Makefile for other files                                                   |
+# | Makefile for desktop files                                                 |
 # +----------------------------------------------------------------------------+
 
 include ../Makefile.global

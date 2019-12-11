@@ -1,8 +1,8 @@
 { +--------------------------------------------------------------------------+ }
 { | XMMEEC v0.1 * Environment characteristics editor                         | }
 { | Copyright (C) 2019 Pozsár Zsolt <pozsar.zsolt@.szerafingomba.hu>         | }
-{ | frmmain.pas                                                              | }
-{ | Main form                                                                | }
+{ | untcommonproc.pas                                                        | }
+{ | Common functions and procedures                                          | }
 { +--------------------------------------------------------------------------+ }
 
 //   This program is free software: you can redistribute it and/or modify it

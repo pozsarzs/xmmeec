@@ -4,7 +4,7 @@ Name: xmmeec
 Packager: Pozsar Zsolt <pozsar.zsolt@szerafingomba.hu>
 Release: 1
 Summary: Environment characteristics editor
-Url: http://www.szerafingomba.hu/softwares.html
+Url: http://www.szerafingomba.hu/softwares/
 Vendor: Pozsar Zsolt
 Version: 0.1
 

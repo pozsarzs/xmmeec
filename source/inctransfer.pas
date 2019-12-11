@@ -2,7 +2,7 @@
 { | XMMEEC v0.1 * Environment characteristics editor                         | }
 { | Copyright (C) 2019 Pozsár Zsolt <pozsar.zsolt@.szerafingomba.hu>         | }
 { | inctransfer.pas                                                          | }
-{ | Download and upload remote file                                          | }
+{ | File transfer                                                            | }
 { +--------------------------------------------------------------------------+ }
 
 //   This program is free software: you can redistribute it and/or modify it

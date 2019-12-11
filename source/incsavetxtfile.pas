@@ -2,7 +2,7 @@
 { | XMMEEC v0.1 * Environment characteristics editor                         | }
 { | Copyright (C) 2019 Pozsár Zsolt <pozsar.zsolt@.szerafingomba.hu>         | }
 { | incsavetxtfile.pas                                                       | }
-{ | include file                                                             | }
+{ | Save txt file                                                            | }
 { +--------------------------------------------------------------------------+ }
 
 //   This program is free software: you can redistribute it and/or modify it
