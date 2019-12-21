@@ -38,6 +38,18 @@ end;
 function upload(localfile, remotefile: string): boolean;
 var
   Process2: TProcess;
+
+  function extractusername(rfn: string): string;
+  var
+    un: string;
+    bb: byte;
+  begin
+    un:='';
+    for bb:=1 to length(rfn) do
+      if rfn[bb]<>':' then un:=un+rfn[bb] else break;
+    extractusername:=un;
+  end;
+
 begin
   upload:=true;
   Process2:=TProcess.Create(nil);
@@ -46,6 +58,38 @@ begin
   Process2.Parameters.Add('-q');
   Process2.Parameters.Add(localfile);
   Process2.Parameters.Add(remotefile);
+  Process2.Options:=[poWaitOnExit];
+  try
+    Process2.Execute;
+  except
+    upload:=false;
+  end;
+  if Process2.ExitStatus<>0 then
+  begin
+    upload:=false;
+    Process2.Free;
+    exit;
+  end;
+  Process2.Free;
+  Process2:=TProcess.Create(nil);
+  Process2.Executable:=ssh;
+  Process2.Parameters.Clear;
+  Process2.Parameters.Add('-q');
+  Process2.Parameters.Add(extractusername(remotefile));
+  Process2.Parameters.Add('mm3d-stopdaemon');
+  Process2.Options:=[poWaitOnExit];
+  try
+    Process2.Execute;
+  except
+    upload:=false;
+  end;
+  Process2.Free;
+  Process2:=TProcess.Create(nil);
+  Process2.Executable:=ssh;
+  Process2.Parameters.Clear;
+  Process2.Parameters.Add('-q');
+  Process2.Parameters.Add(extractusername(remotefile));
+  Process2.Parameters.Add('mm3d-startdaemon');
   Process2.Options:=[poWaitOnExit];
   try
     Process2.Execute;

@@ -28,6 +28,7 @@ var
   lang: string[2];
   pathremotefiles: array[0..15] of string;
   scp: string;
+  ssh: string;
   s: string;
   userdir: string;
 {$IFDEF WIN32}
@@ -98,6 +99,7 @@ begin
   loadconfig:=true;
   try
     scp:=iif.ReadString('programs','scp','/usr/bin/scp');
+    ssh:=iif.ReadString('programs','ssh','/usr/bin/ssh');
     for b:=0 to 15 do
       pathremotefiles[b]:=iif.ReadString('remotefiles','file'+inttostr(b),'');
   except
