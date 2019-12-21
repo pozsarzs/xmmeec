@@ -6,7 +6,7 @@ Release: 1
 Summary: Environment characteristics editor
 Url: http://www.szerafingomba.hu/softwares/
 Vendor: Pozsar Zsolt
-Version: 0.1
+Version: 0.1.1
 
 %description
 It is an remote editor for environment characteristics
@@ -18,6 +18,7 @@ house controllers.
 /usr/bin/xmmeec
 /usr/share/applications/xmmeec.desktop
 /usr/share/doc/xmmeec/AUTHORS
+/usr/share/doc/xmmeec/ChangeLog
 /usr/share/doc/xmmeec/README
 /usr/share/doc/xmmeec/VERSION
 /usr/share/locale/hu/LC_MESSAGES/xmmeec.mo

@@ -1,6 +1,6 @@
 @echo off
 rem ----------------------------------------------------------------------------
-rem  XMMEEC v0.1 * Environment characteristics editor
+rem  XMMEEC v0.1.1 * Environment characteristics editor
 rem  Copyright (C) 2019 Pozsár Zsolt <pozsar.zsolt@.szerafingomba.hu>
 rem  build.bat
 rem  Utility for build/install/uninstall application on Windows

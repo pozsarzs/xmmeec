@@ -2,7 +2,7 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "XMMEEC"
-!define PRODUCT_VERSION "0.1"
+!define PRODUCT_VERSION "0.1.1"
 !define PRODUCT_PUBLISHER "Pozsar Zsolt"
 !define PRODUCT_WEB_SITE "http://www.szerafingomba.hu/softwares/"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\xmmeec.exe"
@@ -49,7 +49,7 @@ LicenseLangString MUILicense ${LANG_HUNGARIAN} "xmmeec\licence.txt"
 ; MUI end ------
 
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
-OutFile "xmmeec-0.1-win32.exe"
+OutFile "xmmeec-0.1.1-win32.exe"
 InstallDir "$PROGRAMFILES\XMMEEC"
 InstallDirRegKey HKLM "${PRODUCT_DIR_REGKEY}" ""
 ShowInstDetails show

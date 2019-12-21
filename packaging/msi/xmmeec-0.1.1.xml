@@ -5,7 +5,7 @@
 	<Repackager Version="1.2">
 	</Repackager>
 	<ProductInformation>
-		<ProductInformation ApplicationName="XMMEEC" Version="0.1" CompanyName="Pozsar Zsolt">
+		<ProductInformation ApplicationName="XMMEEC" Version="0.1.1" CompanyName="Pozsar Zsolt">
 		</ProductInformation>
 	</ProductInformation>
 	<FileSystem>
