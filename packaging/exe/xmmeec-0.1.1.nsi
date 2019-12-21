@@ -63,12 +63,13 @@ Section "Main files" SEC01
   SetOutPath "$INSTDIR\documents"
   SetOverwrite try
   File "xmmeec\documents\authors.txt"
+  File "xmmeec\documents\changelog.txt"
   File "xmmeec\documents\install.txt"
   File "xmmeec\documents\readme.txt"
   File "xmmeec\documents\version.txt"
   SetOutPath "$INSTDIR\settings"
   SetOverwrite try
-  File "xmmeec\settings\xmmeec.ini.txt"
+  File "xmmeec\settings\xmmeec.ini"
   SetOutPath "$INSTDIR"
   File "xmmeec\xmmeec.exe"
   File "xmmeec\licence.txt"
@@ -128,6 +129,7 @@ Section Uninstall
   Delete "$INSTDIR\languages\hu\xmmeec.po"
   Delete "$INSTDIR\languages\hu\xmmeec.mo"
   Delete "$INSTDIR\documents\authors.txt"
+  Delete "$INSTDIR\documents\changelog.txt"
   Delete "$INSTDIR\documents\install.txt"
   Delete "$INSTDIR\documents\readme.txt"
   Delete "$INSTDIR\documents\version.txt"
