@@ -115,7 +115,7 @@ begin
     writeln(iif,'temperature_max=',inttostr(spineditvalues[8,4]));
     for b:=0 to 23 do
     begin
-      s:='heaters_disable_';
+      s:='heater_disable_';
       if b<10 then s:=s+'0';
       s:=s+inttostr(b)+'='+b2c(checkgroupvalue[8,b]);
       writeln(iif,s);
