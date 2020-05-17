@@ -19,7 +19,7 @@
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="1"/>
       <RevisionNr Value="1"/>
-      <BuildNr Value="6"/>
+      <BuildNr Value="7"/>
       <StringTable Comments="Environment characteristic editor" CompanyName="Pozsar Zsolt" LegalCopyright="(C) 2019 Pozsar Zsolt" OriginalFilename="xmmeec" ProductName="XMMEEC" ProductVersion="0.1.1"/>
     </VersionInfo>
     <BuildModes Count="1">

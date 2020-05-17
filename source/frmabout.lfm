@@ -1757,10 +1757,10 @@ object Form2: TForm2
     Left = 24
     Height = 13
     Top = 64
-    Width = 120
+    Width = 152
     Anchors = [akLeft]
     BorderSpacing.Around = 16
-    Caption = '(C)2019 Pozsár Zsolt'
+    Caption = '(C)2019-2020 Pozsár Zsolt'
     ParentColor = False
   end
   object Label4: TLabel
