@@ -1,6 +1,6 @@
 { +--------------------------------------------------------------------------+ }
-{ | XMMEEC v0.1.1 * Environment characteristics editor                       | }
-{ | Copyright (C) 2019 Pozsár Zsolt <pozsar.zsolt@.szerafingomba.hu>         | }
+{ | XMMEEC v0.1.2 * Environment characteristics editor                       | }
+{ | Copyright (C) 2019-2020 Pozsár Zsolt <pozsar.zsolt@.szerafingomba.hu>    | }
 { | incsaveinifile.pas                                                       | }
 { | Save ini file                                                            | }
 { +--------------------------------------------------------------------------+ }
@@ -20,8 +20,8 @@ var
   s: string;
 const
   HEADER1='; +----------------------------------------------------------------------------+';
-  HEADER2='; | XMMEEC v0.1 * Environment characteristics editor                           |';
-  HEADER3='; | Copyright (C) 2019 Pozsár Zsolt <pozsar.zsolt@.szerafingomba.hu>           |';
+  HEADER2='; | XMMEEC v0.1.2 * Environment characteristics editor                         |';
+  HEADER3='; | Copyright (C) 2019-2020 Pozsár Zsolt <pozsar.zsolt@.szerafingomba.hu>      |';
   HEADER4='; | envir.ini                                                                  |';
   HEADER5='; | growing environment characteristics                                        |';
 

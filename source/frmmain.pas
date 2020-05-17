@@ -1,6 +1,6 @@
 { +--------------------------------------------------------------------------+ }
-{ | XMMEEC v0.1.1 * Environment characteristics editor                       | }
-{ | Copyright (C) 2019 Pozsár Zsolt <pozsar.zsolt@.szerafingomba.hu>         | }
+{ | XMMEEC v0.1.2 * Environment characteristics editor                       | }
+{ | Copyright (C) 2019-2020 Pozsár Zsolt <pozsar.zsolt@.szerafingomba.hu>    | }
 { | frmmain.pas                                                              | }
 { | Main form                                                                | }
 { +--------------------------------------------------------------------------+ }
@@ -284,6 +284,7 @@ procedure TForm1.MenuItem12Click(Sender: TObject);
 var
   b: byte;
 begin
+  if not saveinifile(userdir+TMPFILE) then ShowMessage(MESSAGE15);
   if not upload(userdir+TMPFILE,ComboBox1.Text) then
     MessageDlgPos(MESSAGE20,mtWarning,[mbOK],0,
       (Form1.Left+Form1.Left+Form1.Width) div 2,

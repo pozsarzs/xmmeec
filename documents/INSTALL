@@ -11,15 +11,20 @@ and remote path of environment characteristics files in mmeec.ini.
 (Search it /etc/ or /usr/local/etc/). If you haven't got root level
 access, copy this file to $HOME/.config/mmeec/ and edit it.
 
-  Do not forget to set write permission for envir.ini and its directory
-for mm3d or mm5d user!
+  Set group and write permission for envir.ini on controller device:
+
+  $ sudo chown root:mm3d /etc/mm3d/envir.ini
+  $ sudo chmod 664 /etc/mm3d/envir.ini
+                   or
+  $ sudo chown root:mm3d /usr/local/etc/mm3d/envir.ini
+  $ sudo chmod 664 /usr/local/etc/mm3d/envir.ini
 
 1. FreeBSD
 ~~~~~~~~~~
 a. From source package
 
    Build and install:
-   $ tar -xzf xmmeec-0.1.1.tar.gz
+   $ tar -xzf xmmeec-0.1.2.tar.gz
    $ ./configure
    $ make
    # make install
@@ -32,7 +37,7 @@ a. From source package
 a. From source package
 
    Build and install:
-   $ tar -xzf xmmeec-0.1.1.tar.gz
+   $ tar -xzf xmmeec-0.1.2.tar.gz
    $ ./configure
    $ make
    # make install
@@ -43,11 +48,11 @@ a. From source package
 b. From binary package
 
    Install:
-   # tar -xzf xmmeec-0.1.1-i586.tar.gz
+   # tar -xzf xmmeec-0.1.2-i586.tar.gz
    # cd xmmeec
    # ./create_links
             or
-   # tar -xzf xmmeec-0.1.1-i586.tar.gz
+   # tar -xzf xmmeec-0.1.2-i586.tar.gz
    # cd xmmeec
    # ./install
 
@@ -64,7 +69,7 @@ b. From binary package
 a. From source package
 
    Build and install:
-   > tar -xzf xmmeec-0.1.1.tar.gz
+   > tar -xzf xmmeec-0.1.2.tar.gz
    > build.bat
    > build.bat install
 
@@ -73,7 +78,7 @@ a. From source package
 
 c. From binary package
 
-   > unzip xmmeec-0.1.1-win32.zip
+   > unzip xmmeec-0.1.2-win32.zip
 
 ---------------------------------------------------------------------------------
- XMMEEC * Copyright (C) 2019 Pozsar Zsolt <pozsar.zsolt@szerafingomba.hu>
+ XMMEEC * Copyright (C) 2019-2020 Pozsar Zsolt <pozsar.zsolt@szerafingomba.hu>

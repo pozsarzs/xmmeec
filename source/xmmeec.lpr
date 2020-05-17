@@ -1,6 +1,6 @@
 { +--------------------------------------------------------------------------+ }
-{ | XMMEEC v0.1.1 * Environment characteristics editor                       | }
-{ | Copyright (C) 2019 Pozsár Zsolt <pozsar.zsolt@.szerafingomba.hu>         | }
+{ | XMMEEC v0.1.2 * Environment characteristics editor                       | }
+{ | Copyright (C) 2019-2020 Pozsár Zsolt <pozsar.zsolt@.szerafingomba.hu>    | }
 { | xmmeec.lpr                                                               | }
 { | Project file                                                             | }
 { +--------------------------------------------------------------------------+ }

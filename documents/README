@@ -10,20 +10,20 @@ XMMEEC -   Environment characteristics editor
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 a. Visit homepage (see later) to download installer packages:
 
-  FreeBSD:     xmmeec-0.1.1.txz
-               xmmeec-0.1.1-FreeBSD-Port.shar  port package
+  FreeBSD:     xmmeec-0.1.2.txz
+               xmmeec-0.1.2-FreeBSD-Port.shar  port package
 
-  Linux:       xmmeec_0.1.1-1_i386.deb         Debian GNU/Linux
-               xmmeec-0.1.1-i586-1.txz         Slackware
-               xmmeec-0.1.1-1.i386.rpm         Suse Linux
-               xmmeec-0.1.1-i586.bin           (linux-i586)
-               xmmeec-0.1.1-i586.tar.gz        (linux-i586)
+  Linux:       xmmeec_0.1.2-1_i386.deb         Debian GNU/Linux
+               xmmeec-0.1.2-i586-1.txz         Slackware
+               xmmeec-0.1.2-1.i386.rpm         Suse Linux
+               xmmeec-0.1.2-i586.bin           (linux-i586)
+               xmmeec-0.1.2-i586.tar.gz        (linux-i586)
 
-  Windows:     xmmeec-0.1.1-win32.exe
-               xmmeec-0.1.1-win32.msi
-               xmmeec-0.1.1-win32.zip
+  Windows:     xmmeec-0.1.2-win32.exe
+               xmmeec-0.1.2-win32.msi
+               xmmeec-0.1.2-win32.zip
 
-  source:      xmmeec-0.1.1.tar.gz
+  source:      xmmeec-0.1.2.tar.gz
 
 b. Download from Github
 
@@ -56,4 +56,4 @@ c. Download from Debian repository
                          Hungary
 
 ---------------------------------------------------------------------------------
- XMMEEC * Copyright (C) 2019 Pozsar Zsolt <pozsar.zsolt@szerafingomba.hu>
+ XMMEEC * Copyright (C) 2019-2020 Pozsar Zsolt <pozsar.zsolt@szerafingomba.hu>

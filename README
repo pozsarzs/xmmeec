@@ -2,10 +2,10 @@ Short information
 -----------------
 XMMEEC * Environment characteristics editor for remote MM3D and
    MM5D growing house controlling and remote monitoring units
-Copyright (C) 2019 Pozsár Zsolt <pozsar.zsolt@.szerafingomba.hu>
+Copyright (C) 2019-2020 Pozsár Zsolt <pozsar.zsolt@.szerafingomba.hu>
 - OS: FreeBSD, Linux, Windows
 - UI: GUI
-- Software version: v0.1.1
+- Software version: v0.1.2
 - Software licence: EUPL v1.1
 - Software language: en, hu
 - Documentation language: en
