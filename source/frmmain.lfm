@@ -1,10 +1,10 @@
 object Form1: TForm1
-  Left = 358
-  Height = 425
-  Top = 140
+  Left = 316
+  Height = 448
+  Top = 153
   Width = 560
   Caption = 'Form1'
-  ClientHeight = 404
+  ClientHeight = 425
   ClientWidth = 560
   Constraints.MinHeight = 425
   Constraints.MinWidth = 560
@@ -552,13 +552,13 @@ object Form1: TForm1
     AnchorSideTop.Side = asrBottom
     AnchorSideBottom.Control = Button1
     Left = 8
-    Height = 329
-    Top = 34
+    Height = 346
+    Top = 38
     Width = 200
     Anchors = [akTop, akLeft, akBottom]
     AutoExpand = True
     BorderSpacing.Around = 8
-    DefaultItemHeight = 16
+    DefaultItemHeight = 18
     HideSelection = False
     ReadOnly = True
     ScrollBars = ssAutoBoth
@@ -569,7 +569,7 @@ object Form1: TForm1
   object ToolBar1: TToolBar
     AnchorSideRight.Side = asrBottom
     Left = 0
-    Height = 26
+    Height = 30
     Top = 0
     Width = 560
     Caption = 'ToolBar1'
@@ -577,23 +577,11 @@ object Form1: TForm1
     ParentShowHint = False
     TabOrder = 0
     OnResize = ToolBar1Resize
-    object ToolButton5: TToolButton
-      Left = 47
-      Height = 22
-      Hint = 'uiohzukhjjkl'
-      Top = 2
-      Width = 8
-      Caption = 'ToolButton5'
-      ParentShowHint = False
-      ShowHint = True
-      Style = tbsSeparator
-    end
     object ComboBox1: TComboBox
-      AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Side = asrBottom
       Left = 55
       Height = 22
-      Hint = 'Path of remote ini file (user@host:filenamewithpath)'
+      Hint = 'Remote control device'
       Top = 2
       Width = 300
       AutoComplete = True
@@ -603,15 +591,15 @@ object Form1: TForm1
       OnChange = ComboBox1Change
       ParentShowHint = False
       ShowHint = True
-      Sorted = True
       TabOrder = 0
     end
     object SpeedButton1: TSpeedButton
       Left = 1
-      Height = 22
+      Height = 28
       Hint = 'Open ini file'
       Top = 2
       Width = 23
+      Align = alLeft
       Flat = True
       Glyph.Data = {
         36040000424D3604000000000000360000002800000010000000100000000100
@@ -655,10 +643,11 @@ object Form1: TForm1
     end
     object SpeedButton2: TSpeedButton
       Left = 24
-      Height = 22
+      Height = 28
       Hint = 'Save ini file'
       Top = 2
       Width = 23
+      Align = alLeft
       Flat = True
       Glyph.Data = {
         36040000424D3604000000000000360000002800000010000000100000000100
@@ -796,14 +785,27 @@ object Form1: TForm1
       ShowHint = True
       ParentShowHint = False
     end
+    object ToolButton5: TToolButton
+      Left = 47
+      Height = 22
+      Hint = 'uiohzukhjjkl'
+      Top = 2
+      Width = 8
+      Caption = 'ToolButton5'
+      ParentShowHint = False
+      ShowHint = True
+      Style = tbsSeparator
+    end
   end
   object Label2: TLabel
     AnchorSideLeft.Control = TreeView1
     AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = SpinEdit2
+    AnchorSideTop.Side = asrCenter
     Left = 216
-    Height = 13
-    Top = 64
-    Width = 37
+    Height = 15
+    Top = 70
+    Width = 43
     BorderSpacing.Left = 8
     Caption = 'Label2'
     ParentColor = False
@@ -812,10 +814,12 @@ object Form1: TForm1
   object Label3: TLabel
     AnchorSideLeft.Control = TreeView1
     AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = SpinEdit3
+    AnchorSideTop.Side = asrCenter
     Left = 216
-    Height = 13
-    Top = 88
-    Width = 37
+    Height = 15
+    Top = 97
+    Width = 43
     BorderSpacing.Left = 8
     Caption = 'Label3'
     ParentColor = False
@@ -824,10 +828,12 @@ object Form1: TForm1
   object Label4: TLabel
     AnchorSideLeft.Control = TreeView1
     AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = SpinEdit4
+    AnchorSideTop.Side = asrCenter
     Left = 216
-    Height = 13
-    Top = 112
-    Width = 37
+    Height = 15
+    Top = 124
+    Width = 43
     BorderSpacing.Left = 8
     Caption = 'Label4'
     ParentColor = False
@@ -841,8 +847,8 @@ object Form1: TForm1
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     Left = 472
-    Height = 23
-    Top = 59
+    Height = 25
+    Top = 65
     Width = 80
     Anchors = [akTop, akRight]
     BorderSpacing.Left = 140
@@ -859,8 +865,8 @@ object Form1: TForm1
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     Left = 472
-    Height = 23
-    Top = 84
+    Height = 25
+    Top = 92
     Width = 80
     Anchors = [akTop, akRight]
     BorderSpacing.Left = 140
@@ -877,8 +883,8 @@ object Form1: TForm1
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     Left = 472
-    Height = 23
-    Top = 109
+    Height = 25
+    Top = 119
     Width = 80
     Anchors = [akTop, akRight]
     BorderSpacing.Left = 140
@@ -895,8 +901,8 @@ object Form1: TForm1
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     Left = 472
-    Height = 23
-    Top = 34
+    Height = 25
+    Top = 38
     Width = 80
     Anchors = [akTop, akRight]
     BorderSpacing.Left = 140
@@ -914,8 +920,8 @@ object Form1: TForm1
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
     Left = 216
-    Height = 263
-    Top = 133
+    Height = 273
+    Top = 144
     Width = 336
     Anchors = [akTop, akLeft, akRight, akBottom]
     AutoFill = True
@@ -937,10 +943,12 @@ object Form1: TForm1
     Visible = False
   end
   object Label1: TLabel
+    AnchorSideTop.Control = SpinEdit1
+    AnchorSideTop.Side = asrCenter
     Left = 216
-    Height = 13
-    Top = 40
-    Width = 37
+    Height = 15
+    Top = 43
+    Width = 43
     Caption = 'Label1'
     ParentColor = False
     Visible = False
@@ -951,7 +959,7 @@ object Form1: TForm1
     AnchorSideBottom.Side = asrBottom
     Left = 8
     Height = 25
-    Top = 371
+    Top = 392
     Width = 200
     Anchors = [akLeft, akBottom]
     BorderSpacing.Around = 8

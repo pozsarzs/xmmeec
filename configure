@@ -2062,8 +2062,8 @@ else
 fi
 
 version=`cat documents/VERSION`
-os=`ppc386 -iSO`
-architecture=`ppc386 -iSP`
+os=`fpc -iSO`
+architecture=`fpc -iSP`
 
 mandir="$prefix/man"
 test "$os" = "linux" && mandir="$datarootdir/man"

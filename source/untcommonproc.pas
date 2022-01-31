@@ -1,6 +1,6 @@
 { +--------------------------------------------------------------------------+ }
-{ | XMMEEC v0.1.2 * Environment characteristics editor                       | }
-{ | Copyright (C) 2019-2020 Pozsár Zsolt <pozsar.zsolt@.szerafingomba.hu>    | }
+{ | XMMEEC v0.2 * Environment characteristic editor                          | }
+{ | Copyright (C) 2019-2022 Pozsár Zsolt <pozsar.zsolt@szerafingomba.hu>     | }
 { | untcommonproc.pas                                                        | }
 { | Common functions and procedures                                          | }
 { +--------------------------------------------------------------------------+ }
@@ -24,13 +24,17 @@ uses
  {$IFDEF WIN32}Windows,{$ENDIF}
   dos;
 var
+  dev_chan:   array[1..32] of byte;
+  dev_name:   array[1..32] of string;
+  dev_port:   array[1..32] of integer;
+  dev_type:   array[1..32] of string;
+  dev_user:   array[1..32] of string;
   exepath, p: shortstring;
-  lang: string[2];
-  pathremotefiles: array[0..15] of string;
-  scp: string;
-  ssh: string;
-  s: string;
-  userdir: string;
+  lang:       string[2];
+  scp:        string;
+  ssh:        string;
+  s:          string;
+  userdir:    string;
 {$IFDEF WIN32}
 const
   CSIDL_PROFILE=40;
@@ -67,8 +71,8 @@ end;
 function getlang: string;
 {$IFDEF WIN32}
 var
-  buffer : pchar;
-  size : integer;
+  buffer: pchar;
+  size:   integer;
 {$ENDIF}
 begin
  {$IFDEF UNIX}
@@ -92,7 +96,7 @@ end;
 // load condfiguration file
 function loadconfig(filename: string): boolean;
 var
-  b: byte;
+  b:   byte;
   iif: TINIFile;
 begin
   iif:=TIniFile.Create(filename);
@@ -100,8 +104,14 @@ begin
   try
     scp:=iif.ReadString('programs','scp','/usr/bin/scp');
     ssh:=iif.ReadString('programs','ssh','/usr/bin/ssh');
-    for b:=0 to 15 do
-      pathremotefiles[b]:=iif.ReadString('remotefiles','file'+inttostr(b),'');
+    for b:=1 to 32 do
+    begin
+      dev_chan[b]:=iif.ReadInteger('device-'+inttostr(b),'chan',0);
+      dev_name[b]:=iif.ReadString('device-'+inttostr(b),'name','');
+      dev_port[b]:=iif.ReadInteger('device-'+inttostr(b),'port',22);
+      dev_type[b]:=iif.ReadString('device-'+inttostr(b),'type','');
+      dev_user[b]:=iif.ReadString('device-'+inttostr(b),'user','');
+    end;
   except
     loadconfig:=false;
   end;

@@ -1,0 +1,27 @@
+ XMMEEC (0.2) unstable; urgency=low
+
+  * New file transfer procedure.
+  * Some bugfix.
+
+ -- Pozsár Zsolt <pozsar.zsolt@szerafingomba.hu>  Mon, 31 Jan 2022 00:00:00
+
+
+ XMMEEC (0.1.2) unstable; urgency=low
+
+  * Some bugfix.
+
+ -- Pozsár Zsolt <pozsar.zsolt@szerafingomba.hu>  Sun, 17 May 2020 00:00:00
+
+
+ XMMEEC (0.1.1) unstable; urgency=low
+
+  * Some bugfix.
+
+ -- Pozsár Zsolt <pozsar.zsolt@szerafingomba.hu>  Sat, 21 Dec 2019 00:00:00
+
+
+ XMMEEC (0.1) unstable; urgency=low
+
+  * Initial release.
+
+ -- Pozsar Zsolt <pozsar.zsolt@szerafingomba.hu>  Mon, 02 Dec 2019 08:28:00

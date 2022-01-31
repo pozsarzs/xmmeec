@@ -157,8 +157,33 @@ msgstr ""
 msgid "&Apply"
 msgstr ""
 
+#: tform1.caption
+msgid "Form1"
+msgstr ""
+
+#: tform1.checkgroup1.caption
+msgid "CheckGroup1"
+msgstr ""
+
 #: tform1.combobox1.hint
-msgid "Path of remote ini file (user@host:filenamewithpath)"
+msgid "Remote control device"
+msgstr ""
+
+#: tform1.label1.caption
+msgctxt "TFORM1.LABEL1.CAPTION"
+msgid "Label1"
+msgstr ""
+
+#: tform1.label2.caption
+msgid "Label2"
+msgstr ""
+
+#: tform1.label3.caption
+msgid "Label3"
+msgstr ""
+
+#: tform1.label4.caption
+msgid "Label4"
 msgstr ""
 
 #: tform1.menuitem1.caption
@@ -189,12 +214,22 @@ msgstr ""
 msgid "&Clear"
 msgstr ""
 
+#: tform1.menuitem3.caption
+msgctxt "tform1.menuitem3.caption"
+msgid "-"
+msgstr ""
+
 #: tform1.menuitem4.caption
 msgid "&Open..."
 msgstr ""
 
 #: tform1.menuitem5.caption
 msgid "&Save..."
+msgstr ""
+
+#: tform1.menuitem7.caption
+msgctxt "TFORM1.MENUITEM7.CAPTION"
+msgid "-"
 msgstr ""
 
 #: tform1.menuitem8.caption
@@ -221,6 +256,18 @@ msgstr ""
 msgid "Upload ini file"
 msgstr ""
 
+#: tform1.toolbar1.caption
+msgid "ToolBar1"
+msgstr ""
+
+#: tform1.toolbutton5.caption
+msgid "ToolButton5"
+msgstr ""
+
+#: tform1.toolbutton5.hint
+msgid "uiohzukhjjkl"
+msgstr ""
+
 #: tform2.button1.caption
 msgid "&Close"
 msgstr ""
@@ -239,7 +286,7 @@ msgid "Remote environment characteristic editor"
 msgstr ""
 
 #: tform2.label3.caption
-msgid "(C)2019 Pozsár Zsolt"
+msgid "(C)2019-2022 Pozsár Zsolt"
 msgstr ""
 
 #: tform2.label4.caption

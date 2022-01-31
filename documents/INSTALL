@@ -1,43 +1,24 @@
 Installation instruction for source and binary tar.gz package
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
    XMMEEC needs 'ssh' and 'scp' commands to work. Install an ssh-client
-before install MMEEC and create keypairs to easy login to remote units:
+before install this software. After create keypairs to easy login to remote units:
 
    $ ssh-keygen
-   $ ssh-copy-id -i ~/.ssh/id_rsa.pub remoteunit1.lan
+   $ ssh-copy-id -i ~/.ssh/id_rsa.pub user@remoteunit1
 
-   After installation procedures, set path of 'ssh' and 'scp' commands,
-and remote path of environment characteristics files in mmeec.ini.
-(Search it /etc/ or /usr/local/etc/). If you haven't got root level
-access, copy this file to $HOME/.config/mmeec/ and edit it.
+   After installation procedures, edit xmmeec.ini configuration file in
+/etc/ or /usr/local/etc/ directory. If you haven't got root level
+access, copy this file to $HOME/.config/xmmeec/ and edit it.
 
-  Set group and write permission for envir.ini on controller device:
+  XMMEC needs XMMEEC-remote software, install this to remote control devices.
 
-  $ sudo chown root:mm3d /etc/mm3d/envir.ini
-  $ sudo chmod 664 /etc/mm3d/envir.ini
-                   or
-  $ sudo chown root:mm3d /usr/local/etc/mm3d/envir.ini
-  $ sudo chmod 664 /usr/local/etc/mm3d/envir.ini
 
-1. FreeBSD
-~~~~~~~~~~
-a. From source package
-
-   Build and install:
-   $ tar -xzf xmmeec-0.1.2.tar.gz
-   $ ./configure
-   $ make
-   # make install
-
-   Remove:
-   # make uninstall
-
-2. Linux
+1. Linux
 ~~~~~~~~
 a. From source package
 
    Build and install:
-   $ tar -xzf xmmeec-0.1.2.tar.gz
+   $ tar -xzf xmmeec-0.2.tar.gz
    $ ./configure
    $ make
    # make install
@@ -48,11 +29,11 @@ a. From source package
 b. From binary package
 
    Install:
-   # tar -xzf xmmeec-0.1.2-i586.tar.gz
+   # tar -xzf xmmeec-0.2-i586.tar.gz
    # cd xmmeec
    # ./create_links
             or
-   # tar -xzf xmmeec-0.1.2-i586.tar.gz
+   # tar -xzf xmmeec-0.2-i586.tar.gz
    # cd xmmeec
    # ./install
 
@@ -69,7 +50,7 @@ b. From binary package
 a. From source package
 
    Build and install:
-   > tar -xzf xmmeec-0.1.2.tar.gz
+   > tar -xzf xmmeec-0.2.tar.gz
    > build.bat
    > build.bat install
 
@@ -78,7 +59,7 @@ a. From source package
 
 c. From binary package
 
-   > unzip xmmeec-0.1.2-win32.zip
+   > unzip xmmeec-0.2-win32.zip
 
----------------------------------------------------------------------------------
- XMMEEC * Copyright (C) 2019-2020 Pozsar Zsolt <pozsar.zsolt@szerafingomba.hu>
+-------------------------------------------------------------------------------
+ XMMEEC * Copyright (C) 2019-2022 Pozsár Zsolt <pozsar.zsolt@szerafingomba.hu>

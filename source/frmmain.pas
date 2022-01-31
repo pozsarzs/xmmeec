@@ -1,6 +1,6 @@
 { +--------------------------------------------------------------------------+ }
-{ | XMMEEC v0.1.2 * Environment characteristics editor                       | }
-{ | Copyright (C) 2019-2020 Pozsár Zsolt <pozsar.zsolt@.szerafingomba.hu>    | }
+{ | XMMEEC v0.2 * Environment characteristic editor                          | }
+{ | Copyright (C) 2019-2022 Pozsár Zsolt <pozsar.zsolt@szerafingomba.hu>     | }
 { | frmmain.pas                                                              | }
 { | Main form                                                                | }
 { +--------------------------------------------------------------------------+ }
@@ -263,7 +263,7 @@ procedure TForm1.MenuItem11Click(Sender: TObject);
 var
   b: byte;
 begin
-  if download(ComboBox1.Text,userdir+TMPFILE) then
+  if download(ComboBox1.ItemIndex,userdir+TMPFILE) then
   begin
     loadinifile(userdir+TMPFILE);
     TreeView1.Items.Item[1].Selected:=true;
@@ -285,7 +285,7 @@ var
   b: byte;
 begin
   if not saveinifile(userdir+TMPFILE) then ShowMessage(MESSAGE15);
-  if not upload(userdir+TMPFILE,ComboBox1.Text) then
+  if not upload(ComboBox1.ItemIndex,userdir+TMPFILE) then
     MessageDlgPos(MESSAGE20,mtWarning,[mbOK],0,
       (Form1.Left+Form1.Left+Form1.Width) div 2,
       (Form1.Top+Form1.Top+Form1.Height) div 2);
@@ -390,7 +390,7 @@ begin
   getlang;
   getexepath;
   deletefile(userdir+TMPFILE);
-  Form1.Caption:=APPNAME+' v.'+VERSION;
+  Form1.Caption:=APPNAME+' v'+VERSION;
   // load configuration
   {$IFDEF UseFHS}
     cfgfile:=instpath+'etc/xmmeec.ini';
@@ -469,9 +469,14 @@ begin
   TreeView1.Items.Item[1].Selected:=true;
   // fill combobox
   ComboBox1.Clear;
-  for b:=0 to 15 do
-   if length(pathremotefiles[b])>0 then
-     ComboBox1.Items.Add(pathremotefiles[b]);
+  for b:=1 to 32 do
+   if length(dev_name[b])>0 then
+     ComboBox1.Items.Add(dev_name[b]+' ('+dev_user[b]+':'+inttostr(dev_port[b])+')');
+  if ComboBox1.Items.Count>0 then
+  begin
+    ComboBox1.ItemIndex:=0;
+    ComboBox1Change(Sender);
+  end;
 end;
 
 end.

@@ -1,6 +1,6 @@
 { +--------------------------------------------------------------------------+ }
-{ | XMMEEC v0.1.2 * Environment characteristics editor                       | }
-{ | Copyright (C) 2019-2020 Pozsár Zsolt <pozsar.zsolt@.szerafingomba.hu>    | }
+{ | XMMEEC v0.2 * Environment characteristic editor                          | }
+{ | Copyright (C) 2019-2022 Pozsár Zsolt <pozsar.zsolt@szerafingomba.hu>     | }
 { | incsavetxtfile.pas                                                       | }
 { | Save txt file                                                            | }
 { +--------------------------------------------------------------------------+ }

@@ -2,8 +2,8 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "XMMEEC"
-!define PRODUCT_VERSION "0.1.2"
-!define PRODUCT_PUBLISHER "Pozsar Zsolt"
+!define PRODUCT_VERSION "0.2"
+!define PRODUCT_PUBLISHER "Pozsár Zsolt"
 !define PRODUCT_WEB_SITE "http://www.szerafingomba.hu/softwares/"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\xmmeec.exe"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
@@ -49,7 +49,7 @@ LicenseLangString MUILicense ${LANG_HUNGARIAN} "xmmeec\licence.txt"
 ; MUI end ------
 
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
-OutFile "xmmeec-0.1.2-win32.exe"
+OutFile "xmmeec-0.2-win32.exe"
 InstallDir "$PROGRAMFILES\XMMEEC"
 InstallDirRegKey HKLM "${PRODUCT_DIR_REGKEY}" ""
 ShowInstDetails show
@@ -64,6 +64,7 @@ Section "Main files" SEC01
   SetOverwrite try
   File "xmmeec\documents\authors.txt"
   File "xmmeec\documents\changelog.txt"
+  File "xmmeec\documents\copyright.txt"
   File "xmmeec\documents\install.txt"
   File "xmmeec\documents\readme.txt"
   File "xmmeec\documents\version.txt"

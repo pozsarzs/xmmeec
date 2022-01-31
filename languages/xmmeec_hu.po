@@ -158,8 +158,8 @@ msgid "&Apply"
 msgstr "&Alkalmaz"
 
 #: tform1.combobox1.hint
-msgid "Path of remote ini file (user@host:filenamewithpath)"
-msgstr "Távoli fájl elérési útja (felhasználó@kiszolgáló:fájlnév_az_elérési_úttal)"
+msgid "Remote control device"
+msgstr "Távoli vezérlőberendezés"
 
 #: tform1.menuitem1.caption
 msgid "&File"
@@ -237,12 +237,3 @@ msgstr "Névjegy"
 msgctxt "TFORM2.LABEL2.CAPTION"
 msgid "Remote environment characteristic editor"
 msgstr "Környezeti paraméter szerkesztő"
-
-#: tform2.label3.caption
-msgctxt "TFORM2.LABEL3.CAPTION"
-msgid "(C)2019 Pozsár Zsolt"
-msgstr "(C)2019 Pozsar Zsolt"
-
-#: tform2.label4.caption
-msgid "Web: http://www.szerafingomba.hu/softwares/"
-msgstr "Web: http://www.szerafingomba.hu/softwares/"

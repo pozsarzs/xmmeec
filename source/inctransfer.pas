@@ -1,6 +1,6 @@
 { +--------------------------------------------------------------------------+ }
-{ | XMMEEC v0.1.2 * Environment characteristics editor                       | }
-{ | Copyright (C) 2019-2020 Pozsár Zsolt <pozsar.zsolt@.szerafingomba.hu>    | }
+{ | XMMEEC v0.2 * Environment characteristic editor                          | }
+{ | Copyright (C) 2019-2022 Pozsár Zsolt <pozsar.zsolt@szerafingomba.hu>     | }
 { | inctransfer.pas                                                          | }
 { | File transfer                                                            | }
 { +--------------------------------------------------------------------------+ }
@@ -13,56 +13,84 @@
 // FOR A PARTICULAR PURPOSE.
 
 // download a file from remote unit
-function download(remotefile, localfile: string): boolean;
+function download(num: integer; localfile: string): boolean;
 var
   Process1: TProcess;
 begin
   download:=true;
   Process1:=TProcess.Create(nil);
+  Process1.Executable:=ssh;
+  Process1.Parameters.Clear;
+  Process1.Parameters.Add('-q');
+  Process1.Parameters.Add('-p '+inttostr(dev_port[num+1]));
+  Process1.Parameters.Add(dev_user[num+1]);
+  if dev_chan[num+1]=0
+  then
+    Process1.Parameters.Add('xmmeec-download '+dev_type[num+1])
+  else
+    Process1.Parameters.Add('xmmeec-download '+dev_type[num+1]+' '+inttostr(dev_chan[num+1]));
+  Process1.Options:=[poWaitOnExit];
+  try
+    Process1.Execute;
+  except
+    download:=false;
+    Process1.Free;
+    exit;
+  end;
+  if Process1.ExitStatus<>0 then
+  begin
+    download:=false;
+    Process1.Free;
+    exit;
+  end;
+  Process1.Free;
+  Process1:=TProcess.Create(nil);
   Process1.Executable:=scp;
   Process1.Parameters.Add('-B');
   Process1.Parameters.Add('-q');
-  Process1.Parameters.Add(remotefile);
+  Process1.Parameters.Add('-P '+inttostr(dev_port[num+1]));
+  if dev_chan[num+1]=0
+  then
+    Process1.Parameters.Add(dev_user[num+1]+':/tmp/etc/envir.ini')
+  else
+    Process1.Parameters.Add(dev_user[num+1]+':/tmp/etc/envir-ch'+inttostr(dev_chan[num+1])+'.ini');
   Process1.Parameters.Add(localfile);
   Process1.Options:=[poWaitOnExit];
   try
     Process1.Execute;
   except
     download:=false;
+    Process1.Free;
+    exit;
   end;
   if Process1.ExitStatus<>0 then download:=false;
   Process1.Free;
 end;
 
 // upload a file to remote unit
-function upload(localfile, remotefile: string): boolean;
+function upload(num: integer; localfile: string): boolean;
 var
   Process2: TProcess;
-
-  function extractusername(rfn: string): string;
-  var
-    un: string;
-    bb: byte;
-  begin
-    un:='';
-    for bb:=1 to length(rfn) do
-      if rfn[bb]<>':' then un:=un+rfn[bb] else break;
-    extractusername:=un;
-  end;
-
 begin
   upload:=true;
   Process2:=TProcess.Create(nil);
   Process2.Executable:=scp;
   Process2.Parameters.Add('-B');
   Process2.Parameters.Add('-q');
+  Process2.Parameters.Add('-P '+inttostr(dev_port[num+1]));
   Process2.Parameters.Add(localfile);
-  Process2.Parameters.Add(remotefile);
+  if dev_chan[num+1]=0
+  then
+    Process2.Parameters.Add(dev_user[num+1]+':/tmp/etc/envir.ini')
+  else
+    Process2.Parameters.Add(dev_user[num+1]+':/tmp/etc/envir-ch'+inttostr(dev_chan[num+1])+'.ini');
   Process2.Options:=[poWaitOnExit];
   try
     Process2.Execute;
   except
     upload:=false;
+    Process2.Free;
+    exit;
   end;
   if Process2.ExitStatus<>0 then
   begin
@@ -75,21 +103,13 @@ begin
   Process2.Executable:=ssh;
   Process2.Parameters.Clear;
   Process2.Parameters.Add('-q');
-  Process2.Parameters.Add(extractusername(remotefile));
-  Process2.Parameters.Add('mm3d-stopdaemon');
-  Process2.Options:=[poWaitOnExit];
-  try
-    Process2.Execute;
-  except
-    upload:=false;
-  end;
-  Process2.Free;
-  Process2:=TProcess.Create(nil);
-  Process2.Executable:=ssh;
-  Process2.Parameters.Clear;
-  Process2.Parameters.Add('-q');
-  Process2.Parameters.Add(extractusername(remotefile));
-  Process2.Parameters.Add('mm3d-startdaemon');
+  Process2.Parameters.Add('-p '+inttostr(dev_port[num+1]));
+  Process2.Parameters.Add(dev_user[num+1]);
+  if dev_chan[num+1]=0
+  then
+    Process2.Parameters.Add('xmmeec-upload '+dev_type[num+1])
+  else
+    Process2.Parameters.Add('xmmeec-upload '+dev_type[num+1]+' '+inttostr(dev_chan[num+1]));
   Process2.Options:=[poWaitOnExit];
   try
     Process2.Execute;

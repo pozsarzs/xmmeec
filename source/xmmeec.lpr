@@ -1,6 +1,6 @@
 { +--------------------------------------------------------------------------+ }
-{ | XMMEEC v0.1.2 * Environment characteristics editor                       | }
-{ | Copyright (C) 2019-2020 Pozsár Zsolt <pozsar.zsolt@.szerafingomba.hu>    | }
+{ | XMMEEC v0.2 * Environment characteristic editor                          | }
+{ | Copyright (C) 2019-2022 Pozsár Zsolt <pozsar.zsolt@szerafingomba.hu>     | }
 { | xmmeec.lpr                                                               | }
 { | Project file                                                             | }
 { +--------------------------------------------------------------------------+ }
@@ -86,7 +86,7 @@ begin
  {$ENDIF}
  {$IFDEF WIN32}
   s:=APPNAME+' v'+VERSION+#13+#10+#13+#10;
-  s:=s+'This was compiled at '+{$I %TIME%}+' on '+{$I %DATE%}+' by '+{$I %USERNAME%}+'.'+#13+#10+#13+#10;
+  s:=s+'This application was compiled at '+{$I %TIME%}+' on '+{$I %DATE%}+' by '+{$I %USERNAME%}+'.'+#13+#10+#13+#10;
   s:=s+'FPC version: '+{$I %FPCVERSION%}+#13+#10;
   s:=s+'Target OS:   '+{$I %FPCTARGETOS%}+#13+#10;
   s:=s+'Target CPU:  '+{$I %FPCTARGETCPU%};

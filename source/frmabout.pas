@@ -1,6 +1,6 @@
 { +--------------------------------------------------------------------------+ }
-{ | XMMEEC v0.1.2 * Environment characteristics editor                       | }
-{ | Copyright (C) 2019-2020 Pozsár Zsolt <pozsar.zsolt@.szerafingomba.hu>    | }
+{ | XMMEEC v0.2 * Environment characteristic editor                          | }
+{ | Copyright (C) 2019-2022 Pozsár Zsolt <pozsar.zsolt@szerafingomba.hu>     | }
 { | frmabout.pas                                                             | }
 { | About form                                                               | }
 { +--------------------------------------------------------------------------+ }
@@ -53,7 +53,7 @@ implementation
 
 procedure TForm2.FormCreate(Sender: TObject);
 begin
-  Label1.Caption:=APPNAME+' v.'+VERSION
+  Label1.Caption:=APPNAME+' v'+VERSION
 end;
 
 end.

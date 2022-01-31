@@ -1,20 +1,21 @@
 @echo off
 rem ----------------------------------------------------------------------------
-rem  XMMEEC v0.1.2 * Environment characteristics editor
-rem  Copyright (C) 2019-2020 Pozsár Zsolt <pozsar.zsolt@.szerafingomba.hu>
+rem  XMMEEC v0.2 * Environment characteristic editor
+rem  Copyright (C) 2019-2020 Pozsár Zsolt pozsar.zsolt@szerafingomba.hu
 rem  build.bat
 rem  Utility for build/install/uninstall application on Windows
 rem ----------------------------------------------------------------------------
 
-set PPC=c:\lazarus\fpc\3.0.4\bin\i386-win32\ppc386.exe
+set PPC=c:\lazarus\fpc\3.0.4\bin\i386-win32\fpc.exe
 set LAZ=c:\lazarus\
-set NAME=xmmeec
+set NAME1=xmmeec
+set NAME2=XMMEEC
 set /p VERSION=<documents\VERSION
 set OS=win32
 set ARCH=i386
 
 rem - check parameters
-echo %NAME% v%VERSION% - builder/installer utility
+echo %NAME2% v%VERSION% - builder/installer utility
 if "%~1" == "" goto build
 if "%~1" == "clean" goto clean
 if "%~1" == "install" goto install
@@ -47,7 +48,7 @@ cd source
 echo Compiling source code...
 copy config.pas.in config.pas
 echo.
-%PPC% %FPFLAG1% %FPFLAG2% %FPFLAG3% %FPFLAG4% xmmeec.lpr
+%PPC% %FPFLAG1% %FPFLAG2% %FPFLAG3% %FPFLAG4% %NAME1%.lpr
 echo.
 if errorlevel 0 echo Run 'build.bat install' to install application.
 cd ..
@@ -68,10 +69,10 @@ set ANSWER=
 set /p "ANSWER=Enter target folder or leave empty to use default and press Enter: "
 if not "%ANSWER%"=="" set INSTDIR=%ANSWER%
 if not exist "%INSTDIR%" ( echo Error: target directory not found! & goto end )
-set INSTDIR=%INSTDIR%\%NAME%
+set INSTDIR=%INSTDIR%\%NAME1%
 echo Selected target folder: %INSTDIR%
 echo %INSTDIR% > install.log
-if not exist "source\lib\%ARCH%-%OS%\xmmeec.exe" ( echo Error: firstly run "build.bat" to compile source code! & goto end )
+if not exist "source\lib\%ARCH%-%OS%\%NAME1%.exe" ( echo Error: firstly run "build.bat" to compile source code! & goto end )
 echo Installing application...
 md "%INSTDIR%"
 if not errorlevel 0 ( echo Error: cannot install application! & goto end )
@@ -81,13 +82,13 @@ del /q "%INSTDIR%\documents\Makefile"
 md "%INSTDIR%\languages"
 copy /y languages\*.pot "%INSTDIR%\languages\"
 md "%INSTDIR%\languages\hu"
-copy /y languages\%NAME%_hu.mo "%INSTDIR%\languages\hu\%NAME%.mo"
+copy /y languages\%NAME1%_hu.mo "%INSTDIR%\languages\hu\%NAME1%.mo"
 md "%INSTDIR%\settings"
 copy /y settings\*.* "%INSTDIR%\settings\"
 del /q "%INSTDIR%\settings\Makefile"
 copy /y README*.* "%INSTDIR%\"
 copy /y source\lib\%ARCH%-%OS%\*.exe "%INSTDIR%\"
-config\mkshortcut.vbs /target:"%INSTDIR%\%NAME%.exe" /shortcut:"%USERPROFILE%\desktop\XMMEEC"
+config\mkshortcut.vbs /target:"%INSTDIR%\%NAME1%.exe" /shortcut:"%USERPROFILE%\desktop\%NAME2%"
 echo.
 echo Run 'build.bat uninstall' if you remove this application.
 goto end
@@ -100,7 +101,7 @@ echo Check application's folder: %INSTDIR%
 if not exist "%INSTDIR%" ( echo Error: bad folder name in install.log file, cannot uninstall application! & goto end )
 echo Removing application...
 rd /s "%INSTDIR%"
-del /q "%USERPROFILE%\desktop\XMMEEC.lnk"
+del /q "%USERPROFILE%\desktop\%NAME2%.lnk"
 goto end
 
 :end

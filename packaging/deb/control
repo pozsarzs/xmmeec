@@ -1,12 +1,12 @@
 Package: xmmeec
-Version: 0.1.2
+Version: 0.2
 Section: misc
 Priority: extra
 Architecture: i386
 Installed-Size: 4200 kB
 Maintainer: Pozsar Zsolt <pozsar.zsolt@szerafingomba.hu>
 Depends: libc6, libglib2.0-0, libgtk2.0-0, openssh-client
-Description: Environment characteristics editor
- It is an remote editor for environment characteristics
- configuration file of MM3D (>v0.3) and MM5D growing
- house controllers.
+Description: Environment characteristic editor
+ It is an remote editor for environment characteristic
+ configuration of MM3D (>v0.3), MM5D and MM8D growing
+ house controller devices.
