@@ -74,7 +74,7 @@ Section "Main files" SEC01
   SetOutPath "$INSTDIR"
   File "xmmeec\xmmeec.exe"
   File "xmmeec\licence.txt"
-  File "xmmeec\readme.txt"
+  File "xmmeec\readme.md"
   CreateShortCut "$DESKTOP\XMMEEC.lnk" "$INSTDIR\xmmeec.exe"
   CreateDirectory "$SMPROGRAMS\XMMEEC"
   CreateShortCut "$SMPROGRAMS\XMMEEC\XMMEEC.lnk" "$INSTDIR\xmmeec.exe"
@@ -122,7 +122,7 @@ SectionEnd
 
 Section Uninstall
   Delete "$INSTDIR\uninst.exe"
-  Delete "$INSTDIR\readme.txt"
+  Delete "$INSTDIR\readme.md"
   Delete "$INSTDIR\licence.txt"
   Delete "$INSTDIR\xmmeec.exe"
   Delete "$INSTDIR\settings\xmmeec.ini"
