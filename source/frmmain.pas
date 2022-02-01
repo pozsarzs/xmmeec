@@ -32,8 +32,8 @@ uses
   Spin,
   StdCtrls,
   SysUtils,
-  frmabout,
   dos,
+  frmabout,
   untcommonproc;
 type
   { TForm1 }
@@ -398,7 +398,7 @@ begin
   {$ELSE}
     cfgfile:=exepath+'settings/xmmeec.ini';
   {$ENDIF}
-  if fsearch('xmmeec.ini',userdir+DIR_CONFIG)<>''
+  if FSearch('xmmeec.ini',userdir+DIR_CONFIG)<>''
     then cfgfile:=userdir+DIR_CONFIG+'xmmeec.ini';
   loadconfig(cfgfile);
   // make tree

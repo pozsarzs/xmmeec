@@ -1,0 +1,11 @@
+b27160e30a52ee6a76fb9b130403b472  etc/xmmeec.ini
+281d474b56fb1cb9f5bc0505c728cac7  usr/bin/xmmeec
+e6a81310d2c4f42254b330c37f90c07e  usr/share/applications/xmmeec.desktop
+4994f4cacf022e01ffda29f5627f7ab5  usr/share/doc/xmmeec/AUTHORS
+23f97a6ad59e081fd32d3ef64c6904a7  usr/share/doc/xmmeec/changelog.gz
+319d80ebf0d5fc4aea12f82c183f1d13  usr/share/doc/xmmeec/copyright
+337beabd5f044e77f06b8a474aa45629  usr/share/doc/xmmeec/README
+41cf1884673a8ad6f57cff3abca53ee2  usr/share/doc/xmmeec/VERSION
+1476b3a44df4d18a4019a45b654e27e3  usr/share/locale/hu/LC_MESSAGES/xmmeec.mo
+ee50b638805d7efc396ad7045ef54181  usr/share/man/man1/xmmeec.1.gz
+a0f8d366ec9bae051a22da0264dd45f3  usr/share/pixmaps/xmmeec.xpm
