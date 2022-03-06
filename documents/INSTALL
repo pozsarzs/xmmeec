@@ -18,7 +18,7 @@ access, copy this file to $HOME/.config/xmmeec/ and edit it.
 a. From source package
 
    Build and install:
-   $ tar -xzf xmmeec-0.2.tar.gz
+   $ tar -xzf xmmeec-0.3.tar.gz
    $ ./configure
    $ make
    # make install
@@ -29,11 +29,11 @@ a. From source package
 b. From binary package
 
    Install:
-   # tar -xzf xmmeec-0.2-i586.tar.gz
+   # tar -xzf xmmeec-0.3-i586.tar.gz
    # cd xmmeec
    # ./create_links
             or
-   # tar -xzf xmmeec-0.2-i586.tar.gz
+   # tar -xzf xmmeec-0.3-i586.tar.gz
    # cd xmmeec
    # ./install
 
@@ -50,7 +50,7 @@ b. From binary package
 a. From source package
 
    Build and install:
-   > tar -xzf xmmeec-0.2.tar.gz
+   > tar -xzf xmmeec-0.3.tar.gz
    > build.bat
    > build.bat install
 
@@ -59,7 +59,7 @@ a. From source package
 
 c. From binary package
 
-   > unzip xmmeec-0.2-win32.zip
+   > unzip xmmeec-0.3-win32.zip
 
 -------------------------------------------------------------------------------
  XMMEEC * Copyright (C) 2019-2022 Pozsár Zsolt <pozsar.zsolt@szerafingomba.hu>

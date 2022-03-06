@@ -1,5 +1,5 @@
 # +----------------------------------------------------------------------------+
-# | XMMEEC v0.2 * Environment characteristic editor                            |
+# | XMMEEC v0.3 * Environment characteristic editor                            |
 # | Copyright (C) 2019-2022 Pozsár Zsolt <pozsar.zsolt@szerafingomba.hu>       |
 # | Makefile                                                                   |
 # | Make file for source code                                                  |

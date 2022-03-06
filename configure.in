@@ -1,5 +1,5 @@
 dnl +--------------------------------------------------------------------------+
-dnl | XMMEEC v0.2 * Environment characteristic editor                          |
+dnl | XMMEEC v0.3 * Environment characteristic editor for MMxD devices         |
 dnl | Copyright (C) 2019-2022 Pozsár Zsolt <pozsar.zsolt@szerafingomba.hu>     |
 dnl | configure.in                                                             |
 dnl | Autoconf input file for unix-like systems                                |
@@ -14,7 +14,7 @@ AC_PATH_PROG(install, install, no)
 
 AC_CHECK_PROGS(make, gmake make)
 test "$make" = "" && AC_MSG_ERROR(Make not found!)
-AC_CHECK_PROGS(hfpc,ppc386,no)
+AC_CHECK_PROGS(hfpc,fpc,no)
 test x"$hfpc" = xno && AC_MSG_ERROR(FreePascal compiler not found!)
 
 lcldir=`find /usr -type d -name lcl | grep lazarus | grep -v doc | grep -v test`

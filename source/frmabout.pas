@@ -1,5 +1,5 @@
 { +--------------------------------------------------------------------------+ }
-{ | XMMEEC v0.2 * Environment characteristic editor                          | }
+{ | XMMEEC v0.3 * Environment characteristic editor for MMxD devices         | }
 { | Copyright (C) 2019-2022 Pozsár Zsolt <pozsar.zsolt@szerafingomba.hu>     | }
 { | frmabout.pas                                                             | }
 { | About form                                                               | }
@@ -7,14 +7,16 @@
 
 //   This program is free software: you can redistribute it and/or modify it
 // under the terms of the European Union Public License 1.1 version.
-//
+
 //   This program is distributed in the hope that it will be useful, but WITHOUT
 // ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 // FOR A PARTICULAR PURPOSE.
 
 unit frmabout;
+
 {$MODE OBJFPC}{$H+}
 interface
+
 uses
   Classes,
   Controls,
@@ -25,6 +27,7 @@ uses
   Graphics,
   StdCtrls,
   SysUtils;
+
 type
   { TForm2 }
   TForm2 = class(TForm)
@@ -41,6 +44,7 @@ type
   public
     { public declarations }
   end;
+
 var
   Form2: TForm2;
 
@@ -53,8 +57,7 @@ implementation
 
 procedure TForm2.FormCreate(Sender: TObject);
 begin
-  Label1.Caption:=APPNAME+' v'+VERSION
+  Label1.Caption := APPNAME + ' v' + VERSION;
 end;
 
 end.
-

@@ -16,8 +16,8 @@
     </i18n>
     <VersionInfo>
       <UseVersionInfo Value="True"/>
-      <MinorVersionNr Value="2"/>
-      <StringTable Comments="Environment characteristic editor" CompanyName="Pozsár Zsolt" LegalCopyright="(C) 2019-2022 Pozsár Zsolt" OriginalFilename="xmmeec" ProductName="XMMEEC" ProductVersion="0.2"/>
+      <MinorVersionNr Value="3"/>
+      <StringTable Comments="Environment characteristic editor for MMxD devices" CompanyName="Pozsár Zsolt" LegalCopyright="(C) 2019-2022 Pozsár Zsolt" OriginalFilename="xmmeec" ProductName="XMMEEC" ProductVersion="0.3"/>
     </VersionInfo>
     <BuildModes Count="1">
       <Item1 Name="Default" Default="True"/>
@@ -68,6 +68,7 @@
     <Linking>
       <Debugging>
         <GenerateDebugInfo Value="False"/>
+        <StripSymbols Value="True"/>
       </Debugging>
       <Options>
         <Win32>

@@ -1,5 +1,5 @@
 # +----------------------------------------------------------------------------+
-# | XMMEEC v0.2 * Environment characteristic editor                            |
+# | XMMEEC v0.3 * Environment characteristic editor for MMxD devices           |
 # | Copyright (C) 2019-2022 Pozsár Zsolt <pozsar.zsolt@szerafingomba.hu>       |
 # | Makefile                                                                   |
 # | Makefile for Unix-like systems                                             |

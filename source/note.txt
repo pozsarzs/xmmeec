@@ -1,0 +1,58 @@
+Caption of SpinEdits
+~~~~~~~~~~~~~~~~~~~~
+
+ 2a: Minimal relative humidity [%]
+ 2b: Humidifier switch-on humidity [%]
+ 2c: Humidifier switch-off humidity [%]
+ 2d: Maximal relative humidity [%]
+ 2g: Disable humidifier [%]
+
+ 3a: Minimal temperature [°C]
+ 3b: Heater switch-on temperature [°C]
+ 3c: Heater switch-off temperature [°C]
+ 3d: Maximal temperature [°C]
+ 3g: Disable heater
+
+ 4a: Lights switch-on hour #1
+ 4b: Lights switch-off hour #1
+ 4c: Lights switch-on hour #2
+ 4d: Lights switch-off hour #2
+
+ 5a: Ventilators switch-on minute
+ 5b: Ventilators switch-off minute
+ 5c: Relative unwanted gas content [%]
+ 5g: Disable ventilators
+
+ 6a: Low external temperature [°C]
+ 6g: Disable ventilators
+
+ 7a: High external temperature [°C]
+ 7g: Disable ventilators
+
+ 9a: Minimal relative humidity [%]
+ 9b: Humidifier switch-on humidity [%]
+ 9c: Humidifier switch-off humidity [%]
+ 9d: Maximal relative humidity [%]
+ 9g: Disable humidifier
+
+10a: Minimal temperature [°C]
+10b: Heater switch-on temperature [°C]
+10c: Heater switch-off temperature [°C]
+10d: Maximal temperature [°C]
+10g: Disable heater
+
+11a: Lights switch-on hour #1
+11b: Lights switch-off hour #1
+11c: Lights switch-on hour #2
+11d: Lights switch-off hour #2
+
+12a: Ventilators switch-on minute
+12b: Ventilators switch-off minute
+12c: Relative unwanted gas content [%]
+12g: Disable ventilators
+
+13a: Low external temperature [°C]
+13g: Disable ventilators
+
+14a: High external temperature [°C]
+14g: Disable ventilators

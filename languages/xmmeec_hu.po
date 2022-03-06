@@ -43,7 +43,7 @@ msgstr "Betöltés fájlból"
 
 #: frmmain.message11
 msgid "Save to file"
-msgstr "Mentés fájlba"
+msgstr "Mentés másként"
 
 #: frmmain.message12
 msgid "Export to text file"
@@ -69,26 +69,6 @@ msgstr "Bezárja a programot?"
 msgid "Cannot read configuration file!"
 msgstr "A beállításfájl nem olvasható!"
 
-#: frmmain.message17a
-msgid "Minimal relative humidity [%]"
-msgstr "Minimális páratartalom [%]"
-
-#: frmmain.message17b
-msgid "Humidifier switch-on humidity [%]"
-msgstr "Párásító bekapcsolási érték [%]"
-
-#: frmmain.message17c
-msgid "Humidifier switch-off humidity [%]"
-msgstr "Párásító kikapcsolási érték [%]"
-
-#: frmmain.message17d
-msgid "Maximal relative humidity [%]"
-msgstr "Maximális páratartalom [%]"
-
-#: frmmain.message17g
-msgid "Disable humidifier"
-msgstr "Párásító tiltás"
-
 #: frmmain.message18
 msgid "Download file"
 msgstr "Fájl letöltés"
@@ -101,61 +81,129 @@ msgstr "Fájl feltöltés"
 msgid "File transfer error!"
 msgstr "Fájlátviteli hiba!"
 
-#: frmmain.message28a
+#: frmmain.message21
+msgid "High external temp."
+msgstr "Magas külső hőmérséklet"
+
+#: frmmain.message22
+msgid "Mushroom tent"
+msgstr "Gombasátor"
+
+#: frmmain.message23
+msgid "Page"
+msgstr "Oldal"
+
+#: frmmain.message24
+msgid "Type"
+msgstr "Típus"
+
+#: frmmain.message25
+msgid "Channel"
+msgstr "Csatorna"
+
+#: frmmain.message26
+msgid "Common parameters"
+msgstr "Közös paraméterek"
+
+#: frmmain.message27
+msgid "Cannot set override!"
+msgstr "Nem tudom beállítani a felülbírálást!"
+
+#: frmmain.message28
+msgid "Cannot set override status!"
+msgstr "Nem tudom lekérdezni a felülbírálási állapotot!"
+
+#: frmmain.message29a
+msgid "Minimal relative humidity [%]"
+msgstr "Minimális páratartalom [%]"
+
+#: frmmain.message29b
+msgid "Humidifier switch-on humidity [%]"
+msgstr "Párásító bekapcsolási érték [%]"
+
+#: frmmain.message29c
+msgid "Humidifier switch-off humidity [%]"
+msgstr "Párásító kikapcsolási érték [%]"
+
+#: frmmain.message29d
+msgid "Maximal relative humidity [%]"
+msgstr "Maximális páratartalom [%]"
+
+#: frmmain.message29g
+msgid "Disable humidifier"
+msgstr "Párásító tiltás"
+
+#: frmmain.message310a
 msgid "Minimal temperature [°C]"
 msgstr "Minimális hőmérséklet [°C]"
 
-#: frmmain.message28b
+#: frmmain.message310b
 msgid "Heater switch-on temperature [°C]"
 msgstr "Fűtés bekapcsolási érték [°C]"
 
-#: frmmain.message28c
+#: frmmain.message310c
 msgid "Heater switch-off temperature [°C]"
 msgstr "Fűtés kikapcsolási érték [°C]"
 
-#: frmmain.message28d
+#: frmmain.message310d
 msgid "Maximal temperature [°C]"
 msgstr "Maximális hőmérséklet [°C]"
 
-#: frmmain.message28g
+#: frmmain.message310g
 msgid "Disable heater"
 msgstr "Fűtés tiltás"
 
-#: frmmain.message39a
+#: frmmain.message411a
 msgid "Lights switch-on hour #1"
 msgstr "1. Világítás bekapcsolási óra"
 
-#: frmmain.message39b
+#: frmmain.message411b
 msgid "Lights switch-off hour #1"
 msgstr "1. Világítás kikapcsolási óra"
 
-#: frmmain.message39c
+#: frmmain.message411c
 msgid "Lights switch-on hour #2"
 msgstr "2. Világítás bekapcsolási óra"
 
-#: frmmain.message39d
+#: frmmain.message411d
 msgid "Lights switch-off hour #2"
 msgstr "2. Világítás kikapcsolási óra"
 
-#: frmmain.message410a
+#: frmmain.message512a
 msgid "Ventilators switch-on minute"
 msgstr "Szellőztetés bekapcsolási perc"
 
-#: frmmain.message410b
+#: frmmain.message512b
 msgid "Ventilators switch-off minute"
 msgstr "Szellőztetés kikapcsolási perc"
 
-#: frmmain.message451011g
+#: frmmain.message512c
+msgid "Relative unwanted gas content [%]"
+msgstr "Relatív nem kívánt gáztartalom [%]"
+
+#: frmmain.message567121314g
 msgid "Disable ventilators"
 msgstr "Szellőztetés tiltás"
 
-#: frmmain.message511a
+#: frmmain.message613a
 msgid "Low external temperature [°C]"
 msgstr "Alacsony külső hőmérséklet [°C]"
+
+#: frmmain.message714a
+msgid "High external temperature [°C]"
+msgstr "Magas külső hőmérséklet [°C]"
 
 #: tform1.button1.caption
 msgid "&Apply"
 msgstr "&Alkalmaz"
+
+#: tform1.button2.caption
+msgid "&Get override"
+msgstr "&Lekérdezés"
+
+#: tform1.button3.caption
+msgid "&Set override"
+msgstr "&Beállítás"
 
 #: tform1.combobox1.hint
 msgid "Remote control device"
@@ -170,12 +218,10 @@ msgid "&Transfer"
 msgstr "Át&vitel"
 
 #: tform1.menuitem11.caption
-msgctxt "TFORM1.MENUITEM11.CAPTION"
 msgid "&Download"
-msgstr "&Letöltés"
+msgstr "&Letölt"
 
 #: tform1.menuitem12.caption
-msgctxt "TFORM1.MENUITEM12.CAPTION"
 msgid "&Upload"
 msgstr "&Feltöltés"
 
@@ -192,12 +238,10 @@ msgid "&Clear"
 msgstr "&Alapértékek"
 
 #: tform1.menuitem4.caption
-msgctxt "TFORM1.MENUITEM4.CAPTION"
 msgid "&Open..."
 msgstr "Me&gnyitás..."
 
 #: tform1.menuitem5.caption
-msgctxt "TFORM1.MENUITEM5.CAPTION"
 msgid "&Save..."
 msgstr "&Mentés..."
 
@@ -207,7 +251,7 @@ msgstr "E&xportálás..."
 
 #: tform1.menuitem9.caption
 msgid "&Quit"
-msgstr "&Kilép"
+msgstr "&Kilépés"
 
 #: tform1.speedbutton1.hint
 msgid "Open ini file"
@@ -234,6 +278,9 @@ msgid "About"
 msgstr "Névjegy"
 
 #: tform2.label2.caption
-msgctxt "TFORM2.LABEL2.CAPTION"
-msgid "Remote environment characteristic editor"
-msgstr "Környezeti paraméter szerkesztő"
+msgid "Environment characteristic editor for remote MMxD devices"
+msgstr "Környezeti paraméter szerkesztő távoli MMxD berendezésekhez"
+
+#: tform2.label4.caption
+msgid "Web: http://www.szerafingomba.hu/softwares/"
+msgstr "Web: http://www.szerafingomba.hu/softwares/"

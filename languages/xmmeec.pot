@@ -69,26 +69,6 @@ msgstr ""
 msgid "Cannot read configuration file!"
 msgstr ""
 
-#: frmmain.message17a
-msgid "Minimal relative humidity [%]"
-msgstr ""
-
-#: frmmain.message17b
-msgid "Humidifier switch-on humidity [%]"
-msgstr ""
-
-#: frmmain.message17c
-msgid "Humidifier switch-off humidity [%]"
-msgstr ""
-
-#: frmmain.message17d
-msgid "Maximal relative humidity [%]"
-msgstr ""
-
-#: frmmain.message17g
-msgid "Disable humidifier"
-msgstr ""
-
 #: frmmain.message18
 msgid "Download file"
 msgstr ""
@@ -101,89 +81,132 @@ msgstr ""
 msgid "File transfer error!"
 msgstr ""
 
-#: frmmain.message28a
+#: frmmain.message21
+msgid "High external temp."
+msgstr ""
+
+#: frmmain.message22
+msgid "Mushroom tent"
+msgstr ""
+
+#: frmmain.message23
+msgid "Page"
+msgstr ""
+
+#: frmmain.message24
+msgid "Type"
+msgstr ""
+
+#: frmmain.message25
+msgid "Channel"
+msgstr ""
+
+#: frmmain.message26
+msgid "Common parameters"
+msgstr ""
+
+#: frmmain.message27
+msgid "Cannot set override!"
+msgstr ""
+
+#: frmmain.message28
+msgid "Cannot set override status!"
+msgstr ""
+
+#: frmmain.message29a
+msgid "Minimal relative humidity [%]"
+msgstr ""
+
+#: frmmain.message29b
+msgid "Humidifier switch-on humidity [%]"
+msgstr ""
+
+#: frmmain.message29c
+msgid "Humidifier switch-off humidity [%]"
+msgstr ""
+
+#: frmmain.message29d
+msgid "Maximal relative humidity [%]"
+msgstr ""
+
+#: frmmain.message29g
+msgid "Disable humidifier"
+msgstr ""
+
+#: frmmain.message310a
 msgid "Minimal temperature [°C]"
 msgstr ""
 
-#: frmmain.message28b
+#: frmmain.message310b
 msgid "Heater switch-on temperature [°C]"
 msgstr ""
 
-#: frmmain.message28c
+#: frmmain.message310c
 msgid "Heater switch-off temperature [°C]"
 msgstr ""
 
-#: frmmain.message28d
+#: frmmain.message310d
 msgid "Maximal temperature [°C]"
 msgstr ""
 
-#: frmmain.message28g
+#: frmmain.message310g
 msgid "Disable heater"
 msgstr ""
 
-#: frmmain.message39a
+#: frmmain.message411a
 msgid "Lights switch-on hour #1"
 msgstr ""
 
-#: frmmain.message39b
+#: frmmain.message411b
 msgid "Lights switch-off hour #1"
 msgstr ""
 
-#: frmmain.message39c
+#: frmmain.message411c
 msgid "Lights switch-on hour #2"
 msgstr ""
 
-#: frmmain.message39d
+#: frmmain.message411d
 msgid "Lights switch-off hour #2"
 msgstr ""
 
-#: frmmain.message410a
+#: frmmain.message512a
 msgid "Ventilators switch-on minute"
 msgstr ""
 
-#: frmmain.message410b
+#: frmmain.message512b
 msgid "Ventilators switch-off minute"
 msgstr ""
 
-#: frmmain.message451011g
+#: frmmain.message512c
+msgid "Relative unwanted gas content [%]"
+msgstr ""
+
+#: frmmain.message567121314g
 msgid "Disable ventilators"
 msgstr ""
 
-#: frmmain.message511a
+#: frmmain.message613a
 msgid "Low external temperature [°C]"
+msgstr ""
+
+#: frmmain.message714a
+msgid "High external temperature [°C]"
 msgstr ""
 
 #: tform1.button1.caption
 msgid "&Apply"
 msgstr ""
 
-#: tform1.caption
-msgid "Form1"
+#: tform1.button2.caption
+msgid "&Get override"
 msgstr ""
 
-#: tform1.checkgroup1.caption
-msgid "CheckGroup1"
+#: tform1.button3.caption
+msgid "&Set override"
 msgstr ""
 
 #: tform1.combobox1.hint
 msgid "Remote control device"
-msgstr ""
-
-#: tform1.label1.caption
-msgctxt "TFORM1.LABEL1.CAPTION"
-msgid "Label1"
-msgstr ""
-
-#: tform1.label2.caption
-msgid "Label2"
-msgstr ""
-
-#: tform1.label3.caption
-msgid "Label3"
-msgstr ""
-
-#: tform1.label4.caption
-msgid "Label4"
 msgstr ""
 
 #: tform1.menuitem1.caption
@@ -214,22 +237,12 @@ msgstr ""
 msgid "&Clear"
 msgstr ""
 
-#: tform1.menuitem3.caption
-msgctxt "tform1.menuitem3.caption"
-msgid "-"
-msgstr ""
-
 #: tform1.menuitem4.caption
 msgid "&Open..."
 msgstr ""
 
 #: tform1.menuitem5.caption
 msgid "&Save..."
-msgstr ""
-
-#: tform1.menuitem7.caption
-msgctxt "TFORM1.MENUITEM7.CAPTION"
-msgid "-"
 msgstr ""
 
 #: tform1.menuitem8.caption
@@ -256,18 +269,6 @@ msgstr ""
 msgid "Upload ini file"
 msgstr ""
 
-#: tform1.toolbar1.caption
-msgid "ToolBar1"
-msgstr ""
-
-#: tform1.toolbutton5.caption
-msgid "ToolButton5"
-msgstr ""
-
-#: tform1.toolbutton5.hint
-msgid "uiohzukhjjkl"
-msgstr ""
-
 #: tform2.button1.caption
 msgid "&Close"
 msgstr ""
@@ -276,17 +277,8 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: tform2.label1.caption
-msgctxt "tform2.label1.caption"
-msgid "Label1"
-msgstr ""
-
 #: tform2.label2.caption
-msgid "Remote environment characteristic editor"
-msgstr ""
-
-#: tform2.label3.caption
-msgid "(C)2019-2022 Pozsár Zsolt"
+msgid "Environment characteristic editor for remote MMxD devices"
 msgstr ""
 
 #: tform2.label4.caption

@@ -1739,26 +1739,31 @@ object Form2: TForm2
     AnchorSideLeft.Control = Bevel1
     AnchorSideTop.Control = Label1
     AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Bevel1
+    AnchorSideRight.Side = asrBottom
     Left = 24
-    Height = 14
-    Top = 48
-    Width = 251
-    Anchors = [akLeft]
+    Height = 32
+    Top = 59
+    Width = 292
+    Anchors = [akLeft, akRight]
+    AutoSize = False
     BorderSpacing.Around = 16
-    Caption = 'Remote environment characteristic editor'
+    Caption = 'Environment characteristic editor for remote MMxD devices'
     Font.Height = 12
     ParentColor = False
     ParentFont = False
+    WordWrap = True
   end
   object Label3: TLabel
     AnchorSideLeft.Control = Bevel1
-    AnchorSideTop.Control = Label2
     AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Bevel1
+    AnchorSideRight.Side = asrBottom
     Left = 24
     Height = 15
-    Top = 63
-    Width = 172
-    Anchors = [akLeft]
+    Top = 96
+    Width = 292
+    Anchors = [akLeft, akRight]
     BorderSpacing.Around = 16
     Caption = '(C)2019-2022 Pozsár Zsolt'
     ParentColor = False
@@ -1766,18 +1771,17 @@ object Form2: TForm2
   object Label4: TLabel
     AnchorSideLeft.Control = Bevel1
     AnchorSideLeft.Side = asrCenter
-    AnchorSideTop.Control = Label3
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = Bevel1
     AnchorSideRight.Side = asrCenter
-    Left = 15
+    Left = 21
     Height = 15
-    Top = 128
-    Width = 310
+    Top = 119
+    Width = 298
     Alignment = taCenter
-    Anchors = [akLeft, akRight]
     BorderSpacing.Left = 16
     BorderSpacing.Top = 8
+    BorderSpacing.Right = 16
     Caption = 'Web: http://www.szerafingomba.hu/softwares/'
     ParentColor = False
   end

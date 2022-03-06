@@ -1,3 +1,12 @@
+ XMMEEC (0.3) unstable; urgency=low
+
+  * Added new setting pages.
+  * Added get/set output override.
+  * Some bugfix.
+
+ -- Pozsár Zsolt <pozsar.zsolt@szerafingomba.hu>  Sun, 06 Mar 2022 19:00:00
+
+
  XMMEEC (0.2) unstable; urgency=low
 
   * New file transfer procedure.

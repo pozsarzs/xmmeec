@@ -1,5 +1,5 @@
 { +--------------------------------------------------------------------------+ }
-{ | XMMEEC v0.2 * Environment characteristic editor                          | }
+{ | XMMEEC v0.3 * Environment characteristic editor for MMxD devices         | }
 { | Copyright (C) 2019-2022 Pozsár Zsolt <pozsar.zsolt@szerafingomba.hu>     | }
 { | untcommonproc.pas                                                        | }
 { | Common functions and procedures                                          | }
@@ -7,14 +7,16 @@
 
 //   This program is free software: you can redistribute it and/or modify it
 // under the terms of the European Union Public License 1.1 version.
-//
+
 //   This program is distributed in the hope that it will be useful, but WITHOUT
 // ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 // FOR A PARTICULAR PURPOSE.
 
-unit untcommonproc; 
+unit untcommonproc;
+
 {$MODE OBJFPC}{$H-}
 interface
+
 uses
   Classes,
   Dialogs,
@@ -23,22 +25,24 @@ uses
   SysUtils,
  {$IFDEF WIN32}Windows,{$ENDIF}
   dos;
+
 var
-  dev_chan:   array[1..32] of byte;
-  dev_name:   array[1..32] of string;
-  dev_port:   array[1..32] of integer;
-  dev_type:   array[1..32] of string;
-  dev_user:   array[1..32] of string;
+  dev_chan: array[1..32] of byte;
+  dev_name: array[1..32] of string;
+  dev_port: array[1..32] of integer;
+  dev_type: array[1..32] of string;
+  dev_user: array[1..32] of string;
   exepath, p: shortstring;
-  lang:       string[2];
-  scp:        string;
-  ssh:        string;
-  s:          string;
-  userdir:    string;
+  lang: string[2];
+  scp: string;
+  ssh: string;
+  s: string;
+  userdir: string;
 {$IFDEF WIN32}
 const
-  CSIDL_PROFILE=40;
-  SHGFP_TYPE_CURRENT=0;
+  CSIDL_PROFILE = 40;
+  SHGFP_TYPE_CURRENT = 0;
+
 {$ENDIF}
 
 {$I config.pas}
@@ -49,71 +53,72 @@ function loadconfig(filename: string): boolean;
 procedure makeuserdir;
 
 {$IFDEF WIN32}
-function SHGetFolderPath(hwndOwner: HWND; nFolder: Integer; hToken: THandle;
-         dwFlags: DWORD; pszPath: LPTSTR): HRESULT; stdcall;
-         external 'Shell32.dll' name 'SHGetFolderPathA';
+function SHGetFolderPath(hwndOwner: HWND; nFolder: integer; hToken: THandle;
+  dwFlags: DWORD; pszPath: LPTSTR): HRESULT; stdcall;
+  external 'Shell32.dll' Name 'SHGetFolderPathA';
 {$ENDIF}
 
-Resourcestring
-  MESSAGE01='Cannot read configuration file!';
-  MESSAGE02='Cannot write configuration file!';
+resourcestring
+  MESSAGE01 = 'Cannot read configuration file!';
+  MESSAGE02 = 'Cannot write configuration file!';
 
 implementation
 
 // get executable path
 function getexepath: string;
 begin
-  fsplit(paramstr(0),exepath,p,p);
-  getexepath:=exepath;
+  fsplit(ParamStr(0), exepath, p, p);
+  getexepath := exepath;
 end;
 
 // get language
 function getlang: string;
 {$IFDEF WIN32}
 var
-  buffer: pchar;
-  size:   integer;
+  buffer: PChar;
+  size: integer;
 {$ENDIF}
 begin
  {$IFDEF UNIX}
-  s:=getenv('LANG');
+  s := getenv('LANG');
  {$ENDIF}
  {$IFDEF WIN32}
-  size:=getlocaleinfo (LOCALE_USER_DEFAULT, LOCALE_SABBREVLANGNAME, nil, 0);
+  size := getlocaleinfo(LOCALE_USER_DEFAULT, LOCALE_SABBREVLANGNAME, nil, 0);
   getmem(buffer, size);
   try
-    getlocaleinfo (LOCALE_USER_DEFAULT, LOCALE_SABBREVLANGNAME, buffer, size);
-    s:=string(buffer);
+    getlocaleinfo(LOCALE_USER_DEFAULT, LOCALE_SABBREVLANGNAME, buffer, size);
+    s := string(buffer);
   finally
     freemem(buffer);
   end;
  {$ENDIF}
-  if length(s)=0 then s:='en';
-  lang:=lowercase(s[1..2]);
-  getlang:=lang;
+  if length(s) = 0 then
+    s := 'en';
+    lang:=lowercase(s[1..2]);
+  getlang := lang;
 end;
 
 // load condfiguration file
 function loadconfig(filename: string): boolean;
 var
-  b:   byte;
+  b: byte;
   iif: TINIFile;
 begin
-  iif:=TIniFile.Create(filename);
-  loadconfig:=true;
+  iif := TIniFile.Create(filename);
+  loadconfig := True;
   try
-    scp:=iif.ReadString('programs','scp','/usr/bin/scp');
-    ssh:=iif.ReadString('programs','ssh','/usr/bin/ssh');
-    for b:=1 to 32 do
+    scp := iif.ReadString('programs', 'scp', '/usr/bin/scp');
+    ssh := iif.ReadString('programs', 'ssh', '/usr/bin/ssh');
+    for b := 1 to 32 do
     begin
-      dev_chan[b]:=iif.ReadInteger('device-'+inttostr(b),'chan',0);
-      dev_name[b]:=iif.ReadString('device-'+inttostr(b),'name','');
-      dev_port[b]:=iif.ReadInteger('device-'+inttostr(b),'port',22);
-      dev_type[b]:=iif.ReadString('device-'+inttostr(b),'type','');
-      dev_user[b]:=iif.ReadString('device-'+inttostr(b),'user','');
+      dev_chan[b] := iif.ReadInteger('device-' + IntToStr(b), 'chan', 0);
+      dev_name[b] := iif.ReadString('device-' + IntToStr(b), 'name', '');
+      dev_port[b] := iif.ReadInteger('device-' + IntToStr(b), 'port', 22);
+      dev_type[b] := iif.ReadString('device-' + IntToStr(b), 'type', '');
+      dev_user[b] := iif.ReadString('device-' + IntToStr(b), 'user', '');
     end;
   except
-    loadconfig:=false;
+    loadconfig := False;
   end;
   iif.Free;
 end;
@@ -128,28 +133,29 @@ var
   begin
     fillchar(buffer, sizeof(buffer), 0);
     ShGetFolderPath(0, CSIDL_PROFILE, 0, SHGFP_TYPE_CURRENT, buffer);
-    result:=string(pchar(@buffer));
+    Result := string(PChar(@buffer));
   end;
 
   function GetWindowsTemp: string;
-  begin  
-    fillchar(buffer,MAX_PATH+1, 0);
+  begin
+    fillchar(buffer, MAX_PATH + 1, 0);
     GetTempPath(MAX_PATH, buffer);
-    result:=string(pchar(@buffer));
-    if result[length(result)]<>'\' then result:=result+'\';
+    Result := string(PChar(@buffer));
+    if Result[length(Result)] <> '\' then
+      Result := Result + '\';
   end;
+
 {$ENDIF}
 
 begin
  {$IFDEF UNIX}
-  userdir:=getenvironmentvariable('HOME');
+  userdir := getenvironmentvariable('HOME');
  {$ENDIF}
  {$IFDEF WIN32}
-  userdir:=getuserprofile;
+  userdir := getuserprofile;
  {$ENDIF}
-  forcedirectories(userdir+DIR_CACHE);
-  forcedirectories(userdir+DIR_CONFIG);
+  forcedirectories(userdir + DIR_CACHE);
+  forcedirectories(userdir + DIR_CONFIG);
 end;
 
 end.
-
