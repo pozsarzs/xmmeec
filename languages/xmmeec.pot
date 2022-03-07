@@ -110,7 +110,11 @@ msgid "Cannot set override!"
 msgstr ""
 
 #: frmmain.message28
-msgid "Cannot set override status!"
+msgid "Cannot get override status!"
+msgstr ""
+
+#: frmmain.message29
+msgid "Switched off"
 msgstr ""
 
 #: frmmain.message29a
@@ -133,6 +137,14 @@ msgstr ""
 msgid "Disable humidifier"
 msgstr ""
 
+#: frmmain.message30
+msgid "Neutral"
+msgstr ""
+
+#: frmmain.message31
+msgid "Switched on"
+msgstr ""
+
 #: frmmain.message310a
 msgid "Minimal temperature [°C]"
 msgstr ""
@@ -151,6 +163,10 @@ msgstr ""
 
 #: frmmain.message310g
 msgid "Disable heater"
+msgstr ""
+
+#: frmmain.message32
+msgid "(Unused)"
 msgstr ""
 
 #: frmmain.message411a
