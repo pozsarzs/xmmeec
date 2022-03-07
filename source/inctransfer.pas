@@ -34,18 +34,22 @@ begin
     stdout.LoadFromStream(Process4.Output);
   except
     Result := '';
+    Process4.Free;
+    stdout.Free;
+    exit;
   end;
-  if Process4.ExitStatus <> 0 then
-    Result := '';
-  Process4.Free;
-  for b := 0 to stdout.Count-1 do
+  if Process4.ExitStatus <> 0 then Result := '' else
   begin
-    case stdout[b] of
-    'off': result := result+'0';
-    'neutral': result := result+'1';
-    'on': result := result+'2';
+    for b := 0 to stdout.Count-1 do
+    begin
+      case stdout[b] of
+      'off': result := result+'0';
+      'neutral': result := result+'1';
+      'on': result := result+'2';
+      end;
     end;
   end;
+  Process4.Free;
   stdout.Free;
 end;
 

@@ -542,7 +542,7 @@ object Form2: TForm2
   }
   OnCreate = FormCreate
   Position = poMainFormCenter
-  LCLVersion = '1.6.2.0'
+  LCLVersion = '1.8.4.0'
   object Image1: TImage
     AnchorSideLeft.Control = Bevel1
     AnchorSideTop.Control = Bevel1
@@ -1725,12 +1725,11 @@ object Form2: TForm2
     AnchorSideLeft.Control = Bevel1
     AnchorSideTop.Control = Bevel1
     Left = 24
-    Height = 19
+    Height = 15
     Top = 24
-    Width = 59
+    Width = 36
     BorderSpacing.Around = 16
     Caption = 'Label1'
-    Font.Height = 16
     Font.Style = [fsBold]
     ParentColor = False
     ParentFont = False
@@ -1743,13 +1742,12 @@ object Form2: TForm2
     AnchorSideRight.Side = asrBottom
     Left = 24
     Height = 32
-    Top = 59
+    Top = 56
     Width = 292
     Anchors = [akLeft, akRight]
     AutoSize = False
     BorderSpacing.Around = 16
     Caption = 'Environment characteristic editor for remote MMxD devices'
-    Font.Height = 12
     ParentColor = False
     ParentFont = False
     WordWrap = True
@@ -1774,10 +1772,10 @@ object Form2: TForm2
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = Bevel1
     AnchorSideRight.Side = asrCenter
-    Left = 21
+    Left = 45
     Height = 15
     Top = 119
-    Width = 298
+    Width = 250
     Alignment = taCenter
     BorderSpacing.Left = 16
     BorderSpacing.Top = 8

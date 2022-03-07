@@ -166,11 +166,11 @@ resourcestring
   MESSAGE25 = 'Channel';
   MESSAGE26 = 'Common parameters';
   MESSAGE27 = 'Cannot set override!';
-  MESSAGE28 = 'Cannot set override status!';
-  MESSAGE0a = 'Channel #1';
-  MESSAGE0b = 'Channel #2';
-  MESSAGE0c = 'Channel #3';
-  MESSAGE0d = 'Channel #4';
+  MESSAGE28 = 'Cannot get override status!';
+  MESSAGE29 = 'Switched off';
+  MESSAGE30 = 'Neutral';
+  MESSAGE31 = 'Switched on';
+  MESSAGE32 = '(Unused)';
   MESSAGE29a = 'Minimal relative humidity [%]';
   MESSAGE29b = 'Humidifier switch-on humidity [%]';
   MESSAGE29c = 'Humidifier switch-off humidity [%]';
@@ -421,14 +421,10 @@ begin
   Button2.Visible := visibleradiogroups[TreeView1.Selected.AbsoluteIndex];
   Button3.Visible := Button2.Visible;
   CheckGroup1.Visible := visiblecheckgroup[TreeView1.Selected.AbsoluteIndex];
-  Label1.Visible := visiblespinedits[TreeView1.Selected.AbsoluteIndex, 1] or
-    visibleradiogroups[TreeView1.Selected.AbsoluteIndex];
-  Label2.Visible := visiblespinedits[TreeView1.Selected.AbsoluteIndex, 2] or
-    visibleradiogroups[TreeView1.Selected.AbsoluteIndex];
-  Label3.Visible := visiblespinedits[TreeView1.Selected.AbsoluteIndex, 3] or
-    visibleradiogroups[TreeView1.Selected.AbsoluteIndex];
-  Label4.Visible := visiblespinedits[TreeView1.Selected.AbsoluteIndex, 4] or
-    visibleradiogroups[TreeView1.Selected.AbsoluteIndex];
+  Label1.Visible := visiblespinedits[TreeView1.Selected.AbsoluteIndex, 1];
+  Label2.Visible := visiblespinedits[TreeView1.Selected.AbsoluteIndex, 2];
+  Label3.Visible := visiblespinedits[TreeView1.Selected.AbsoluteIndex, 3];
+  Label4.Visible := visiblespinedits[TreeView1.Selected.AbsoluteIndex, 4];
   RadioGroup1.Visible := visibleradiogroups[TreeView1.Selected.AbsoluteIndex];
   RadioGroup2.Visible := visibleradiogroups[TreeView1.Selected.AbsoluteIndex];
   RadioGroup3.Visible := visibleradiogroups[TreeView1.Selected.AbsoluteIndex];
@@ -437,10 +433,6 @@ begin
   SpinEdit2.Visible := visiblespinedits[TreeView1.Selected.AbsoluteIndex, 2];
   SpinEdit3.Visible := visiblespinedits[TreeView1.Selected.AbsoluteIndex, 3];
   SpinEdit4.Visible := visiblespinedits[TreeView1.Selected.AbsoluteIndex, 4];
-  Label1.Caption := labelcaptions[TreeView1.Selected.AbsoluteIndex, 1];
-  Label2.Caption := labelcaptions[TreeView1.Selected.AbsoluteIndex, 2];
-  Label3.Caption := labelcaptions[TreeView1.Selected.AbsoluteIndex, 3];
-  Label4.Caption := labelcaptions[TreeView1.Selected.AbsoluteIndex, 4];
   CheckGroup1.Caption := checkgroupcaption[TreeView1.Selected.AbsoluteIndex];
   // clear values
   SpinEdit1.Value := 0;
@@ -450,6 +442,10 @@ begin
   for b := 0 to 23 do
     CheckGroup1.Checked[0] := False;
   // load values
+  Label1.Caption := labelcaptions[TreeView1.Selected.AbsoluteIndex, 1];
+  Label2.Caption := labelcaptions[TreeView1.Selected.AbsoluteIndex, 2];
+  Label3.Caption := labelcaptions[TreeView1.Selected.AbsoluteIndex, 3];
+  Label4.Caption := labelcaptions[TreeView1.Selected.AbsoluteIndex, 4];
   SpinEdit1.Value := spineditvalues[TreeView1.Selected.AbsoluteIndex, 1];
   SpinEdit2.Value := spineditvalues[TreeView1.Selected.AbsoluteIndex, 2];
   SpinEdit3.Value := spineditvalues[TreeView1.Selected.AbsoluteIndex, 3];
@@ -485,19 +481,13 @@ begin
       labelcaptions[TreeView1.Selected.AbsoluteIndex, 2] := MESSAGE05;
       labelcaptions[TreeView1.Selected.AbsoluteIndex, 3] := MESSAGE06;
       labelcaptions[TreeView1.Selected.AbsoluteIndex, 4] := MESSAGE03;
-      Label4.Visible := True;
-      RadioGroup4.Visible := True;
-      Button2.AnchorToNeighbour(akTop, 8, RadioGroup4);
     end;
     'MM8D':
     begin
       labelcaptions[TreeView1.Selected.AbsoluteIndex, 1] := MESSAGE05;
       labelcaptions[TreeView1.Selected.AbsoluteIndex, 2] := MESSAGE06;
       labelcaptions[TreeView1.Selected.AbsoluteIndex, 3] := MESSAGE04;
-      labelcaptions[TreeView1.Selected.AbsoluteIndex, 4] := '';
-      Label4.Visible := False;
-      RadioGroup4.Visible := False;
-      Button2.AnchorToNeighbour(akTop, 8, RadioGroup3);
+      labelcaptions[TreeView1.Selected.AbsoluteIndex, 4] := MESSAGE32;
     end;
     else
     begin
@@ -505,23 +495,20 @@ begin
       labelcaptions[TreeView1.Selected.AbsoluteIndex, 2] := MESSAGE05;
       labelcaptions[TreeView1.Selected.AbsoluteIndex, 3] := MESSAGE06;
       labelcaptions[TreeView1.Selected.AbsoluteIndex, 4] := MESSAGE04;
-      Label4.Visible := True;
-      RadioGroup4.Visible := True;
-      Button2.AnchorToNeighbour(akTop, 8, RadioGroup4);
     end;
   end;
-  Label1.Caption := labelcaptions[TreeView1.Selected.AbsoluteIndex, 1];
-  Label2.Caption := labelcaptions[TreeView1.Selected.AbsoluteIndex, 2];
-  Label3.Caption := labelcaptions[TreeView1.Selected.AbsoluteIndex, 3];
-  Label4.Caption := labelcaptions[TreeView1.Selected.AbsoluteIndex, 4];
+  RadioGroup1.Caption := labelcaptions[TreeView1.Selected.AbsoluteIndex, 1];
+  RadioGroup2.Caption := labelcaptions[TreeView1.Selected.AbsoluteIndex, 2];
+  RadioGroup3.Caption := labelcaptions[TreeView1.Selected.AbsoluteIndex, 3];
+  RadioGroup4.Caption := labelcaptions[TreeView1.Selected.AbsoluteIndex, 4];
 end;
 
 // OnCloseQuery event
 procedure TForm1.FormCloseQuery(Sender: TObject; var CanClose: boolean);
 begin
   if MessageDlgPos(MESSAGE16, mtConfirmation, [mbYes, mbNo], 0,
-    (Form1.Left + Form1.Left + Form1.Width) div 2, (Form1.Top +
-    Form1.Top + Form1.Height) div 2) = mrYes then
+    (Form1.Left + Form1.Left + Form1.Width) div 2,
+    (Form1.Top + Form1.Top + Form1.Height) div 2) = mrYes then
     CanClose := True
   else
     CanClose := False;
@@ -607,6 +594,22 @@ begin
   labelcaptions[12, 3] := MESSAGE512c;
   labelcaptions[13, 1] := MESSAGE613a;
   labelcaptions[14, 1] := MESSAGE714a;
+  RadioGroup1.Items.AddText(MESSAGE29);
+  RadioGroup1.Items.AddText(MESSAGE30);
+  RadioGroup1.Items.AddText(MESSAGE31);
+  RadioGroup2.Items.AddText(MESSAGE29);
+  RadioGroup2.Items.AddText(MESSAGE30);
+  RadioGroup2.Items.AddText(MESSAGE31);
+  RadioGroup3.Items.AddText(MESSAGE29);
+  RadioGroup3.Items.AddText(MESSAGE30);
+  RadioGroup3.Items.AddText(MESSAGE31);
+  RadioGroup4.Items.AddText(MESSAGE29);
+  RadioGroup4.Items.AddText(MESSAGE30);
+  RadioGroup4.Items.AddText(MESSAGE31);
+  RadioGroup1.ItemIndex:=1;
+  RadioGroup2.ItemIndex:=1;
+  RadioGroup3.ItemIndex:=1;
+  RadioGroup4.ItemIndex:=1;
   for b := 0 to 14 do
     checkgroupcaption[b] := '';
   checkgroupcaption[2] := MESSAGE29g;
