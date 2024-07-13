@@ -68,7 +68,7 @@ begin
     // page #5
     spineditvalues[5, 1] := StrToInt(ini.ReadString(SECTION1, 'vent_on', '0'));
     spineditvalues[5, 2] := StrToInt(ini.ReadString(SECTION1, 'vent_off', '0'));
-    spineditvalues[5, 3] := StrToInt(ini.ReadString(SECTION0, 'gasconcentrate_max', '0'));
+//    spineditvalues[5, 3] := StrToInt(ini.ReadString(SECTION0, 'gasconcentrate_max', '0'));
     for b := 0 to 23 do
     begin
       s := 'vent_disable_';

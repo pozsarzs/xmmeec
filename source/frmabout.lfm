@@ -542,7 +542,7 @@ object Form2: TForm2
   }
   OnCreate = FormCreate
   Position = poMainFormCenter
-  LCLVersion = '1.8.4.0'
+  LCLVersion = '2.2.6.0'
   object Image1: TImage
     AnchorSideLeft.Control = Bevel1
     AnchorSideTop.Control = Bevel1
@@ -1725,9 +1725,9 @@ object Form2: TForm2
     AnchorSideLeft.Control = Bevel1
     AnchorSideTop.Control = Bevel1
     Left = 24
-    Height = 15
+    Height = 17
     Top = 24
-    Width = 36
+    Width = 51
     BorderSpacing.Around = 16
     Caption = 'Label1'
     Font.Style = [fsBold]
@@ -1758,29 +1758,29 @@ object Form2: TForm2
     AnchorSideRight.Control = Bevel1
     AnchorSideRight.Side = asrBottom
     Left = 24
-    Height = 15
-    Top = 96
+    Height = 17
+    Top = 95
     Width = 292
     Anchors = [akLeft, akRight]
     BorderSpacing.Around = 16
-    Caption = '(C)2019-2022 Pozsár Zsolt'
+    Caption = '(C)2019-2024 Pozsár Zsolt'
     ParentColor = False
   end
   object Label4: TLabel
-    AnchorSideLeft.Control = Bevel1
-    AnchorSideLeft.Side = asrCenter
+    AnchorSideLeft.Control = Label3
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = Bevel1
     AnchorSideRight.Side = asrCenter
-    Left = 45
-    Height = 15
+    Left = 24
+    Height = 17
     Top = 119
-    Width = 250
+    Width = 151
     Alignment = taCenter
-    BorderSpacing.Left = 16
     BorderSpacing.Top = 8
     BorderSpacing.Right = 16
-    Caption = 'Web: http://www.szerafingomba.hu/softwares/'
+    Caption = 'http://www.pozsarzs.hu'
+    Font.Color = clBlue
     ParentColor = False
+    ParentFont = False
   end
 end
